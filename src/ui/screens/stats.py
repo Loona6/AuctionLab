@@ -37,11 +37,14 @@ class StatsScreen:
         draw_text(surface, "CUMULATIVE ANALYTICS", SCREEN_WIDTH//2, 50, self.font_header, THEME_ACCENT_PURPLE, "center")
         
         # --- Section 1: Lifetime Totals (Top Row) ---
-        # 3 Cards: Total Games, Total Profit, Items Won
         start_y = 100
-        card_w = (SCREEN_WIDTH - 80) // 3
-        card_h = 100
         gap = 20
+        side_padding = 80 # 40 on left, 40 on right
+        
+        # FIX: Subtract the total gap space (2 gaps for 3 cards) from the width
+        # Logic: (Total Width - Side Padding - (Gap * 2)) / 3 Cards
+        card_w = (SCREEN_WIDTH - side_padding - (gap * 2)) // 3
+        card_h = 100
         
         # Calculate X positions
         x1 = 40
@@ -90,6 +93,7 @@ class StatsScreen:
         pygame.draw.rect(surface, THEME_PANEL_BG, rect, border_radius=10)
         pygame.draw.rect(surface, THEME_BORDER, rect, 1, border_radius=10)
         
+        # Use centerx of the rect for alignment so text stays in the middle of the card
         draw_text(surface, label, rect.centerx, y + 25, self.font_txt, THEME_TEXT_SUB, "center")
         draw_text(surface, value, rect.centerx, y + 60, self.font_val, color, "center")
 
@@ -102,6 +106,7 @@ class StatsScreen:
 
     def _draw_row(self, surface, x, y, w, label, value):
         draw_text(surface, label, x, y, self.font_txt, THEME_TEXT_SUB)
+        # Align value to the right side of the specific panel area
         draw_text(surface, value, x + w - 40, y, self.font_txt, THEME_TEXT_MAIN, "right")
 
     def _draw_strat_row(self, surface, x, y, name, usage, success, color):

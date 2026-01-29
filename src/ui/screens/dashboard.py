@@ -22,10 +22,10 @@ class MenuScreen:
         start_y = cy + 40 
         
         self.buttons = [
-            NeonButton(cx - btn_w//2, start_y, btn_w, btn_h, "START SIMULATION", COLOR_CYAN, "start_game"),
+            NeonButton(cx - btn_w//2, start_y, btn_w, btn_h, "START GAME", COLOR_CYAN, "start_game"),
             # RENAMED BUTTON BELOW
             NeonButton(cx - btn_w//2, start_y + (btn_h + gap), btn_w, btn_h, "HIGH SCORES", COLOR_YELLOW, "view_scores"),
-            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*2, btn_w, btn_h, "ANALYTICS", COLOR_PURPLE, "view_stats"),
+            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*2, btn_w, btn_h, "OVERALL STATS", COLOR_PURPLE, "view_stats"),
             NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*3, btn_w, btn_h, "EXIT SYSTEM", COLOR_RED, "exit"),
         ]
 

@@ -44,18 +44,19 @@ class GameScreen:
         self.item_category = "Antique"
         self.item_tags = ["Rare", "Fragile", "Historical"]
         
-        # Mock Feed & Bots
+        # Mock Feed
         self.feed = [
             "Round 1 Started.",
-            "Conservative AI joined.",
-            "Aggressive AI bids $400.",
+            "Bot 2 joined.",
+            "Bot 1 bids $400.",
             "Current bid is $500."
         ]
         
+        # --- OPPONENTS ---
         self.bots = [
-            ("Aggressive AI", "Bidding...", THEME_ACCENT_RED), 
-            ("Conservative AI", "Watching", THEME_ACCENT_GREEN),
-            ("Random AI", "Withdrew", THEME_TEXT_SUB)
+            ("Bot 1", "Bidding...", THEME_ACCENT_RED), 
+            ("Bot 2", "Watching", THEME_ACCENT_GREEN),
+            ("Bot 3", "Withdrew", THEME_TEXT_SUB)
         ]
         
         self.timer = 15
@@ -69,12 +70,10 @@ class GameScreen:
         self.btn_quit = NeonButton(20, 20, 100, 40, "QUIT", THEME_BORDER, "back")
         
         # 2. Right Panel Controls
-        # Calculate center of right panel
         cx_panel3 = (self.pad * 3) + self.col1_w + self.col2_w + (self.col3_w // 2)
         btn_w = self.col3_w - 40
         
         # A. Input Box
-        # Moved down slightly to give "Highest Bid" more breathing room
         self.input_box = NeonInputBox(cx_panel3 - btn_w//2, self.start_y + 280, btn_w, 50, 
                                       self.proposed_bid, self.font_lg, THEME_ACCENT_CYAN, THEME_BORDER)
         
@@ -175,9 +174,12 @@ class GameScreen:
         self._draw_right_content(surface, x_cursor, self.start_y, self.col3_w)
 
     def _draw_top_bar(self, surface):
+        # --- CENTERED ROUND INFO ---
         info_text = f"ROUND {self.round_num} / {self.max_rounds}"
-        draw_text(surface, info_text, SCREEN_WIDTH - 150, 40, self.font_md, THEME_TEXT_MAIN, "center")
+        # We use SCREEN_WIDTH // 2 for the X coordinate
+        draw_text(surface, info_text, SCREEN_WIDTH // 2, 40, self.font_md, THEME_TEXT_MAIN, "center")
         
+        # --- TOP RIGHT TIMER ---
         color = THEME_ACCENT_GREEN if self.timer > 5 else THEME_ACCENT_RED
         draw_text(surface, f"00:{self.timer}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
 
@@ -240,33 +242,26 @@ class GameScreen:
         cx = x + w // 2
         
         # 1. Budget
-        # Top section of the panel
         draw_text(surface, "BUDGET", cx, y + 30, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, f"$ {self.player_budget}", cx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "center")
         
-        # Divider 1
         pygame.draw.line(surface, THEME_BORDER, (x+30, y+95), (x+w-30, y+95), 1)
         
-        # 2. Highest Bid (Centered vertically in its zone)
-        # Zone is roughly y=95 to y=215 (height 120px)
+        # 2. Highest Bid
         mid_zone_y = y + 155 
-        
         draw_text(surface, "HIGHEST BID", cx, mid_zone_y - 25, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, f"$ {self.current_highest_bid}", cx, mid_zone_y + 10, self.font_xl, THEME_TEXT_MAIN, "center")
         
-        # Divider 2
         pygame.draw.line(surface, THEME_BORDER, (x+30, y+215), (x+w-30, y+215), 1)
         
         # 3. User Input Section
         draw_text(surface, "YOUR OFFER", cx, y + 240, self.font_sm, THEME_ACCENT_CYAN, "center")
         
-        # Draw Input Components (Coordinates managed in __init__)
         self.input_box.draw(surface)
         self.btn_minus.draw(surface, self.font_md)
         self.btn_plus.draw(surface, self.font_md)
         self.btn_place_bid.draw(surface, self.font_md)
         self.btn_withdraw.draw(surface, self.font_md)
         
-        # 4. Feedback Message
         if self.feedback_msg:
             draw_text(surface, self.feedback_msg, cx, y + 530, self.font_sm, THEME_ACCENT_RED, "center")
