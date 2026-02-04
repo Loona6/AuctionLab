@@ -1,0 +1,28 @@
+# --- Python Internals (Crucial) ---
+# Ignores those __pycache__ folders visible in your screenshot
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+# Standard names for python environments
+venv/
+.venv/
+env/
+
+# --- IDE & Tools ---
+# VS Code settings
+.vscode/
+# PyCharm settings
+.idea/
+# Obsidian vault settings (Visible in your screenshot)
+.obsidian/
+
+# --- OS System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Game Data ---
+# If high_scores.json changes every time you play, 
+# you might want to ignore it so Git doesn't constantly say it's "modified".
+# data/high_scores.json
