@@ -13,6 +13,9 @@ THEME_ACCENT_GOLD = (255, 215, 0)
 THEME_TEXT_MAIN = (236, 240, 241)
 THEME_TEXT_SUB = (149, 165, 166)
 
+from src.models.auction import Auction
+from src.models.player import Player
+
 class GameScreen:
     def __init__(self):
         # Fonts
@@ -32,36 +35,18 @@ class GameScreen:
         self.start_y = 100
         
         # --- Game Logic / State ---
-        self.player_budget = 5000
-        self.current_highest_bid = 500
-        self.min_increment = 50
+        self.auction = Auction()
+        self.player = Player("You", budget=500)
+        self.auction.add_player(self.player)
+        self.auction.start_round(1)
         
-        # Pre-set the user's proposed bid (Highest + Increment)
-        self.proposed_bid = self.current_highest_bid + self.min_increment
-        
-        # Mock Item Data
-        self.item_name = "Ancient Vase"
-        self.item_category = "Antique"
-        self.item_tags = ["Rare", "Fragile", "Historical"]
-        
-        # Mock Feed
-        self.feed = [
-            "Round 1 Started.",
-            "Bot 2 joined.",
-            "Bot 1 bids $400.",
-            "Current bid is $500."
-        ]
-        
-        # --- OPPONENTS ---
-        self.bots = [
-            ("Bot 1", "Bidding...", THEME_ACCENT_RED), 
-            ("Bot 2", "Watching", THEME_ACCENT_GREEN),
-            ("Bot 3", "Withdrew", THEME_TEXT_SUB)
-        ]
-        
-        self.timer = 15
         self.round_num = 1
         self.max_rounds = 5
+        self.feedback_msg = ""
+        self.timer = 60 # Slower round for visibility
+
+        # Pre-set the user's proposed bid (Highest + Increment)
+        self.proposed_bid = self.auction.highest_bid + 10
         self.feedback_msg = ""
         
         # --- UI Components ---
@@ -112,8 +97,36 @@ class GameScreen:
             self._attempt_bid()
             
         if self.btn_withdraw.is_clicked(event):
-            self.feed.append("You withdrew from the auction.")
-            self.feedback_msg = "Withdrawn"
+            # self.player.withdraw() # TODO: Implement withdraw in Player
+            self.feedback_msg = "Withdrawn (Not Impl)"
+
+        # 4. Handle Round Over -> Next Round OR Game Over
+        if not self.auction.is_active:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                # If Game Over (Round 5 finished), Reset Everything
+                if self.round_num >= self.max_rounds:
+                    # Reset Game State completely
+                    self.round_num = 1
+                    # Re-init Auction to wipe agents and create fresh ones
+                    self.auction = Auction()
+                    self.player = Player("You", budget=500)
+                    self.auction.add_player(self.player)
+                    self.auction.start_round(1)
+                    # Reset UI
+                    self.feed = []
+                    self.proposed_bid = self.auction.highest_bid + 10
+                    self.input_box.set_text(self.proposed_bid)
+                    self.feedback_msg = ""
+                    
+                else:
+                    # Normal Next Round
+                    self.round_num += 1
+                    self.auction.start_round(self.round_num)
+                    # Reset UI elements for new round
+                    self.feed = [] 
+                    self.proposed_bid = self.auction.highest_bid + 10
+                    self.input_box.set_text(self.proposed_bid)
+                    self.feedback_msg = ""
 
         return None
 
@@ -125,21 +138,29 @@ class GameScreen:
     def _attempt_bid(self):
         val = self.proposed_bid
         
-        # Validation Logic
-        if val > self.player_budget:
-            self.feedback_msg = "Insufficient Funds!"
-        elif val <= self.current_highest_bid:
-            self.feedback_msg = "Bid too low!"
-        else:
-            # Success
-            self.current_highest_bid = val
-            self.feed.append(f"You bid ${val}")
+        # Use Player Class for logic
+        if self.player.place_bid(self.auction, val):
             self.feedback_msg = ""
             # Prepare next increment automatically
-            self.proposed_bid = val + self.min_increment
+            self.proposed_bid = val + 10 # Min increment placeholder
             self.input_box.set_text(self.proposed_bid)
+        else:
+            # Feedback handled via return check? 
+            # Ideally Player.place_bid could return a reason, but for now we infer
+            if val > self.player.budget:
+                self.feedback_msg = "Insufficient Funds!"
+            elif val <= self.auction.highest_bid:
+                self.feedback_msg = "Bid too low!"
+            else:
+                self.feedback_msg = "Bid Rejected (Unknown)"
 
     def update(self):
+        # --- Simulation Tick ---
+        # For now, run 1 tick per frame (very fast) or throttle?
+        # Let's throttle to 5 ticks per second (12 frames per tick @ 60FPS)
+        if pygame.time.get_ticks() % 200 < 20: # Crude throttle
+            self.auction.run_tick()
+            
         mouse_pos = pygame.mouse.get_pos()
         self.btn_quit.update(mouse_pos)
         self.btn_minus.update(mouse_pos)
@@ -180,8 +201,9 @@ class GameScreen:
         draw_text(surface, info_text, SCREEN_WIDTH // 2, 40, self.font_md, THEME_TEXT_MAIN, "center")
         
         # --- TOP RIGHT TIMER ---
-        color = THEME_ACCENT_GREEN if self.timer > 5 else THEME_ACCENT_RED
-        draw_text(surface, f"00:{self.timer}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
+        seconds_left = max(0, int(self.auction.ticks_remaining / 5)) # Estimating 5 ticks/sec
+        color = THEME_ACCENT_GREEN if seconds_left > 10 else THEME_ACCENT_RED
+        draw_text(surface, f"00:{seconds_left:02d}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
 
     def _draw_panel(self, surface, x, y, w, h):
         rect = pygame.Rect(x, y, w, h)
@@ -199,16 +221,18 @@ class GameScreen:
         img_rect = pygame.Rect(x + 30, y + 70, w - 60, w - 60)
         pygame.draw.rect(surface, (15, 17, 25), img_rect, border_radius=8)
         pygame.draw.rect(surface, THEME_BORDER, img_rect, 1, border_radius=8)
-        draw_text(surface, "[ IMAGE ]", cx, img_rect.centery, self.font_sm, THEME_TEXT_SUB, "center")
+        draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
         
-        # Text Details
-        draw_text(surface, self.item_name, cx, img_rect.bottom + 30, self.font_lg, THEME_TEXT_MAIN, "center")
-        draw_text(surface, self.item_category, cx, img_rect.bottom + 60, self.font_md, THEME_ACCENT_GOLD, "center")
+        # Dynamic Text Details
+        # Show "Unknown Item" or generic name
+        draw_text(surface, "Mystery Artifact", cx, img_rect.bottom + 30, self.font_lg, THEME_TEXT_MAIN, "center")
         
-        # Tags
-        tag_start_y = img_rect.bottom + 100
-        for i, tag in enumerate(self.item_tags):
-            draw_text(surface, f"• {tag}", x + 40, tag_start_y + (i*30), self.font_sm, THEME_TEXT_SUB, "left")
+        # Show the HINT
+        hint = self.auction.current_item.get_hint()
+        draw_text(surface, f"\"{hint}\"", cx, img_rect.bottom + 70, self.font_md, THEME_ACCENT_GOLD, "center")
+        
+        # Tags? Maybe strategy hints later
+        draw_text(surface, "Value Hidden", cx, img_rect.bottom + 110, self.font_sm, THEME_TEXT_SUB, "center")
 
     def _draw_center_content(self, surface, x, y, w):
         cx = x + w // 2
@@ -217,12 +241,21 @@ class GameScreen:
         draw_text(surface, "OPPONENTS", cx, y + 30, self.font_md, THEME_ACCENT_CYAN, "center")
         
         row_y = y + 70
-        for name, status, color in self.bots:
+        for agent in self.auction.agents:
+            # Determine color based on Agent State (mock logic for now - active vs folded)
+            # We don't have "folded" state explicitly exposed yet, but let's assume active
+            status = "Ready"
+            color = THEME_ACCENT_GREEN
+            
+            if agent.budget < self.auction.highest_bid:
+                status = "Outpriced"
+                color = THEME_ACCENT_RED
+            
             # Bot Card
             bot_rect = pygame.Rect(x + 40, row_y, w - 80, 50)
             pygame.draw.rect(surface, (25, 27, 40), bot_rect, border_radius=8)
             
-            draw_text(surface, name, bot_rect.left + 20, bot_rect.centery, self.font_sm, THEME_TEXT_MAIN, "left")
+            draw_text(surface, agent.id, bot_rect.left + 20, bot_rect.centery, self.font_sm, THEME_TEXT_MAIN, "left")
             draw_text(surface, status, bot_rect.right - 20, bot_rect.centery, self.font_sm, color, "right")
             row_y += 60
             
@@ -233,8 +266,9 @@ class GameScreen:
         draw_text(surface, "ACTIVITY LOG", x + 40, row_y + 40, self.font_sm, THEME_TEXT_SUB, "left")
         
         log_y = row_y + 75
-        # Show last 6 entries
-        for log in self.feed[-6:]:
+        # Show last 6 entries from AUCTION logs
+        logs = self.auction.get_recent_logs()
+        for log in logs:
             draw_text(surface, f"> {log}", x + 40, log_y, self.font_sm, (200, 200, 200), "left")
             log_y += 25
 
@@ -243,18 +277,20 @@ class GameScreen:
         
         # 1. Budget
         draw_text(surface, "BUDGET", cx, y + 30, self.font_sm, THEME_TEXT_SUB, "center")
-        draw_text(surface, f"$ {self.player_budget}", cx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "center")
+        draw_text(surface, f"$ {self.player.budget}", cx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "center")
         
         pygame.draw.line(surface, THEME_BORDER, (x+30, y+95), (x+w-30, y+95), 1)
         
         # 2. Highest Bid
         mid_zone_y = y + 155 
         draw_text(surface, "HIGHEST BID", cx, mid_zone_y - 25, self.font_sm, THEME_TEXT_SUB, "center")
-        draw_text(surface, f"$ {self.current_highest_bid}", cx, mid_zone_y + 10, self.font_xl, THEME_TEXT_MAIN, "center")
+        draw_text(surface, f"$ {self.auction.highest_bid}", cx, mid_zone_y + 10, self.font_xl, THEME_TEXT_MAIN, "center")
         
         pygame.draw.line(surface, THEME_BORDER, (x+30, y+215), (x+w-30, y+215), 1)
         
         # 3. User Input Section
+        min_req = self.auction.highest_bid + 10
+        draw_text(surface, f"Min Req: ${min_req}", cx, y + 215, self.font_sm, (100, 100, 100), "center")
         draw_text(surface, "YOUR OFFER", cx, y + 240, self.font_sm, THEME_ACCENT_CYAN, "center")
         
         self.input_box.draw(surface)
@@ -265,3 +301,45 @@ class GameScreen:
         
         if self.feedback_msg:
             draw_text(surface, self.feedback_msg, cx, y + 530, self.font_sm, THEME_ACCENT_RED, "center")
+
+        # --- Round End Overlay ---
+        if not self.auction.is_active:
+            s = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+            s.set_alpha(180)
+            s.fill((0,0,0))
+            surface.blit(s, (0,0))
+            
+            # Summary Box
+            cx, cy = SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2
+            
+            # Winner Info
+            winner_id = self.auction.highest_bidder.id if self.auction.highest_bidder else "Nobody"
+            profit = 0
+            if self.auction.highest_bidder:
+                 profit = self.auction.current_item.get_true_value() - self.auction.highest_bid
+            
+            draw_text(surface, "ROUND OVER", cx, cy - 80, self.font_xl, THEME_ACCENT_GOLD, "center")
+            draw_text(surface, f"Winner: {winner_id}", cx, cy - 10, self.font_lg, THEME_TEXT_MAIN, "center")
+            draw_text(surface, f"Winning Bid: ${self.auction.highest_bid}", cx, cy + 30, self.font_md, THEME_TEXT_SUB, "center")
+            
+            p_color = THEME_ACCENT_GREEN if profit >= 0 else THEME_ACCENT_RED
+            draw_text(surface, f"Item Value: ${self.auction.current_item.get_true_value()}", cx, cy + 70, self.font_md, THEME_TEXT_MAIN, "center")
+            draw_text(surface, f"Profit: ${profit}", cx, cy + 100, self.font_lg, p_color, "center")
+            
+            # Change text based on Game Over or Next Round
+            if self.round_num >= self.max_rounds:
+                # GAME OVER SCREEN
+                # Show standings briefly or just "GAME OVER"
+                # For simplicity, let's overlay "GAME OVER - FINAL STANDINGS"
+                draw_text(surface, "--- GAME OVER ---", cx, cy + 140, self.font_xl, THEME_ACCENT_RED, "center")
+                
+                standings = self.auction.get_standings()
+                y_off = cy + 180
+                for rank, (name, budget) in enumerate(standings[:3]): # Top 3
+                    txt = f"#{rank+1} {name}: ${budget}"
+                    draw_text(surface, txt, cx, y_off, self.font_md, THEME_ACCENT_GOLD if rank==0 else THEME_TEXT_MAIN, "center")
+                    y_off += 30
+                    
+                draw_text(surface, "Press Space to Restart", cx, y_off + 20, self.font_sm, THEME_ACCENT_CYAN, "center")
+            else:
+                draw_text(surface, "Press Space to Continue...", cx, cy + 180, self.font_sm, THEME_ACCENT_CYAN, "center")

@@ -1,42 +1,28 @@
 ----------------------------------------
---- ROUND 1 DETAILED LOG ---
+--- ROUND 1 START ---
 ----------------------------------------
-True Value: 118 | Signal: 128.29 | Hint: "Strong market interest"
-   -> Hint implies signal range (125, 165) and base value 145
+Item: True 87 | Hint: "Below average demand"
+STARTING BUDGETS:
+   AI-1: $500
+   AI-2: $500
+   AI-3: $500
+   AI-4: $500
+   AI-5: $500
+   Player: $500
 ----------------------------------------
-AGENTS & BELIEFS:
-Agent AI-1 (Aggressive):
-   -> Base 145 -> Est 161 -> Max Bid Limit 209
-Agent AI-2 (Random):
-   -> Base 145 -> Est 119 -> Max Bid Limit 537
-Agent AI-3 (Aggressive):
-   -> Base 145 -> Est 144 -> Max Bid Limit 187
-Agent AI-4 (Aggressive):
-   -> Base 145 -> Est 172 -> Max Bid Limit 223
-Agent AI-5 (Aggressive):
-   -> Base 145 -> Est 144 -> Max Bid Limit 187
+ROUND 1 RESULT: Winner AI-2 for $140
 ----------------------------------------
-BIDDING LOG:
-[Tick 1] New Highest: 10 by AI-1
-[Tick 2] New Highest: 20 by AI-4
-[Tick 3] New Highest: 30 by AI-2
-[Tick 4] New Highest: 40 by AI-5
-*** TRIGGER: Player attempts JUMP BID to 120 ***
-   >>> SUCCESS: Player holds bid at 120.
-[Tick 5] New Highest: 130 by AI-1
-[Tick 6] New Highest: 140 by AI-4
-[Tick 7] New Highest: 150 by AI-5
-[Tick 8] New Highest: 160 by AI-3
-[Tick 9] New Highest: 170 by AI-1
-[Tick 10] New Highest: 180 by AI-3
-[Tick 11] New Highest: 190 by AI-1
-[Tick 12] New Highest: 200 by AI-2
-[Tick 13] New Highest: 210 by AI-4
-[Tick 15] New Highest: 220 by AI-2
 ----------------------------------------
-ROUND RESOLUTION:
-Winner: AI-2
-Winning Bid: 220
-Item Value: 118
-Profit/Loss: -102
+--- ROUND 2 START ---
+----------------------------------------
+Item: True 98 | Hint: "Decent demand"
+STARTING BUDGETS:
+   AI-1: $500
+   AI-2: $360
+   AI-3: $500
+   AI-4: $500
+   AI-5: $500
+   Player: $500
+----------------------------------------
+ROUND 2 RESULT: Winner AI-2 for $150
 ----------------------------------------

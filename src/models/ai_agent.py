@@ -17,16 +17,15 @@ class AIAgent:
         self.is_active = True
 
     def form_belief(self, hint_text):
-        """
-        Convert text hint -> base value -> estimated value based on strategy.
-        """
-        # 1. Get Base Value from Config
+        """Estimate the item's value based on the hint and agent strategy."""
+        
+        # 1. Base value from hint configuration
         if hint_text in HINT_CONFIG:
             base_value = HINT_CONFIG[hint_text]['base_value']
         else:
-            base_value = 100 # Fallback
+            base_value = 100 
             
-        # 2. Apply Strategy Noise
+        # 2. Apply strategy bias (noise)
         if self.strategy == "Random":
             self.estimated_value = random.randint(50, 200)
         else:
@@ -34,9 +33,9 @@ class AIAgent:
             noise = random.uniform(config['noise_range'][0], config['noise_range'][1])
             self.estimated_value = int(base_value * (1 + noise))
             
-        # 3. Set Max Bid Limit
+        # 3. Set maximum willing bid based on estimate
         if self.strategy == "Random":
-            self.max_bid_limit = self.budget # acts unpredictably
+            self.max_bid_limit = self.budget
         else:
             mult = STRATEGY_CONFIG[self.strategy]['bid_limit_mult']
             self.max_bid_limit = int(self.estimated_value * mult)

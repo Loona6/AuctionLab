@@ -3,19 +3,18 @@ from src.config import ITEM_MEAN, ITEM_STD, ITEM_MIN_VALUE, ITEM_MAX_VALUE, HINT
 
 class Item:
     def __init__(self):
-        # 1. Generate True Value
+        # Generate value using a normal distribution (mean=100)
         raw_value = random.normalvariate(ITEM_MEAN, ITEM_STD)
         self.true_value = int(max(ITEM_MIN_VALUE, min(ITEM_MAX_VALUE, raw_value)))
         
-        # 2. Generate Hint immediately
         self.hint_text = self._generate_hint()
 
     def _generate_hint(self):
-        # Step 1: Create noisy perception
+        # Create a noisy signal (True Value ± 20%)
         noise = random.uniform(-0.2, 0.2)
         self.perceived_signal = self.true_value * (1 + noise)
 
-        # Step 2: Map to text category using Overlapping Logic
+        # Map signal to overlapping hint categories
         candidates = []
         for text, data in HINT_CONFIG.items():
             min_s, max_s = data['range']
