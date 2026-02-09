@@ -52,6 +52,12 @@ class GameScreen:
         self.timer = 60 # Slower round for visibility
         self.show_quit_confirm = False
         
+        # Audio State
+        from src.logic.audio_manager import AudioManager
+        self.audio = AudioManager()
+        self.last_tick_second = -1
+        self.played_round_end_sound = False
+        
         # Pre-set the user's proposed bid (Highest + Increment)
         self.proposed_bid = self.auction.highest_bid + 10
         self.feedback_msg = ""
@@ -113,6 +119,7 @@ class GameScreen:
 
         # --- Menu Navigation ---
         if self.btn_quit.is_clicked(event):
+            self.audio.play("click") # Added audio trigger
             self.show_quit_confirm = True
             return None
         
@@ -215,6 +222,22 @@ class GameScreen:
         # --- Simulation Tick ---
         if pygame.time.get_ticks() % 200 < 20: 
             self.auction.run_tick()
+            
+            # --- Ticking Clock Sounds (Final 5 seconds) ---
+            if self.auction.is_active:
+                seconds_left = self.auction.ticks_remaining // 5
+                if 0 < seconds_left <= 5:
+                    if seconds_left != self.last_tick_second:
+                        self.audio.play("tick")
+                        self.last_tick_second = seconds_left
+                else:
+                    self.last_tick_second = -1
+                self.played_round_end_sound = False
+            else:
+                # --- Result Overlay Popup Sound ---
+                if not self.played_round_end_sound:
+                    self.audio.play("popup")
+                    self.played_round_end_sound = True
             
         self.btn_quit.update(mouse_pos)
         self.btn_minus.update(mouse_pos)

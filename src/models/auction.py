@@ -78,6 +78,10 @@ class Auction:
         self.highest_bidder = bidder
         self.bid_stack.append((bidder, amount))
         self.log_event(f"{bidder.id} bids ${amount}")
+        
+        from src.logic.audio_manager import AudioManager
+        AudioManager().play("bid")
+        
         return True
 
     def withdraw_bid(self, bidder):
