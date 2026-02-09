@@ -52,6 +52,8 @@ class NeonButton:
     def is_clicked(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.is_hovered:
+                from src.logic.audio_manager import AudioManager
+                AudioManager().play("click")
                 return True
         return False
 

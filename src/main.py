@@ -14,6 +14,10 @@ class AuctionGame:
         self.clock = pygame.time.Clock()
         self.running = True
         
+        # --- Audio System ---
+        from src.logic.audio_manager import AudioManager
+        self.audio = AudioManager()
+        
         # --- Initialize All Screens ---
         self.screens = {
             "menu": MenuScreen(),
