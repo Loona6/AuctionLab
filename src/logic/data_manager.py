@@ -17,12 +17,18 @@ class DataManager:
             return []
         try:
             with open(cls.HIGHSCORES_FILE, "r") as f:
-                return json.load(f)
+                data = json.load(f)
+                # Filter out sessions with no items won and sort
+                valid = [s for s in data if s.get('items', 0) > 0]
+                return sorted(valid, key=lambda x: x['profit'], reverse=True)
         except (json.JSONDecodeError, IOError):
             return []
 
     @classmethod
     def save_highscore(cls, player_name, profit, items_won):
+        if items_won <= 0:
+            return # Don't save sessions where no items were won
+            
         cls.ensure_data_dir()
         scores = cls.load_highscores()
         scores.append({
@@ -62,6 +68,11 @@ class DataManager:
         counts = stats.get("playstyle_counts", {})
         counts[playstyle] = counts.get(playstyle, 0) + 1
         stats["playstyle_counts"] = counts
+        
+        # Track items won per playstyle for win rate calculation
+        wins_mapping = stats.get("playstyle_wins", {})
+        wins_mapping[playstyle] = wins_mapping.get(playstyle, 0) + session_items
+        stats["playstyle_wins"] = wins_mapping
         
         with open(cls.STATS_FILE, "w") as f:
             json.dump(stats, f, indent=4)

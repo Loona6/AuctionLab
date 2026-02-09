@@ -74,19 +74,29 @@ class StatsScreen:
         
         # Right Panel: Playstyle Frequency
         right_x = (SCREEN_WIDTH // 2) + 10
-        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Playstyle Analysis")
+        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Playstyle Success Rate")
         
         h_y = mid_y + 60
         draw_text(surface, "STYLE", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB)
-        draw_text(surface, "FREQUENCY", right_x + 200, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "SESS", right_x + 160, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "WIN %", right_x + 240, h_y, self.font_txt, THEME_TEXT_SUB)
         pygame.draw.line(surface, THEME_BORDER, (right_x+20, h_y+25), (right_x+left_w-20, h_y+25), 1)
         
         # Table Rows for playstyles
         counts = stats.get("playstyle_counts", {})
+        wins_map = stats.get("playstyle_wins", {})
+        
+        sorted_styles = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+        
         row_y = h_y + 35
-        for style, count in list(counts.items())[:5]: # Top 5
+        for style, count in sorted_styles[:5]: # Top 5
+            wins = wins_map.get(style, 0)
+            # Max items per session is 5
+            win_rate = (wins / (count * 5)) * 100 if count > 0 else 0
+            
             draw_text(surface, style, right_x + 20, row_y, self.font_txt, THEME_TEXT_MAIN)
-            draw_text(surface, str(count), right_x + 200, row_y, self.font_txt, THEME_TEXT_MAIN)
+            draw_text(surface, str(count), right_x + 160, row_y, self.font_txt, THEME_TEXT_MAIN)
+            draw_text(surface, f"{win_rate:.1f}%", right_x + 240, row_y, self.font_txt, THEME_ACCENT_CYAN)
             row_y += 40
 
     def _draw_stat_card(self, surface, x, y, w, h, label, value, color):

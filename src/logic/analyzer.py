@@ -2,44 +2,75 @@ class PlaystyleAnalyzer:
     @staticmethod
     def analyze(player, total_rounds):
         """
-        Analyze player logs and categorize their playstyle.
-        Incorporates bids, timing, withdrawals, and passing behavior.
+        Sophisticated analysis based on:
+        - Bids, Timing, Overbidding (Risk)
+        - Withdrawals & Passes
+        - Bid Increments & Frequency
         """
-        if not player.bid_logs and not getattr(player, 'pass_count', 0):
-            return "Absentee", "You didn't show up for the bidding! Looking for a bargain that never came?"
-
-        total_bids = len(player.bid_logs)
-        avg_tick = sum(log[1] for log in player.bid_logs) / max(1, total_bids)
-        overbid_count = sum(1 for log in player.bid_logs if log[3])
+        logs = player.bid_logs
+        total_bids = len(logs)
         withdrawals = getattr(player, 'withdrawal_count', 0)
         passes = getattr(player, 'pass_count', 0)
         
-        # Heuristics
-        participation_rate = total_bids / total_rounds
-        is_low_participation = participation_rate < 0.6 and total_bids < 3
-        is_high_risk = (overbid_count / max(1, total_bids) > 0.3) and (total_bids > 1)
-        is_aggressive = participation_rate > 3.0
-        is_early = avg_tick < 70
-        is_late = avg_tick > 140
-        is_indecisive = (withdrawals > 2) or (withdrawals > 0 and total_bids < 2)
-        is_cautious = passes > (total_rounds // 2) and total_bids < 3
+        if not logs and not passes:
+            return "Absentee", "You didn't show up for the bidding! Looking for a bargain that never came?"
+
+        # 1. Base Metrics
+        avg_tick = sum(log[1] for log in logs) / max(1, total_bids)
+        overbid_count = sum(1 for log in logs if log[3])
+        risk_rate = overbid_count / max(1, total_bids)
         
-        if is_indecisive:
-            return "The Hesitator", "You often second-guess your bids. Withdrawing is safe, but fortune favors the bold!"
-        elif is_cautious:
-            return "The Minimalist", "You pass frequently, wait-and-see is your motto. Very selective!"
-        elif is_low_participation:
-            return "The Observer", "You were very selective with your bids, perhaps waiting for a value that never appeared."
-        elif is_late and not is_aggressive:
-            return "The Sniper", "You wait for the perfect moment to strike, often bidding at the last second."
-        elif is_early and is_aggressive:
-            return "The Aggressor", "You dominate the auction floor early on, driving prices up quickly."
-        elif is_high_risk:
-            return "The Gambler", "You often bid above estimated values, relying on guts rather than math."
-        elif not is_aggressive and not is_high_risk:
-            return "The Stoic", "You bid conservatively and only when the price is right."
-        else:
-            return "The Tactician", "A balanced approach, adapting your timing and bids to the competition."
+        # 2. Advanced Physical Metrics
+        # avg_increment = getattr(player, 'total_increments', 0) / max(1, total_bids)
+        # bid_frequency = total_bids / total_rounds
+        total_inc = getattr(player, 'total_increments', 0)
+        avg_inc = total_inc / max(1, total_bids)
+        freq = total_bids / total_rounds
+        withdraw_rate = withdrawals / max(1, total_bids) if total_bids > 0 else 0
+        
+        # 3. Categorization Flags
+        is_low_particip = (total_bids < 2 and passes > 2)
+        is_very_passive = total_bids == 0
+        is_high_risk = risk_rate > 0.4 and total_bids >= 2
+        is_aggr = freq > 4.0
+        is_early = avg_tick < 60
+        is_late = avg_tick > 140
+        is_big_spender = avg_inc > 100
+        is_nickler = avg_inc < 30 and total_bids > 3
+        is_fickle = withdraw_rate > 0.4
+        
+        # 4. Decision Tree (Priority order)
+        if is_very_passive:
+            return "The Ghost", "A spectral presence. You watched from the shadows but never left a mark."
+        
+        if is_fickle:
+            return "The Hesitator", "You change your mind as often as the wind. Bidding requires commitment!"
+            
+        if is_low_particip:
+            return "The Observer", "Selective to a fault. You're waiting for a unicorn in a horse race."
+            
+        if is_aggr and is_early and is_big_spender:
+            return "The Bully", "You use your wallet like a sledgehammer, trying to scare others off early."
+            
+        if is_high_risk and is_big_spender:
+            return "The High Roller", "You don't care about 'value' - you want the item, no matter the cost. Pure adrenaline."
+            
+        if is_high_risk:
+            return "The Gambler", "You often bid based on gut feeling, frequently pushing past safe estimates."
+            
+        if is_late and freq < 2.0:
+            return "The Sniper", "One shot, one kill. You wait for the chaos to die down before striking."
+            
+        if is_aggr:
+            return "The Machine", "Rapid-fire bidding! You're everywhere at once, keeping the pressure high."
+            
+        if is_nickler and not is_high_risk:
+            return "The Value Hunter", "You're all about the tiny margins. Nickel and diming your way to a deal."
+            
+        if avg_tick > 80 and avg_tick < 120 and freq < 3.0 and not is_high_risk:
+            return "The Stoic", "Patient, rational, and immune to the hype. You bid when it makes sense."
+            
+        return "The Tactician", "A balanced approach. You adapt your timing and aggression to the room."
 
     @staticmethod
     def get_behavior_metrics(player):

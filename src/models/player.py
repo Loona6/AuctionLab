@@ -20,6 +20,8 @@ class Player:
         # --- Total Session Stats (Reset on new game) ---
         self.withdrawal_count = 0
         self.pass_count = 0
+        self.total_bid_count = 0
+        self.total_increments = 0
     
     def place_bid(self, auction, amount):
         """
@@ -51,6 +53,11 @@ class Player:
         # 4. Execute Bid
         success = auction.place_bid(self, amount)
         if success:
+            # Stats for analyzer
+            self.total_bid_count += 1
+            increment = amount - auction.highest_bid if auction.highest_bid > 0 else amount
+            self.total_increments += increment
+            
             # Log the bid for analytical purposes
             current_tick = auction.ticks
             

@@ -277,11 +277,26 @@ class GameScreen:
     def _draw_top_bar(self, surface):
         # --- CENTERED ROUND INFO ---
         info_text = f"ROUND {self.round_num} / {self.max_rounds}"
-        # We use SCREEN_WIDTH // 2 for the X coordinate
         draw_text(surface, info_text, SCREEN_WIDTH // 2, 40, self.font_md, THEME_TEXT_MAIN, "center")
         
-        # --- TOP RIGHT TIMER ---
-        seconds_left = max(0, int(self.auction.ticks_remaining / 5)) # Estimating 5 ticks/sec
+        # --- PROGRESS BAR (TIMER) ---
+        bar_w, bar_h = 300, 8
+        bar_x = (SCREEN_WIDTH - bar_w) // 2
+        bar_y = 70
+        
+        # Background
+        pygame.draw.rect(surface, THEME_PANEL_BG, (bar_x, bar_y, bar_w, bar_h), border_radius=4)
+        
+        # Fill
+        progress = self.auction.ticks_remaining / self.auction.max_ticks
+        fill_w = int(bar_w * max(0, progress))
+        color = THEME_ACCENT_GREEN if progress > 0.5 else (255, 200, 0) if progress > 0.2 else THEME_ACCENT_RED
+        
+        if fill_w > 0:
+            pygame.draw.rect(surface, color, (bar_x, bar_y, fill_w, bar_h), border_radius=4)
+        
+        # --- TOP RIGHT TIMER TEXT ---
+        seconds_left = max(0, int(self.auction.ticks_remaining / 5)) 
         color = THEME_ACCENT_GREEN if seconds_left > 10 else THEME_ACCENT_RED
         draw_text(surface, f"00:{seconds_left:02d}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
 
