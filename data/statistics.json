@@ -1,0 +1,12 @@
+{
+    "total_sessions": 6,
+    "lifetime_profit": -285,
+    "total_items": 8,
+    "playstyle_counts": {
+        "The Gambler": 5,
+        "The Ghost": 1
+    },
+    "playstyle_wins": {
+        "The Ghost": 0
+    }
+}

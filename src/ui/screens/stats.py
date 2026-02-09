@@ -1,6 +1,7 @@
 import pygame
 from src.constants import *
 from src.ui.components import NeonButton, draw_text
+from src.logic.data_manager import DataManager
 
 # --- Theme Colors ---
 THEME_BG = (20, 22, 35)
@@ -37,56 +38,66 @@ class StatsScreen:
         draw_text(surface, "CUMULATIVE ANALYTICS", SCREEN_WIDTH//2, 50, self.font_header, THEME_ACCENT_PURPLE, "center")
         
         # --- Section 1: Lifetime Totals (Top Row) ---
+        stats = DataManager.load_stats()
+        
         start_y = 100
         gap = 20
-        side_padding = 80 # 40 on left, 40 on right
+        side_padding = 80 
         
-        # FIX: Subtract the total gap space (2 gaps for 3 cards) from the width
-        # Logic: (Total Width - Side Padding - (Gap * 2)) / 3 Cards
         card_w = (SCREEN_WIDTH - side_padding - (gap * 2)) // 3
         card_h = 100
         
-        # Calculate X positions
         x1 = 40
         x2 = x1 + card_w + gap
         x3 = x2 + card_w + gap
         
-        self._draw_stat_card(surface, x1, start_y, card_w, card_h, "TOTAL SESSIONS", "42", THEME_TEXT_MAIN)
-        self._draw_stat_card(surface, x2, start_y, card_w, card_h, "LIFETIME PROFIT", "$ 84,200", THEME_ACCENT_CYAN)
-        self._draw_stat_card(surface, x3, start_y, card_w, card_h, "ITEMS ACQUIRED", "126", THEME_ACCENT_PURPLE)
+        self._draw_stat_card(surface, x1, start_y, card_w, card_h, "TOTAL SESSIONS", str(stats.get("total_sessions", 0)), THEME_TEXT_MAIN)
+        self._draw_stat_card(surface, x2, start_y, card_w, card_h, "LIFETIME PROFIT", f"$ {stats.get('lifetime_profit', 0):,}", THEME_ACCENT_CYAN)
+        self._draw_stat_card(surface, x3, start_y, card_w, card_h, "ITEMS ACQUIRED", str(stats.get("total_items", 0)), THEME_ACCENT_PURPLE)
         
         # --- Section 2: Performance Metrics (Middle) ---
         mid_y = start_y + card_h + 30
         
-        # Left Panel: General Stats
         left_w = (SCREEN_WIDTH // 2) - 50
-        self._draw_panel(surface, 40, mid_y, left_w, 300, "Performance Metrics")
+        self._draw_panel(surface, 40, mid_y, left_w, 300, "Historical Averages")
+        
+        avg_profit = stats.get('lifetime_profit', 0) / stats.get('total_sessions', 1) if stats.get('total_sessions', 0) > 0 else 0
+        avg_items = stats.get('total_items', 0) / stats.get('total_sessions', 1) if stats.get('total_sessions', 0) > 0 else 0
         
         row_h = 40
         curr_y = mid_y + 60
-        self._draw_row(surface, 60, curr_y, left_w, "Avg. Win Rate:", "65 %")
+        self._draw_row(surface, 60, curr_y, left_w, "Avg. Profit / Session:", f"$ {int(avg_profit):,}")
         curr_y += row_h
-        self._draw_row(surface, 60, curr_y, left_w, "Avg. Profit / Item:", "$ 450")
+        self._draw_row(surface, 60, curr_y, left_w, "Avg. Items / Session:", f"{avg_items:.1f}")
         curr_y += row_h
-        self._draw_row(surface, 60, curr_y, left_w, "Avg. Bid vs Win Bid:", "-12 %")
-        curr_y += row_h
-        self._draw_row(surface, 60, curr_y, left_w, "Bidding Efficiency:", "High")
+        self._draw_row(surface, 60, curr_y, left_w, "Total Playstyles Tracked:", str(len(stats.get("playstyle_counts", {}))))
         
-        # Right Panel: Strategy Effectiveness (Table)
+        # Right Panel: Playstyle Frequency
         right_x = (SCREEN_WIDTH // 2) + 10
-        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Strategy Analysis")
+        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Playstyle Success Rate")
         
-        # Table Header
         h_y = mid_y + 60
-        draw_text(surface, "STRATEGY", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB)
-        draw_text(surface, "USAGE", right_x + 160, h_y, self.font_txt, THEME_TEXT_SUB)
-        draw_text(surface, "SUCCESS", right_x + 280, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "STYLE", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "SESS", right_x + 160, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "WIN %", right_x + 240, h_y, self.font_txt, THEME_TEXT_SUB)
         pygame.draw.line(surface, THEME_BORDER, (right_x+20, h_y+25), (right_x+left_w-20, h_y+25), 1)
         
-        # Table Rows
-        self._draw_strat_row(surface, right_x, h_y + 35, "Aggressive", "20%", "45%", THEME_ACCENT_RED)
-        self._draw_strat_row(surface, right_x, h_y + 75, "Conservative", "60%", "85%", THEME_ACCENT_CYAN)
-        self._draw_strat_row(surface, right_x, h_y + 115, "Sniper", "20%", "60%", THEME_ACCENT_PURPLE)
+        # Table Rows for playstyles
+        counts = stats.get("playstyle_counts", {})
+        wins_map = stats.get("playstyle_wins", {})
+        
+        sorted_styles = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+        
+        row_y = h_y + 35
+        for style, count in sorted_styles[:5]: # Top 5
+            wins = wins_map.get(style, 0)
+            # Max items per session is 5
+            win_rate = (wins / (count * 5)) * 100 if count > 0 else 0
+            
+            draw_text(surface, style, right_x + 20, row_y, self.font_txt, THEME_TEXT_MAIN)
+            draw_text(surface, str(count), right_x + 160, row_y, self.font_txt, THEME_TEXT_MAIN)
+            draw_text(surface, f"{win_rate:.1f}%", right_x + 240, row_y, self.font_txt, THEME_ACCENT_CYAN)
+            row_y += 40
 
     def _draw_stat_card(self, surface, x, y, w, h, label, value, color):
         rect = pygame.Rect(x, y, w, h)
