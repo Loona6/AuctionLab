@@ -15,6 +15,8 @@ class AIAgent:
         self.max_bid_limit = 0
         self.bid_history = []
         self.is_active = True
+        self.session_profit = 0
+        self.items_won = 0
 
     def form_belief(self, hint_text):
         """Estimate the item's value based on the hint and agent strategy."""

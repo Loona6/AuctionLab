@@ -62,6 +62,7 @@ class AuctionGame:
             self.running = False
             
         elif action == "start_game":
+            self.screens["game"].reset()
             self.current_state = "game"
             
         elif action == "view_scores":
