@@ -1,5 +1,5 @@
 import random
-from src.config import STRATEGY_CONFIG, HINT_CONFIG
+from src.config import STRATEGY_CONFIG, HINT_CONFIG, TACTIC_CONFIG
 
 class AIAgent:
     def __init__(self, agent_id, budget, strategy_type=None):
@@ -9,7 +9,7 @@ class AIAgent:
         if strategy_type:
             self.strategy = strategy_type
         else:
-            self.strategy = random.choice(["Aggressive", "Conservative", "Random"])
+            self.strategy = random.choice(["Aggressive", "Conservative", "Balanced"])
             
         self.estimated_value = 0
         self.max_bid_limit = 0
@@ -17,75 +17,134 @@ class AIAgent:
         self.is_active = True
         self.session_profit = 0
         self.items_won = 0
-
-    def form_belief(self, hint_text):
-        """Estimate the item's value based on the hint and agent strategy."""
+        self.next_action_tick = 0 
         
-        # 1. Base value from hint configuration
-        if hint_text in HINT_CONFIG:
-            base_value = HINT_CONFIG[hint_text]['base_value']
-        else:
-            base_value = 100 
-            
-        # 2. Apply strategy bias (noise)
-        if self.strategy == "Random":
-            self.estimated_value = random.randint(50, 200)
-        else:
-            config = STRATEGY_CONFIG[self.strategy]
-            noise = random.uniform(config['noise_range'][0], config['noise_range'][1])
-            self.estimated_value = int(base_value * (1 + noise))
-            
-        # 3. Set maximum willing bid based on estimate
-        if self.strategy == "Random":
-            self.max_bid_limit = self.budget
-        else:
-            mult = STRATEGY_CONFIG[self.strategy]['bid_limit_mult']
-            self.max_bid_limit = int(self.estimated_value * mult)
+        # --- PHASE 3: SPITE LOGIC ---
+        self.has_spite_bid = False
+        self.spite_cooldown = 0 # Dramatic delay
 
-    def calculate_bid(self, current_highest_bid, min_increment):
-        """
-        Decide whether to bid based on current state.
-        Returns amount to bid, or None if passing/quitting.
-        """
-        if not self.is_active or self.budget <= current_highest_bid:
-            return None
+    def reset_for_new_round(self):
+        self.is_active = (self.budget > 0)
+        self.bid_history = []
+        self.next_action_tick = 0
+        self.has_spite_bid = False
+        self.spite_cooldown = 0
 
-        # Calculate potential new bid
-        target_bid = current_highest_bid + min_increment
+    def on_price_update(self):
+        """Trigger reaction delay"""
+        strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
+        min_s, max_s = strat.get('reaction_speed', (2, 8))
+        self.next_action_tick = random.randint(min_s, max_s)
+
+    def form_belief(self, hint_text, round_num=1, total_rounds=5):
+        hint_data = HINT_CONFIG.get(hint_text, HINT_CONFIG["Decent demand"])
+        base_value = hint_data['base_value']
+        safe_cap = hint_data['safe_cap']
         
-        # Check against budget
-        if target_bid > self.budget:
-            return None
-
-        # Decision Logic
-        should_bid = False
+        strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
+        noise = random.uniform(strat['noise_range'][0], strat['noise_range'][1])
         
-        if self.strategy == "Random":
-            # Randomly decides to bid or not, regardless of value
-            if random.random() < 0.5: 
-                should_bid = True
-        else:
-            # Rational(ish) agents check against their limit
-            if target_bid <= self.max_bid_limit:
-                # Basic logic: always bid if under limit
-                # (Could add 'reaction_chance' here for more "skipping" behavior if desired,
-                # but for now we assume they want to win if it's within their price)
-                should_bid = True
+        self.estimated_value = int(base_value * (1 + noise))
+        self.max_bid_limit = int(self.estimated_value * strat['risk_ceiling'])
+        
+        # Desperation
+        if round_num >= (total_rounds - 1) and self.items_won == 0:
+            if self.strategy == "Aggressive":
+                self.max_bid_limit = int(self.max_bid_limit * 1.25)
             else:
-                # Check for "Counter" reaction (over-bidding slightly)
-                reaction_chance = STRATEGY_CONFIG[self.strategy]['reaction_chance']
-                if random.random() < reaction_chance:
-                    # One last push? (Simplified: only if it doesn't exceed budget significantly)
-                    # For strictness, let's stick to the limit unless reaction logic explicitly raises the limit.
-                    # Per valid design: "Stops at estimated_value * multiplier". 
-                    # So if we are here, we are ALREADY past the limit.
-                    should_bid = False 
+                self.max_bid_limit = int(self.max_bid_limit * 1.10)
+                
+        # Safety Clamp
+        hard_ceiling = int(safe_cap * 1.2)
+        self.max_bid_limit = min(self.max_bid_limit, hard_ceiling)
 
-        if should_bid:
-            self.bid_history.append(target_bid)
-            return target_bid
-            
-        return None
+    def calculate_bid(self, auction_state, min_increment):
+        ticks_left = auction_state['ticks_remaining']
+        current_price = auction_state['current_price']
+        
+        if not self.is_active: return None
+        if auction_state['highest_bidder_id'] == self.id: return None
+        if current_price >= self.budget: return None
+
+        # --- PHASE 3: SPITE COOLDOWN ---
+        if self.spite_cooldown > 0:
+            self.spite_cooldown -= 1
+            if self.spite_cooldown == 0:
+                # Surprise Attack!
+                bid_amount = current_price + min_increment
+                self.bid_history.append(bid_amount)
+                return bid_amount
+            return None
+
+        # --- 1. ADRENALINE OVERRIDE ---
+        if ticks_left < 12:
+            self.next_action_tick = 0
+
+        # Reaction Delay
+        if self.next_action_tick > 0:
+            self.next_action_tick -= 1
+            return None
+
+        next_min_bid = current_price + min_increment
+
+        # --- PHASE 2: WAR MODE ---
+        # If the price is already higher than our value, we ignore profit target
+        # and bid blindly up to our Risk Ceiling.
+        is_war_mode = (current_price >= self.estimated_value)
+        
+        # --- 2. THE AUDIT ---
+        if next_min_bid > self.max_bid_limit:
+            # --- PHASE 3: SPITE BID CHECK ---
+            if self.strategy == "Aggressive" and not self.has_spite_bid:
+                # Only spite against the Human Player
+                if auction_state['highest_bidder_id'] == "You":
+                    # Only if we are within 1 bid of our limit (The Ego Check)
+                    if (next_min_bid - min_increment) <= self.max_bid_limit:
+                        self.has_spite_bid = True
+                        self.spite_cooldown = 10 # 2-second hesitation (5 ticks/s)
+            return None
+
+        # --- 3. PROFIT TARGET ---
+        strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
+        target_margin = strat.get('profit_target', 0)
+        
+        # Reduce profit target in "Going Once/Twice" phase
+        if auction_state.get('state') in ["Going Once", "Going Twice"]:
+            target_margin *= 0.5
+
+        potential_profit = self.estimated_value - next_min_bid
+        min_profit_needed = self.estimated_value * target_margin
+        
+        # Only check profit if NOT in War Mode or Desperate
+        if self.items_won > 0 and not is_war_mode:
+            if potential_profit < min_profit_needed:
+                return None
+
+        # --- 4. TACTICS ---
+        tactics = strat.get('tactics', [])
+        
+        # SMART SNIPER
+        if 'snipe' in tactics and ticks_left > 20:
+             if current_price > (self.max_bid_limit * 0.5):
+                 return None
+
+        # BAITER
+        if 'bait' in tactics:
+            if current_price > (self.max_bid_limit * 0.85):
+                 if random.random() < 0.5: return None
+
+        # BID SIZING
+        bid_amount = next_min_bid
+        
+        # Intimidation
+        if 'jump_bid' in tactics and current_price < (self.max_bid_limit * 0.6):
+            if random.random() < TACTIC_CONFIG['jump_bid_chance']:
+                jump = min_increment * random.randint(2, 3)
+                if (current_price + jump) < self.max_bid_limit:
+                    bid_amount = current_price + jump
+
+        self.bid_history.append(bid_amount)
+        return bid_amount
 
     def update_budget(self, amount):
         self.budget -= amount
