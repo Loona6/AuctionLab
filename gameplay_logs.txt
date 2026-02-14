@@ -1,0 +1,129 @@
+========================================
+ LAST SESSION: 2026-02-14 10:17:28
+========================================
+--- Round 1 Started ---
+Item Hint: Strong market interest
+AI-3 bids $5
+AI-1 bids $20
+AI-2 bids $25
+AI-1 bids $30
+AI-3 bids $35
+AI-5 bids $40
+AI-2 bids $45
+AI-3 bids $50
+AI-1 bids $55
+AI-3 bids $60
+AI-1 bids $70
+AI-3 bids $75
+AI-1 bids $80
+AI-3 bids $85
+AI-1 bids $90
+You bids $100
+AI-3 bids $105
+AI-1 bids $110
+AI-3 bids $115
+AI-1 bids $120
+AI-5 bids $125
+AI-3 bids $130
+AI-1 bids $135
+AI-3 bids $140
+AI-1 bids $145
+AI-3 bids $150
+You bids $170
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner You for $170 | Value: $126 | Profit: $-44
+--- Round 2 Started ---
+Item Hint: Below average demand
+AI-2 bids $5
+AI-1 bids $10
+AI-3 bids $15
+AI-2 bids $20
+AI-1 bids $35
+AI-3 bids $45
+AI-1 bids $50
+AI-3 bids $65
+AI-1 bids $70
+AI-3 bids $75
+AI-1 bids $80
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner AI-1 for $80 | Value: $62 | Profit: $-18
+--- Round 3 Started ---
+Item Hint: Strong market interest
+AI-5 bids $5
+AI-3 bids $10
+AI-1 bids $20
+AI-4 bids $25
+AI-1 bids $35
+AI-3 bids $50
+AI-1 bids $55
+AI-5 bids $60
+AI-3 bids $65
+AI-1 bids $70
+AI-5 bids $75
+AI-3 bids $85
+AI-1 bids $95
+You bids $170
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner You for $170 | Value: $113 | Profit: $-57
+--- Round 4 Started ---
+Item Hint: Strong market interest
+AI-3 bids $5
+AI-1 bids $10
+AI-2 bids $15
+AI-3 bids $20
+AI-1 bids $25
+AI-2 bids $30
+AI-1 bids $35
+AI-3 bids $40
+AI-1 bids $45
+AI-5 bids $50
+AI-3 bids $55
+AI-1 bids $60
+AI-3 bids $75
+AI-1 bids $80
+AI-3 bids $85
+AI-1 bids $90
+AI-3 bids $95
+AI-1 bids $100
+AI-3 bids $115
+AI-5 bids $120
+You bids $150
+AI-3 bids $155
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner AI-3 for $155 | Value: $128 | Profit: $-27
+--- Round 5 Started ---
+Item Hint: Decent demand
+AI-5 bids $5
+AI-3 bids $15
+AI-1 bids $20
+AI-4 bids $25
+AI-1 bids $30
+AI-3 bids $35
+AI-1 bids $40
+AI-3 bids $45
+AI-1 bids $50
+AI-3 bids $55
+AI-1 bids $60
+AI-3 bids $70
+AI-5 bids $75
+AI-1 bids $80
+AI-3 bids $85
+AI-1 bids $90
+AI-3 bids $95
+AI-1 bids $100
+AI-3 bids $105
+AI-5 bids $110
+AI-1 bids $115
+AI-5 bids $120
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner AI-5 for $120 | Value: $98 | Profit: $-22
