@@ -1,3 +1,5 @@
+from src.config import MIN_INCREMENT, HINT_CONFIG
+
 class Player:
     def __init__(self, name="Player", budget=500):
         self.id = name # Use name as ID for compatibility with agents
@@ -36,7 +38,7 @@ class Player:
             return False
 
         # 2. Validation: Auction Rules
-        min_required = auction.highest_bid + 10 
+        min_required = auction.highest_bid + MIN_INCREMENT 
         if amount < min_required:
              return False
 
@@ -44,7 +46,6 @@ class Player:
         # We consider a bid 'overbid' if it is > 1.1x the base value of the hint
         is_overbid = False
         hint = auction.current_item.get_hint()
-        from src.config import HINT_CONFIG
         if hint in HINT_CONFIG:
             base_val = HINT_CONFIG[hint]['base_value']
             if amount > base_val * 1.1:
