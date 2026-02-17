@@ -1,31 +1,33 @@
 import random
-from src.config import ITEM_MEAN, ITEM_STD, ITEM_MIN_VALUE, ITEM_MAX_VALUE, HINT_CONFIG
+from src.config import HINT_CONFIG
 
 class Item:
     def __init__(self):
-        # Generate value using a normal distribution (mean=100)
-        raw_value = random.normalvariate(ITEM_MEAN, ITEM_STD)
-        self.true_value = int(max(ITEM_MIN_VALUE, min(ITEM_MAX_VALUE, raw_value)))
+        # 1. Pick a Hint Category first
+        # Weighted to make "average" items more common than extreme ones
+        self.hint_text = self._pick_weighted_hint()
         
-        self.hint_text = self._generate_hint()
-
-    def _generate_hint(self):
-        # Create a noisy signal (True Value ± 20%)
-        noise = random.uniform(-0.2, 0.2)
-        self.perceived_signal = self.true_value * (1 + noise)
-
-        # Map signal to overlapping hint categories
-        candidates = []
-        for text, data in HINT_CONFIG.items():
-            min_s, max_s = data['range']
-            if min_s <= self.perceived_signal <= max_s:
-                candidates.append(text)
+        # 2. Generate True Value strictly within the Hint's range
+        hint_data = HINT_CONFIG[self.hint_text]
+        min_val, max_val = hint_data['range']
+        base = hint_data['base_value']
         
-        # Fallback if somehow no range matches (shouldn't happen with 0-999 coverage)
-        if not candidates:
-            return "Unknown item"
-            
-        return random.choice(candidates)
+        # Use normal distribution centered on base_value
+        # Sigma is set so 3 standard deviations cover the range
+        sigma = (max_val - min_val) / 6.0 
+        raw_val = random.normalvariate(base, sigma)
+        
+        # Clamp strictly to range
+        self.true_value = int(max(min_val, min(max_val, raw_val)))
+        
+        # Compatibility attribute (if needed by other files)
+        self.perceived_signal = self.true_value
+
+    def _pick_weighted_hint(self):
+        options = list(HINT_CONFIG.keys())
+        # Corresponds to: Low, Below Avg, Decent, Strong, Extreme
+        weights = [15, 25, 35, 20, 5] 
+        return random.choices(options, weights=weights, k=1)[0]
 
     def get_true_value(self):
         return self.true_value

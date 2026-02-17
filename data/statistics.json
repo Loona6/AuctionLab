@@ -1,12 +1,15 @@
 {
-    "total_sessions": 6,
-    "lifetime_profit": -285,
-    "total_items": 8,
+    "total_sessions": 15,
+    "lifetime_profit": -753,
+    "total_items": 30,
     "playstyle_counts": {
-        "The Gambler": 5,
-        "The Ghost": 1
+        "The Gambler": 11,
+        "The Value Hunter": 2,
+        "The Tactician": 2
     },
     "playstyle_wins": {
-        "The Ghost": 0
+        "The Gambler": 23,
+        "The Value Hunter": 4,
+        "The Tactician": 3
     }
 }

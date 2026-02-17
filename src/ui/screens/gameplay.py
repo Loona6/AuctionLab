@@ -17,6 +17,7 @@ from src.models.auction import Auction
 from src.models.player import Player
 from src.logic.data_manager import DataManager
 from src.logic.analyzer import PlaystyleAnalyzer
+from src.config import MIN_INCREMENT
 
 class GameScreen:
     def __init__(self):
@@ -52,14 +53,15 @@ class GameScreen:
         self.timer = 60 # Slower round for visibility
         self.show_quit_confirm = False
         
-        # Audio State
+        # Audio & Timing State
         from src.logic.audio_manager import AudioManager
         self.audio = AudioManager()
         self.last_tick_second = -1
         self.played_round_end_sound = False
+        self.last_tick_time = pygame.time.get_ticks()
         
         # Pre-set the user's proposed bid (Highest + Increment)
-        self.proposed_bid = self.auction.highest_bid + 10
+        self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
         self.feedback_msg = ""
         
         # --- UI Components ---
@@ -75,7 +77,7 @@ class GameScreen:
         self.playstyle_result = None
         self.feedback_msg = ""
         self.show_quit_confirm = False
-        self.proposed_bid = self.auction.highest_bid + 10
+        self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
         self.input_box.set_text(self.proposed_bid)
         
         # Reset Session Counters (Though fresh player handles it, being explicit)
@@ -151,7 +153,7 @@ class GameScreen:
                     self.player.has_withdrawn = True
                     self.feedback_msg = "Bid Withdrawn!"
                     # Update input box to new required bid
-                    self.proposed_bid = self.auction.highest_bid + 10
+                    self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
                     self.input_box.set_text(self.proposed_bid)
                 else:
                     self.feedback_msg = "Cannot Withdraw!"
@@ -171,13 +173,17 @@ class GameScreen:
                     style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
                     DataManager.save_highscore(self.player.name, session_profit, self.player.items_won)
                     DataManager.update_stats(session_profit, self.player.items_won, style_name)
+                    # Save final logs
+                    self.auction.save_session_logs("gameplay_logs.txt")
                     self.reset()
                 else:
                     # Normal Next Round
                     self.round_num += 1
                     self.auction.start_round(self.round_num)
+                    # Trigger incremental save
+                    self.auction.save_session_logs("gameplay_logs.txt")
                     # Reset input
-                    self.proposed_bid = self.auction.highest_bid + 10
+                    self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
                     self.input_box.set_text(self.proposed_bid)
                     self.feedback_msg = ""
 
@@ -199,7 +205,7 @@ class GameScreen:
         if self.player.place_bid(self.auction, val):
             self.feedback_msg = ""
             # Prepare next increment automatically
-            self.proposed_bid = val + 10 # Min increment placeholder
+            self.proposed_bid = val + MIN_INCREMENT # Use global MIN_INCREMENT
             self.input_box.set_text(self.proposed_bid)
         else:
             # Feedback handled via return check? 
@@ -219,13 +225,15 @@ class GameScreen:
             self.btn_cancel_quit.update(mouse_pos)
             return
 
-        # --- Simulation Tick ---
-        if pygame.time.get_ticks() % 200 < 20: 
+        # --- Simulation Tick (Every 200ms) ---
+        now = pygame.time.get_ticks()
+        if now - self.last_tick_time >= 200:
             self.auction.run_tick()
+            self.last_tick_time = now
             
             # --- Ticking Clock Sounds (Final 5 seconds) ---
             if self.auction.is_active:
-                seconds_left = self.auction.ticks_remaining // 5
+                seconds_left = self.auction.current_patience // 5
                 if 0 < seconds_left <= 5:
                     if seconds_left != self.last_tick_second:
                         self.audio.play("tick")
@@ -311,7 +319,7 @@ class GameScreen:
         pygame.draw.rect(surface, THEME_PANEL_BG, (bar_x, bar_y, bar_w, bar_h), border_radius=4)
         
         # Fill
-        progress = self.auction.ticks_remaining / self.auction.max_ticks
+        progress = self.auction.current_patience / self.auction.current_max_patience
         fill_w = int(bar_w * max(0, progress))
         color = THEME_ACCENT_GREEN if progress > 0.5 else (255, 200, 0) if progress > 0.2 else THEME_ACCENT_RED
         
@@ -319,8 +327,8 @@ class GameScreen:
             pygame.draw.rect(surface, color, (bar_x, bar_y, fill_w, bar_h), border_radius=4)
         
         # --- TOP RIGHT TIMER TEXT ---
-        seconds_left = max(0, int(self.auction.ticks_remaining / 5)) 
-        color = THEME_ACCENT_GREEN if seconds_left > 10 else THEME_ACCENT_RED
+        seconds_left = max(0, int(self.auction.current_patience / 5)) 
+        color = THEME_ACCENT_GREEN if seconds_left > 5 else THEME_ACCENT_RED
         draw_text(surface, f"00:{seconds_left:02d}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
 
     def _draw_panel(self, surface, x, y, w, h):
@@ -437,7 +445,7 @@ class GameScreen:
         
         # 3. User Input Section
         input_y = mid_zone_y + 80
-        min_req = self.auction.highest_bid + 10
+        min_req = self.auction.highest_bid + MIN_INCREMENT
         draw_text(surface, f"Min Required: ${min_req}", cx, input_y, self.font_sm, (100, 100, 100), "center")
         
         # Update input box position (re-centering just in case)
