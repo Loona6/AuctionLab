@@ -111,14 +111,13 @@ class Auction:
         self.log_event(f"{bidder.id} bids ${amount}")
         
         # --- PHASE 4: DYNAMIC PACING & TIMER RESET ---
+        # If someone bids during "Going Once/Twice", reset the timer to full!
         if self.auction_state in ["Going Once", "Going Twice"]:
-            # Accelerate! Drop max patience, then extend to that new max
-            self.current_max_patience = max(20, self.current_max_patience - 5)
-            self.current_patience = self.current_max_patience
-        elif self.current_patience < 15:
-            # Anti-snipe: only extend if time is running out (< 3s remaining)
-            # Add a short extension (15 ticks = 3s) rather than full reset
-            self.current_patience = min(self.base_patience, self.current_patience + 15)
+            self.current_max_patience = self.base_patience
+            self.current_patience = self.base_patience
+        elif self.current_patience < 10:
+            # Minor anti-snipe for other late-ticker states
+            self.current_patience = min(self.base_patience, self.current_patience + 10)
         # else: plenty of time left — leave the clock alone, no jump
             
         self.auction_state = "Active"

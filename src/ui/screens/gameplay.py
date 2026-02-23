@@ -184,6 +184,10 @@ class GameScreen:
                     # Normal Next Round
                     self.round_num += 1
                     self.auction.start_round(self.round_num)
+                    # Reset timer freeze for new round
+                    self.frozen_progress = None
+                    self.frozen_seconds = None
+                    
                     # Trigger incremental save
                     self.auction.save_session_logs("gameplay_logs.txt")
                     # Reset input
