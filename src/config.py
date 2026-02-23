@@ -8,11 +8,11 @@ ITEM_MAX_VALUE = 200
 
 # --- HINT LOGIC ---
 HINT_CONFIG = {
-    "Low market interest":      {'range': (10, 60),   'base_value': 35,  'safe_cap': 50},
-    "Below average demand":     {'range': (50, 90),   'base_value': 70,  'safe_cap': 85},
-    "Decent demand":            {'range': (80, 120),  'base_value': 100, 'safe_cap': 110},
-    "Strong market interest":   {'range': (110, 150), 'base_value': 130, 'safe_cap': 140},
-    "Extremely valuable item":  {'range': (140, 250), 'base_value': 180, 'safe_cap': 200}
+    "Low market interest ($10-$60)":      {'range': (10, 60),   'base_value': 35,  'safe_cap': 50},
+    "Below average demand ($50-$90)":     {'range': (50, 90),   'base_value': 70,  'safe_cap': 85},
+    "Decent demand ($80-$120)":            {'range': (80, 120),  'base_value': 100, 'safe_cap': 110},
+    "Strong market interest ($110-$150)":   {'range': (110, 150), 'base_value': 130, 'safe_cap': 140},
+    "Extremely valuable item ($140-$250)":  {'range': (140, 250), 'base_value': 180, 'safe_cap': 200}
 }
 
 # --- AI PERSONALITIES (THE "WAR MODE" REBALANCED) ---

@@ -12,6 +12,11 @@ from src.models.ai_agent import AIAgent
 
 def run_evaluation_simulation(num_rounds=100):
     report_path = "sim_evaluation_report.txt"
+    log_path = "sim_gameplay_logs.txt"
+    
+    # Clear logs at start
+    with open(log_path, "w", encoding="utf-8") as lf:
+        lf.write("--- SIMULATION START ---\n")
     
     stats = {
         "wins": {"Aggressive": 0, "Balanced": 0, "Conservative": 0},
@@ -26,7 +31,7 @@ def run_evaluation_simulation(num_rounds=100):
     strategies = ["Aggressive", "Balanced", "Conservative"]
     for i in range(2):
         for strat in strategies:
-            agent = AIAgent(f"AI-{strat}-{i}", budget=3000, strategy_type=strat)
+            agent = AIAgent(f"AI-{strat}-{i}", budget=500, strategy_type=strat)
             auction.agents.append(agent)
 
     with open(report_path, "w", encoding="utf-8") as f:
@@ -53,9 +58,9 @@ def run_evaluation_simulation(num_rounds=100):
             winning_bid = result['winning_bid']
             profit = result['profit']
 
-            if winner_id == "None" or winner_id == "No one":
+            if winner_id.startswith("None") or winner_id == "No one":
                 stats["no_winner_count"] += 1
-                f.write(f"  RESULT: NO WINNER (Bidding stopped below limit)\n")
+                f.write(f"  RESULT: NO WINNER ({winner_id})\n")
             else:
                 winner_agent = next((a for a in auction.agents if a.id == winner_id), None)
                 strat = winner_agent.strategy
@@ -65,6 +70,12 @@ def run_evaluation_simulation(num_rounds=100):
                 
                 f.write(f"  RESULT: Winner {winner_id} ({strat}) for ${winning_bid} | Profit: ${profit}\n")
             
+            # Save logs for this round to a dedicated sim log file
+            with open("sim_gameplay_logs.txt", "a", encoding="utf-8") as lf:
+                lf.write(f"\n--- ROUND {r} ---\n")
+                for line in auction.round_logs:
+                    lf.write(line + "\n")
+
             f.write("-" * 40 + "\n")
 
         # --- FINAL AGGREGATE SUMMARY ---

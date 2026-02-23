@@ -59,6 +59,8 @@ class GameScreen:
         self.last_tick_second = -1
         self.played_round_end_sound = False
         self.last_tick_time = pygame.time.get_ticks()
+        self.frozen_progress = None # Freeze timer on sale
+        self.frozen_seconds = None
         
         # Pre-set the user's proposed bid (Highest + Increment)
         self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
@@ -79,6 +81,8 @@ class GameScreen:
         self.show_quit_confirm = False
         self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
         self.input_box.set_text(self.proposed_bid)
+        self.frozen_progress = None
+        self.frozen_seconds = None
         
         # Reset Session Counters (Though fresh player handles it, being explicit)
         self.player.withdrawal_count = 0
@@ -161,7 +165,7 @@ class GameScreen:
             if self.btn_pass.is_clicked(event):
                 was_leading = (self.auction.highest_bidder and self.auction.highest_bidder.id == self.player.id)
                 self.auction.pass_player(self.player)
-                self.feedback_msg = "Withdrawn & Passed" if was_leading else "Passed Round."
+                self.feedback_msg = "You are already the highest bidder." if was_leading else "Passed Round."
 
         # 4. Handle Round Over -> Next Round OR Game Over
         else:
@@ -231,9 +235,25 @@ class GameScreen:
             self.auction.run_tick()
             self.last_tick_time = now
             
+            # --- Timer Freeze Logic ---
+            if not self.auction.is_active and self.frozen_progress is None:
+                # Calculate final progress to freeze the bar
+                ms_left = max(0, self.auction.patience_deadline_ms - now)
+                total_ms = self.auction.current_max_patience * self.auction.TICK_INTERVAL_MS
+                self.frozen_progress = ms_left / total_ms if total_ms > 0 else 0
+                self.frozen_seconds = self._get_display_seconds()
+            
+            # Auto-fill bid box: always show the next minimum required bid
+            # Only override if user isn't currently editing (i.e. box not focused)
+            if self.auction.is_active and not self.input_box.active:
+                next_min = self.auction.highest_bid + MIN_INCREMENT
+                if self.proposed_bid != next_min:
+                    self.proposed_bid = next_min
+                    self.input_box.set_text(self.proposed_bid)
+            
             # --- Ticking Clock Sounds (Final 5 seconds) ---
             if self.auction.is_active:
-                seconds_left = self.auction.current_patience // 5
+                seconds_left = self._get_display_seconds()
                 if 0 < seconds_left <= 5:
                     if seconds_left != self.last_tick_second:
                         self.audio.play("tick")
@@ -305,6 +325,15 @@ class GameScreen:
         self.btn_confirm_quit.draw(surface, self.font_md)
         self.btn_cancel_quit.draw(surface, self.font_md)
 
+    def _get_display_seconds(self):
+        """Compute remaining seconds from real-time deadline for stutter-free display."""
+        try:
+            import pygame
+            ms_left = max(0, self.auction.patience_deadline_ms - pygame.time.get_ticks())
+            return ms_left // 1000
+        except Exception:
+            return max(0, self.auction.current_patience // 5)
+
     def _draw_top_bar(self, surface):
         # --- CENTERED ROUND INFO ---
         info_text = f"ROUND {self.round_num} / {self.max_rounds}"
@@ -318,8 +347,17 @@ class GameScreen:
         # Background
         pygame.draw.rect(surface, THEME_PANEL_BG, (bar_x, bar_y, bar_w, bar_h), border_radius=4)
         
-        # Fill
-        progress = self.auction.current_patience / self.auction.current_max_patience
+        # Fill — use real-time ms for smooth animation
+        if self.frozen_progress is not None:
+            progress = self.frozen_progress
+        else:
+            try:
+                ms_left = max(0, self.auction.patience_deadline_ms - pygame.time.get_ticks())
+                total_ms = self.auction.current_max_patience * self.auction.TICK_INTERVAL_MS
+                progress = ms_left / total_ms if total_ms > 0 else 0
+            except Exception:
+                progress = self.auction.current_patience / self.auction.current_max_patience
+        
         fill_w = int(bar_w * max(0, progress))
         color = THEME_ACCENT_GREEN if progress > 0.5 else (255, 200, 0) if progress > 0.2 else THEME_ACCENT_RED
         
@@ -327,7 +365,11 @@ class GameScreen:
             pygame.draw.rect(surface, color, (bar_x, bar_y, fill_w, bar_h), border_radius=4)
         
         # --- TOP RIGHT TIMER TEXT ---
-        seconds_left = max(0, int(self.auction.current_patience / 5)) 
+        if self.frozen_seconds is not None:
+            seconds_left = self.frozen_seconds
+        else:
+            seconds_left = self._get_display_seconds()
+            
         color = THEME_ACCENT_GREEN if seconds_left > 5 else THEME_ACCENT_RED
         draw_text(surface, f"00:{seconds_left:02d}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
 
@@ -350,15 +392,18 @@ class GameScreen:
         draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
         
         # Dynamic Text Details
-        # Show "Unknown Item" or generic name
-        draw_text(surface, "Mystery Artifact", cx, img_rect.bottom + 30, self.font_lg, THEME_TEXT_MAIN, "center")
+        # Show "Unknown Item" or generic name (Wrapped)
+        name_y = img_rect.bottom + 25
+        hint_y_start = self._draw_wrapped_text(surface, "Mystery Artifact", cx, name_y, w - 40, self.font_lg, THEME_TEXT_MAIN)
         
-        # Show the HINT
-        hint = self.auction.current_item.get_hint()
-        draw_text(surface, f"\"{hint}\"", cx, img_rect.bottom + 70, self.font_md, THEME_ACCENT_GOLD, "center")
+        # Show the HINT (Wrapped to fit panel)
+        # Add 15px gap after item name
+        hint = f"\"{self.auction.current_item.get_hint()}\""
+        tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, THEME_ACCENT_GOLD)
         
         # Tags? Maybe strategy hints later
-        draw_text(surface, "Value Hidden", cx, img_rect.bottom + 110, self.font_sm, THEME_TEXT_SUB, "center")
+        # Add 10px gap after hint
+        draw_text(surface, "Value Hidden", cx, tags_y_start + 10, self.font_sm, THEME_TEXT_SUB, "center")
 
     def _draw_center_content(self, surface, x, y, w):
         cx = x + w // 2
@@ -394,6 +439,13 @@ class GameScreen:
             if hasattr(p_obj, 'is_passing') and p_obj.is_passing:
                 label += " [PASS]"
                 name_color = THEME_TEXT_SUB
+            elif hasattr(p_obj, 'state'):
+                if p_obj.state == "Pass":
+                    label += " [PASS]"
+                    name_color = THEME_TEXT_SUB
+                elif p_obj.state == "Withdraw":
+                    label += " [WD]"
+                    name_color = THEME_ACCENT_RED
 
             draw_text(surface, label, x + 40, row_y, self.font_sm, name_color, "left")
             draw_text(surface, f"${p_budget}", cx, row_y, self.font_sm, THEME_TEXT_MAIN, "center")
@@ -410,8 +462,15 @@ class GameScreen:
         log_y = row_y + 75
         logs = self.auction.get_recent_logs()
         for log in logs:
-            draw_text(surface, f"> {log}", x + 40, log_y, self.font_sm, THEME_TEXT_MAIN, "left")
-            log_y += 25
+            color = THEME_TEXT_MAIN
+            if "!!!" in log or "RESULT" in log:
+                color = THEME_ACCENT_GOLD
+            elif "WITHDRAWN" in log:
+                color = THEME_ACCENT_RED
+            
+            # Wrap logs if they are too long for the center column
+            log_y = self._draw_wrapped_text(surface, f"> {log}", x + 40, log_y, w - 80, self.font_sm, color, "left")
+            log_y += 5 # Small gap between log entries
 
     def _draw_right_content(self, surface, x, y, w):
         cx = x + w // 2
@@ -474,8 +533,9 @@ class GameScreen:
             draw_text(surface, self.feedback_msg, cx, input_y + 310, self.font_sm, THEME_ACCENT_RED, "center")
 
     def _draw_round_end_overlay(self, surface):
+        # 1. Darker backdrop for focus
         s = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-        s.set_alpha(200)
+        s.set_alpha(220)
         s.fill((10, 12, 20))
         surface.blit(s, (0,0))
         
@@ -483,28 +543,46 @@ class GameScreen:
         
         if self.round_num < self.max_rounds:
             # --- INTERMEDIATE ROUND OVER ---
-            winner_id = self.auction.highest_bidder.id if self.auction.highest_bidder else "Nobody"
+            winner_id = self.auction.highest_bidder.id if self.auction.highest_bidder else "None"
             profit = 0
-            if self.auction.highest_bidder:
+            is_sold = winner_id != "None" and not winner_id.startswith("None (Disqualified)")
+            
+            if is_sold:
                  profit = self.auction.current_item.get_true_value() - self.auction.highest_bid
             
-            # Draw Box
-            box_w, box_h = 450, 320
-            pygame.draw.rect(surface, THEME_PANEL_BG, (cx-box_w//2, cy-box_h//2, box_w, box_h), border_radius=15)
-            pygame.draw.rect(surface, THEME_BORDER, (cx-box_w//2, cy-box_h//2, box_w, box_h), 1, border_radius=15)
+            # Draw Premium Box
+            box_w, box_h = 500, 380
+            rect = pygame.Rect(cx-box_w//2, cy-box_h//2, box_w, box_h)
+            pygame.draw.rect(surface, THEME_PANEL_BG, rect, border_radius=20)
+            
+            # Border color based on outcome
+            border_color = THEME_ACCENT_GOLD if is_sold else THEME_TEXT_SUB
+            pygame.draw.rect(surface, border_color, rect, 2, border_radius=20)
 
-            draw_text(surface, "ROUND COMPLETE", cx, cy - 120, self.font_lg, THEME_ACCENT_GOLD, "center")
+            # Header
+            header_text = "SOLD!" if is_sold else "PASSED"
+            header_color = THEME_ACCENT_GOLD if is_sold else THEME_ACCENT_RED
+            draw_text(surface, header_text, cx, rect.top + 50, self.font_xl, header_color, "center")
+            draw_text(surface, "ROUND COMPLETE", cx, rect.top + 95, self.font_sm, THEME_TEXT_SUB, "center")
+            
+            # Divider
+            pygame.draw.line(surface, THEME_BORDER, (cx - 150, rect.top + 120), (cx + 150, rect.top + 120), 1)
             
             # Result rows
-            row_y = cy - 60
+            row_y = rect.top + 155
             self._draw_overlay_row(surface, cx, row_y, "Winner", winner_id, THEME_TEXT_MAIN)
-            self._draw_overlay_row(surface, cx, row_y + 35, "Final Price", f"${self.auction.highest_bid}", THEME_TEXT_SUB)
-            self._draw_overlay_row(surface, cx, row_y + 70, "Actual Value", f"${self.auction.current_item.get_true_value()}", THEME_TEXT_MAIN)
+            self._draw_overlay_row(surface, cx, row_y + 40, "Final Price", f"${self.auction.highest_bid}", THEME_TEXT_SUB)
+            self._draw_overlay_row(surface, cx, row_y + 80, "Actual Value", f"${self.auction.current_item.get_true_value()}", THEME_TEXT_MAIN)
             
-            p_color = THEME_ACCENT_GREEN if profit >= 0 else THEME_ACCENT_RED
-            draw_text(surface, f"PROFIT: ${profit}", cx, cy + 60, self.font_lg, p_color, "center")
+            # Profit/Loss Section
+            if is_sold:
+                p_text = f"PROFIT: ${profit}" if profit >= 0 else f"LOSS: ${abs(profit)}"
+                p_color = THEME_ACCENT_GREEN if profit >= 0 else THEME_ACCENT_RED
+                draw_text(surface, p_text, cx, rect.bottom - 80, self.font_lg, p_color, "center")
+            else:
+                draw_text(surface, "Item went unsold.", cx, rect.bottom - 80, self.font_md, THEME_TEXT_SUB, "center")
             
-            draw_text(surface, "Press [SPACE] for Next Round", cx, cy + 120, self.font_sm, THEME_ACCENT_CYAN, "center")
+            draw_text(surface, "Press [SPACE] for Next Round", cx, rect.bottom - 35, self.font_sm, THEME_ACCENT_CYAN, "center")
 
         else:
             # --- FINAL GAME OVER SCREEN ---
@@ -544,7 +622,7 @@ class GameScreen:
 
             draw_text(surface, "Press [SPACE] to Restart Game", cx, cy + 225, self.font_sm, THEME_ACCENT_CYAN, "center")
 
-    def _draw_wrapped_text(self, surface, text, x, y, max_w, font, color):
+    def _draw_wrapped_text(self, surface, text, x, y, max_w, font, color, align="center"):
         words = text.split()
         lines = []
         current_line = []
@@ -558,12 +636,20 @@ class GameScreen:
                 current_line = [word]
         lines.append(" ".join(current_line))
         
+        y_offset = 0
+        line_spacing = font.get_linesize()
         for i, line in enumerate(lines):
-            draw_text(surface, line, x, y + (i * 22), font, color, "center")
+            draw_text(surface, line, x, y + (i * line_spacing), font, color, align)
+            y_offset = (i + 1) * line_spacing
+            
+        return y + y_offset
 
     def _draw_overlay_row(self, surface, cx, y, label, value, val_color):
-        draw_text(surface, f"{label}:", cx - 10, y, self.font_md, THEME_TEXT_SUB, "right")
-        draw_text(surface, value, cx + 10, y, self.font_md, val_color, "left")
+        # Tabular alignment: labels and values both left-aligned at fixed offsets
+        label_x = cx - 150
+        value_x = cx + 40
+        draw_text(surface, f"{label}:", label_x, y, self.font_md, THEME_TEXT_SUB, "left")
+        draw_text(surface, value, value_x, y, self.font_md, val_color, "left")
 
     def _draw_overlay_stat(self, surface, cx, y, label, value, color):
         draw_text(surface, label, cx, y, self.font_sm, THEME_TEXT_SUB, "center")
