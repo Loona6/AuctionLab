@@ -1,35 +1,84 @@
 ========================================
- LAST SESSION: 2026-02-26 21:13:13
+ LAST SESSION: 2026-02-26 23:45:38
 ========================================
 --- Round 1 Started ---
 Item Hint: Decent demand
-AI-2 bids $42
-AI-1 bids $47
-AI-5 bids $52
-AI-4 bids $57
-AI-1 bids $62
-AI-5 bids $67
-You bids $117
+AI-2 bids $20
+AI-1 bids $29
+AI-2 bids $34
+AI-3 bids $39
+AI-5 bids $44
+AI-1 bids $49
+AI-3 bids $54
+AI-1 bids $59
 Going once...
-Going twice...
+You bids $104
+AI-2 has WITHDRAWN.
+AI-5 has WITHDRAWN.
 SOLD!
-RESULT: Winner You for $117 | Value: $111 | Profit: $-6
+RESULT: Winner You for $104 | Value: $99 | Profit: $-5
 --- Round 2 Started ---
 Item Hint: Below average demand
-AI-2 bids $15
-AI-5 bids $31
-AI-1 bids $36
-AI-5 bids $41
-AI-1 bids $56
-AI-2 bids $61
-AI-1 bids $66
+AI-3 bids $20
+AI-1 bids $25
+AI-2 bids $30
+AI-1 bids $35
+AI-3 bids $40
+AI-1 bids $45
+AI-2 has WITHDRAWN.
+AI-3 bids $50
 Going once...
-AI-2 bids $71
-AI-1 bids $76
-AI-5 bids $81
+AI-1 bids $55
+AI-3 bids $60
 Going once...
+*** AI-3 has WITHDRAWN - YOU HOLD THE FLOOR ***
 Going twice...
 SOLD!
-RESULT: Winner AI-5 for $81 | Value: $72 | Profit: $-9
+DISQUALIFIED: AI-3 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $71
 --- Round 3 Started ---
-Item Hint: Strong market interest
+Item Hint: Decent demand
+AI-2 bids $21
+AI-3 bids $29
+AI-1 bids $34
+AI-5 bids $39
+AI-1 bids $44
+AI-4 bids $49
+You bids $99
+AI-5 has WITHDRAWN.
+AI-1 bids $104
+AI-4 has WITHDRAWN.
+Going once...
+*** AI-1 has WITHDRAWN - YOU HOLD THE FLOOR ***
+Going twice...
+SOLD!
+DISQUALIFIED: AI-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $100
+--- Round 4 Started ---
+Item Hint: Decent demand
+AI-4 bids $21
+AI-1 bids $30
+AI-3 bids $35
+AI-2 bids $40
+AI-3 bids $45
+AI-1 bids $50
+AI-3 bids $55
+Going once...
+You bids $155
+AI-2 has WITHDRAWN.
+SOLD!
+RESULT: Winner You for $155 | Value: $98 | Profit: $-57
+--- Round 5 Started ---
+Item Hint: Decent demand
+AI-3 bids $30
+AI-4 bids $35
+AI-3 bids $40
+AI-1 bids $45
+AI-4 bids $50
+AI-3 bids $55
+AI-1 bids $60
+You bids $195
+Going once...
+AI-4 has WITHDRAWN.
+SOLD!
+RESULT: Winner You for $195 | Value: $104 | Profit: $-91

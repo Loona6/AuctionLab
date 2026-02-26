@@ -3,993 +3,1655 @@
 --- ROUND 1 ---
 --- Round 1 Started ---
 Item Hint: Decent demand
-AI-Conservative-1 bids $21
-AI-Aggressive-1 bids $41
-AI-Balanced-1 bids $46
-AI-Aggressive-0 bids $65
-AI-Aggressive-1 bids $70
-AI-Balanced-0 bids $75
-AI-Conservative-1 has WITHDRAWN.
-AI-Balanced-1 bids $80
-AI-Balanced-0 bids $85
+AI-Conservative-0 bids $21
+AI-Aggressive-0 bids $40
+AI-Balanced-0 bids $45
+AI-Aggressive-1 bids $66
+AI-Aggressive-0 bids $71
+AI-Balanced-1 bids $76
+AI-Aggressive-1 bids $81
+AI-Aggressive-0 bids $86
 Going once...
-AI-Aggressive-0 bids $90
-AI-Balanced-1 bids $95
-AI-Aggressive-1 bids $100
-Going once...
-Going twice...
+AI-Aggressive-1 bids $91
+AI-Aggressive-0 bids $96
+AI-Aggressive-1 bids $101
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $100 | Value: $96 | Profit: $-4
-RESULT: Winner AI-Aggressive-1 for $100 | Value: $96 | Profit: $-4
+RESULT: Winner AI-Aggressive-1 for $101 | Value: $112 | Profit: $11
+RESULT: Winner AI-Aggressive-1 for $101 | Value: $112 | Profit: $11
 
 --- ROUND 2 ---
 --- Round 2 Started ---
 Item Hint: Decent demand
-AI-Aggressive-0 bids $42
-AI-Aggressive-1 bids $47
-AI-Aggressive-0 bids $68
-AI-Aggressive-1 bids $73
-AI-Aggressive-0 bids $78
+AI-Conservative-0 bids $20
+AI-Aggressive-0 bids $40
+AI-Conservative-1 bids $45
+AI-Balanced-0 bids $50
+AI-Aggressive-0 bids $55
+AI-Aggressive-1 bids $60
+AI-Balanced-1 bids $65
+AI-Aggressive-1 bids $70
+AI-Balanced-1 bids $75
 Going once...
-AI-Aggressive-1 bids $98
-AI-Aggressive-0 bids $103
-AI-Aggressive-1 bids $108
+AI-Aggressive-1 bids $80
+AI-Conservative-1 has WITHDRAWN.
+AI-Aggressive-0 bids $85
+AI-Aggressive-1 bids $90
+AI-Aggressive-0 bids $95
+AI-Aggressive-1 bids $100
+AI-Aggressive-0 bids $105
 Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $108 | Value: $86 | Profit: $-22
-RESULT: Winner AI-Aggressive-1 for $108 | Value: $86 | Profit: $-22
+RESULT: Winner AI-Aggressive-0 for $105 | Value: $102 | Profit: $-3
+RESULT: Winner AI-Aggressive-0 for $105 | Value: $102 | Profit: $-3
 
 --- ROUND 3 ---
 --- Round 3 Started ---
-Item Hint: Low market interest
-AI-Aggressive-1 bids $21
-AI-Aggressive-0 bids $26
-AI-Aggressive-1 bids $31
-AI-Aggressive-0 bids $36
-AI-Aggressive-1 bids $41
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $41 | Value: $39 | Profit: $-2
-RESULT: Winner AI-Aggressive-1 for $41 | Value: $39 | Profit: $-2
-
---- ROUND 4 ---
---- Round 4 Started ---
 Item Hint: Decent demand
-AI-Conservative-0 bids $20
 AI-Aggressive-1 bids $42
 AI-Conservative-1 bids $47
 AI-Aggressive-0 bids $52
-AI-Aggressive-1 bids $73
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-0 bids $78
-Going once...
+AI-Balanced-0 bids $57
+AI-Aggressive-0 bids $62
+AI-Balanced-1 bids $67
+AI-Aggressive-0 bids $72
+AI-Balanced-0 bids $77
 AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-1 bids $83
-AI-Aggressive-0 bids $88
-AI-Aggressive-1 bids $93
-AI-Aggressive-0 bids $114
-AI-Aggressive-1 bids $119
 Going once...
-Going twice...
+AI-Aggressive-0 bids $98
+AI-Aggressive-1 bids $103
+AI-Aggressive-0 bids $108
+AI-Aggressive-1 bids $113
+AI-Aggressive-0 bids $118
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $119 | Value: $106 | Profit: $-13
-RESULT: Winner AI-Aggressive-1 for $119 | Value: $106 | Profit: $-13
+RESULT: Winner AI-Aggressive-0 for $118 | Value: $96 | Profit: $-22
+RESULT: Winner AI-Aggressive-0 for $118 | Value: $96 | Profit: $-22
+
+--- ROUND 4 ---
+--- Round 4 Started ---
+Item Hint: Low market interest
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Aggressive-0 bids $20
+AI-Aggressive-1 bids $25
+AI-Aggressive-0 bids $30
+AI-Balanced-1 bids $35
+AI-Aggressive-1 bids $40
+Going once...
+SOLD!
+RESULT: Winner AI-Aggressive-1 for $40 | Value: $36 | Profit: $-4
+RESULT: Winner AI-Aggressive-1 for $40 | Value: $36 | Profit: $-4
 
 --- ROUND 5 ---
 --- Round 5 Started ---
-Item Hint: Decent demand
-AI-Conservative-0 bids $21
-AI-Aggressive-1 bids $41
-AI-Conservative-1 bids $46
-AI-Aggressive-0 bids $51
-AI-Aggressive-1 bids $56
+Item Hint: Below average demand
+AI-Conservative-0 bids $13
+AI-Balanced-1 bids $20
+AI-Aggressive-1 bids $31
+AI-Aggressive-0 bids $36
+AI-Balanced-0 bids $41
+AI-Aggressive-0 bids $46
+AI-Aggressive-1 bids $51
+Going once...
+AI-Balanced-0 bids $56
 AI-Aggressive-0 bids $61
 AI-Aggressive-1 bids $66
-Going once...
 AI-Aggressive-0 bids $71
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-1 bids $76
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-0 bids $96
-AI-Aggressive-1 bids $101
-AI-Aggressive-0 bids $106
-AI-Aggressive-1 bids $111
-Going once...
-AI-Aggressive-0 bids $116
-AI-Aggressive-1 bids $121
-Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $121 | Value: $99 | Profit: $-22
-RESULT: Winner AI-Aggressive-1 for $121 | Value: $99 | Profit: $-22
+RESULT: Winner AI-Aggressive-0 for $71 | Value: $71 | Profit: $0
+RESULT: Winner AI-Aggressive-0 for $71 | Value: $71 | Profit: $0
 
 --- ROUND 6 ---
 --- Round 6 Started ---
-Item Hint: Extremely valuable item
-AI-Conservative-0 bids $35
-AI-Aggressive-1 bids $84
-AI-Aggressive-0 bids $126
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-1 bids $131
-AI-Aggressive-0 bids $136
-AI-Aggressive-1 bids $141
+Item Hint: Below average demand
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
+AI-Conservative-1 bids $30
+AI-Aggressive-0 bids $35
+AI-Aggressive-1 bids $50
+AI-Balanced-0 bids $55
+AI-Conservative-1 has WITHDRAWN.
+AI-Aggressive-1 bids $60
+AI-Aggressive-0 bids $75
 Going once...
-AI-Aggressive-0 bids $146
-AI-Aggressive-1 bids $188
-AI-Aggressive-0 bids $193
-Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $193 | Value: $223 | Profit: $30
-RESULT: Winner AI-Aggressive-0 for $193 | Value: $223 | Profit: $30
+RESULT: Winner AI-Aggressive-0 for $75 | Value: $63 | Profit: $-12
+RESULT: Winner AI-Aggressive-0 for $75 | Value: $63 | Profit: $-12
 
 --- ROUND 7 ---
 --- Round 7 Started ---
 Item Hint: Decent demand
-AI-Conservative-0 bids $21
-AI-Aggressive-1 bids $39
-AI-Aggressive-0 bids $44
-AI-Aggressive-1 bids $49
-AI-Conservative-1 bids $54
-AI-Aggressive-1 bids $59
-AI-Aggressive-0 bids $64
-AI-Aggressive-1 bids $69
+AI-Balanced-1 bids $29
+AI-Balanced-0 bids $34
+AI-Aggressive-1 bids $42
+AI-Aggressive-0 bids $47
+AI-Balanced-0 bids $52
+AI-Balanced-1 bids $57
+AI-Aggressive-0 bids $62
+AI-Balanced-0 bids $67
 Going once...
-AI-Aggressive-0 bids $90
-AI-Aggressive-1 bids $95
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-0 bids $100
-AI-Aggressive-1 bids $105
-AI-Aggressive-0 bids $110
-AI-Aggressive-1 bids $115
-AI-Aggressive-0 bids $120
+AI-Aggressive-0 bids $72
+AI-Balanced-1 bids $77
+AI-Aggressive-0 bids $82
+AI-Aggressive-1 bids $87
+AI-Aggressive-0 bids $92
+AI-Aggressive-1 bids $97
+AI-Aggressive-0 bids $102
 Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $120 | Value: $90 | Profit: $-30
-RESULT: Winner AI-Aggressive-0 for $120 | Value: $90 | Profit: $-30
+RESULT: Winner AI-Aggressive-0 for $102 | Value: $80 | Profit: $-22
+RESULT: Winner AI-Aggressive-0 for $102 | Value: $80 | Profit: $-22
 
 --- ROUND 8 ---
 --- Round 8 Started ---
 Item Hint: Decent demand
+AI-Conservative-1 bids $22
+AI-Aggressive-0 bids $42
+AI-Aggressive-1 bids $47
+AI-Balanced-0 bids $52
+AI-Balanced-1 bids $57
+AI-Aggressive-0 bids $62
+AI-Balanced-0 bids $67
+AI-Aggressive-1 bids $72
+AI-Balanced-0 bids $77
+Going once...
+AI-Aggressive-0 bids $98
+AI-Aggressive-1 bids $103
+AI-Aggressive-0 bids $108
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $108 | Value: $98 | Profit: $-10
+RESULT: Winner AI-Aggressive-0 for $108 | Value: $98 | Profit: $-10
+
+--- ROUND 9 ---
+--- Round 9 Started ---
+Item Hint: Decent demand
+AI-Aggressive-1 bids $21
+AI-Balanced-1 bids $28
+AI-Aggressive-0 bids $41
+AI-Conservative-1 bids $46
+AI-Aggressive-1 bids $51
+AI-Balanced-0 bids $56
+AI-Aggressive-1 bids $61
+AI-Balanced-1 bids $66
+AI-Aggressive-0 bids $86
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Aggressive-1 bids $91
+AI-Balanced-1 bids $96
+AI-Aggressive-1 bids $101
+AI-Aggressive-0 bids $106
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $106 | Value: $109 | Profit: $3
+RESULT: Winner AI-Aggressive-0 for $106 | Value: $109 | Profit: $3
+
+--- ROUND 10 ---
+--- Round 10 Started ---
+Item Hint: Low market interest
+AI-Balanced-1 bids $10
+AI-Aggressive-1 bids $20
+AI-Aggressive-0 bids $25
+AI-Aggressive-1 bids $35
+AI-Aggressive-0 bids $40
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $40 | Value: $22 | Profit: $-18
+RESULT: Winner AI-Aggressive-0 for $40 | Value: $22 | Profit: $-18
+
+--- ROUND 11 ---
+--- Round 11 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 bids $31
+AI-Aggressive-1 bids $36
+AI-Balanced-0 bids $41
+AI-Aggressive-1 bids $46
+AI-Balanced-1 bids $51
+AI-Balanced-0 bids $56
+AI-Aggressive-1 bids $61
+AI-Balanced-0 bids $66
+Going once...
+AI-Aggressive-0 bids $71
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $71 | Value: $65 | Profit: $-6
+RESULT: Winner AI-Aggressive-0 for $71 | Value: $65 | Profit: $-6
+
+--- ROUND 12 ---
+--- Round 12 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 bids $21
+AI-Balanced-0 bids $26
+AI-Aggressive-0 bids $31
+AI-Aggressive-1 bids $36
+SOLD!
+RESULT: Winner AI-Aggressive-1 for $36 | Value: $26 | Profit: $-10
+RESULT: Winner AI-Aggressive-1 for $36 | Value: $26 | Profit: $-10
+
+--- ROUND 13 ---
+--- Round 13 Started ---
+Item Hint: Below average demand
+AI-Balanced-1 bids $21
+AI-Aggressive-1 bids $31
+AI-Aggressive-0 bids $36
 AI-Aggressive-1 bids $41
 AI-Aggressive-0 bids $46
+AI-Balanced-0 bids $51
+AI-Balanced-1 bids $56
+Going once...
+AI-Aggressive-0 bids $61
 AI-Aggressive-1 bids $66
 AI-Aggressive-0 bids $71
 AI-Aggressive-1 bids $76
 AI-Aggressive-0 bids $81
-Going once...
-AI-Aggressive-1 bids $86
-AI-Aggressive-0 bids $91
-AI-Aggressive-1 bids $96
-AI-Aggressive-0 bids $101
-AI-Aggressive-1 bids $106
-Going once...
-AI-Aggressive-0 bids $111
-AI-Aggressive-1 bids $116
-Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $116 | Value: $105 | Profit: $-11
-RESULT: Winner AI-Aggressive-1 for $116 | Value: $105 | Profit: $-11
+RESULT: Winner AI-Aggressive-0 for $81 | Value: $77 | Profit: $-4
+RESULT: Winner AI-Aggressive-0 for $81 | Value: $77 | Profit: $-4
 
---- ROUND 9 ---
---- Round 9 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 bids $14
-AI-Conservative-0 bids $19
-AI-Aggressive-1 bids $30
-AI-Aggressive-0 bids $35
-AI-Aggressive-1 bids $40
-AI-Aggressive-0 bids $45
-AI-Aggressive-1 bids $50
+--- ROUND 14 ---
+--- Round 14 Started ---
+Item Hint: Strong market interest
+AI-Conservative-0 bids $28
+AI-Aggressive-1 bids $53
+AI-Conservative-1 bids $58
+AI-Aggressive-0 bids $63
+AI-Balanced-0 bids $68
+AI-Aggressive-1 bids $73
+AI-Aggressive-0 bids $78
+AI-Balanced-0 bids $83
+AI-Balanced-1 bids $88
+AI-Aggressive-1 bids $93
 Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-0 bids $55
-AI-Aggressive-1 bids $70
-AI-Aggressive-0 bids $75
-AI-Aggressive-1 bids $80
+AI-Balanced-0 bids $98
+AI-Balanced-1 bids $103
+AI-Conservative-1 has WITHDRAWN.
+AI-Aggressive-1 bids $129
+AI-Balanced-0 bids $134
+AI-Aggressive-1 bids $139
 Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $80 | Value: $72 | Profit: $-8
-RESULT: Winner AI-Aggressive-1 for $80 | Value: $72 | Profit: $-8
+RESULT: Winner AI-Aggressive-1 for $139 | Value: $120 | Profit: $-19
+RESULT: Winner AI-Aggressive-1 for $139 | Value: $120 | Profit: $-19
 
---- ROUND 10 ---
---- Round 10 Started ---
-Item Hint: Decent demand
-AI-Aggressive-1 bids $39
-AI-Conservative-1 bids $44
-AI-Aggressive-0 bids $49
-AI-Aggressive-1 bids $68
+--- ROUND 15 ---
+--- Round 15 Started ---
+Item Hint: Strong market interest
+AI-Balanced-0 bids $39
+AI-Aggressive-1 bids $53
+AI-Balanced-0 bids $58
+AI-Balanced-1 bids $63
+AI-Conservative-0 bids $68
 AI-Aggressive-0 bids $73
 AI-Aggressive-1 bids $78
-Going once...
-AI-Conservative-1 has WITHDRAWN.
 AI-Aggressive-0 bids $83
+Going once...
+AI-Balanced-1 bids $88
+AI-Balanced-0 bids $93
+AI-Aggressive-0 bids $98
+AI-Balanced-1 bids $103
+AI-Aggressive-1 bids $108
+AI-Balanced-1 bids $113
+AI-Aggressive-0 bids $118
+Going once...
+AI-Balanced-0 bids $123
+AI-Aggressive-0 bids $128
+AI-Aggressive-1 bids $133
+AI-Aggressive-0 bids $138
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $138 | Value: $134 | Profit: $-4
+RESULT: Winner AI-Aggressive-0 for $138 | Value: $134 | Profit: $-4
+
+--- ROUND 16 ---
+--- Round 16 Started ---
+Item Hint: Low market interest
+AI-Balanced-1 bids $10
+AI-Aggressive-1 bids $20
+AI-Aggressive-0 bids $25
+AI-Balanced-0 bids $30
+AI-Aggressive-0 bids $35
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $35 | Value: $26 | Profit: $-9
+RESULT: Winner AI-Aggressive-0 for $35 | Value: $26 | Profit: $-9
+
+--- ROUND 17 ---
+--- Round 17 Started ---
+Item Hint: Below average demand
+AI-Conservative-0 bids $12
+AI-Aggressive-1 bids $27
+AI-Conservative-1 bids $32
+AI-Balanced-0 bids $37
+AI-Balanced-1 bids $42
+AI-Aggressive-0 bids $47
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $52
+AI-Balanced-1 bids $57
+Going once...
+AI-Aggressive-0 bids $62
+AI-Aggressive-1 bids $67
+AI-Aggressive-0 bids $72
+AI-Aggressive-1 bids $77
+SOLD!
+RESULT: Winner AI-Aggressive-1 for $77 | Value: $75 | Profit: $-2
+RESULT: Winner AI-Aggressive-1 for $77 | Value: $75 | Profit: $-2
+
+--- ROUND 18 ---
+--- Round 18 Started ---
+Item Hint: Decent demand
+AI-Conservative-1 bids $21
+AI-Balanced-1 bids $28
+AI-Aggressive-1 bids $41
+AI-Conservative-1 bids $46
+AI-Aggressive-0 bids $51
+AI-Balanced-0 bids $56
+AI-Aggressive-1 bids $61
+AI-Balanced-1 bids $66
+AI-Aggressive-0 bids $86
+AI-Conservative-1 has WITHDRAWN.
+Going once...
+AI-Aggressive-1 bids $91
+AI-Balanced-1 bids $96
+AI-Aggressive-1 bids $101
+AI-Aggressive-0 bids $106
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $106 | Value: $113 | Profit: $7
+RESULT: Winner AI-Aggressive-0 for $106 | Value: $113 | Profit: $7
+
+--- ROUND 19 ---
+--- Round 19 Started ---
+Item Hint: Low market interest
+AI-Conservative-0 bids $5
+AI-Aggressive-1 bids $21
+AI-Aggressive-0 bids $26
+AI-Balanced-1 bids $31
+AI-Aggressive-0 bids $36
+Going once...
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $36 | Value: $36 | Profit: $0
+RESULT: Winner AI-Aggressive-0 for $36 | Value: $36 | Profit: $0
+
+--- ROUND 20 ---
+--- Round 20 Started ---
+Item Hint: Low market interest
+AI-Balanced-0 bids $10
+AI-Aggressive-0 bids $20
+AI-Balanced-1 bids $25
+AI-Aggressive-0 bids $30
+AI-Aggressive-1 bids $35
+AI-Aggressive-0 bids $40
+Going once...
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $40 | Value: $37 | Profit: $-3
+RESULT: Winner AI-Aggressive-0 for $40 | Value: $37 | Profit: $-3
+
+--- ROUND 21 ---
+--- Round 21 Started ---
+Item Hint: Decent demand
+AI-Balanced-0 bids $30
+AI-Aggressive-0 bids $40
+AI-Balanced-1 bids $45
+AI-Aggressive-0 bids $65
+AI-Balanced-0 bids $70
+AI-Aggressive-1 bids $75
+AI-Aggressive-0 bids $80
+AI-Aggressive-1 bids $85
+Going once...
+AI-Aggressive-0 bids $90
+AI-Aggressive-1 bids $95
+AI-Aggressive-0 bids $100
+AI-Aggressive-1 bids $105
+AI-Aggressive-0 bids $110
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $110 | Value: $89 | Profit: $-21
+RESULT: Winner AI-Aggressive-0 for $110 | Value: $89 | Profit: $-21
+
+--- ROUND 22 ---
+--- Round 22 Started ---
+Item Hint: Below average demand
+AI-Balanced-0 bids $20
+AI-Aggressive-0 bids $30
+AI-Aggressive-1 bids $45
+AI-Aggressive-0 bids $50
+AI-Balanced-0 bids $55
+AI-Aggressive-1 bids $60
+AI-Aggressive-0 bids $65
+Going once...
+AI-Aggressive-1 bids $70
+AI-Aggressive-0 bids $75
+SOLD!
+RESULT: Winner AI-Aggressive-0 for $75 | Value: $69 | Profit: $-6
+RESULT: Winner AI-Aggressive-0 for $75 | Value: $69 | Profit: $-6
+
+--- ROUND 23 ---
+--- Round 23 Started ---
+Item Hint: Decent demand
+AI-Balanced-0 bids $29
+AI-Aggressive-0 bids $42
+AI-Balanced-1 bids $47
+AI-Balanced-0 bids $52
+AI-Aggressive-0 bids $73
+AI-Balanced-0 bids $78
+AI-Balanced-1 bids $83
+Going once...
 AI-Aggressive-1 bids $88
 AI-Aggressive-0 bids $93
 AI-Aggressive-1 bids $98
 AI-Aggressive-0 bids $103
 AI-Aggressive-1 bids $108
+AI-Aggressive-0 bids $113
 Going once...
-Going twice...
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $108 | Value: $100 | Profit: $-8
-RESULT: Winner AI-Aggressive-1 for $108 | Value: $100 | Profit: $-8
-
---- ROUND 11 ---
---- Round 11 Started ---
-Item Hint: Below average demand
-AI-Aggressive-1 bids $30
-AI-Aggressive-0 bids $45
-AI-Aggressive-1 bids $50
-AI-Aggressive-0 bids $55
-AI-Aggressive-1 bids $70
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $70 | Value: $74 | Profit: $4
-RESULT: Winner AI-Aggressive-1 for $70 | Value: $74 | Profit: $4
-
---- ROUND 12 ---
---- Round 12 Started ---
-Item Hint: Low market interest
-AI-Aggressive-1 bids $20
-AI-Aggressive-0 bids $25
-AI-Aggressive-1 bids $30
-AI-Aggressive-0 bids $35
-AI-Aggressive-1 bids $40
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $40 | Value: $30 | Profit: $-10
-RESULT: Winner AI-Aggressive-1 for $40 | Value: $30 | Profit: $-10
-
---- ROUND 13 ---
---- Round 13 Started ---
-Item Hint: Below average demand
-AI-Conservative-1 bids $12
-AI-Aggressive-1 bids $27
-AI-Aggressive-0 bids $32
-AI-Aggressive-1 bids $37
-AI-Aggressive-0 bids $42
-AI-Aggressive-1 bids $47
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-0 bids $52
-Going once...
-AI-Aggressive-1 bids $57
-AI-Aggressive-0 bids $62
-AI-Aggressive-1 bids $67
-AI-Aggressive-0 bids $72
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-0 for $72 | Value: $76 | Profit: $4
-RESULT: Winner AI-Aggressive-0 for $72 | Value: $76 | Profit: $4
-
---- ROUND 14 ---
---- Round 14 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 bids $20
-AI-Aggressive-1 bids $41
-AI-Aggressive-0 bids $46
-AI-Aggressive-1 bids $51
-AI-Aggressive-0 bids $56
-AI-Aggressive-1 bids $61
-AI-Aggressive-0 bids $66
-Going once...
-AI-Aggressive-1 bids $71
-AI-Aggressive-0 bids $76
-AI-Aggressive-1 bids $81
-AI-Aggressive-0 bids $86
-AI-Aggressive-1 bids $91
-AI-Aggressive-0 bids $96
-Going once...
-AI-Aggressive-1 bids $101
-AI-Aggressive-0 bids $106
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-0 for $106 | Value: $103 | Profit: $-3
-RESULT: Winner AI-Aggressive-0 for $106 | Value: $103 | Profit: $-3
-
---- ROUND 15 ---
---- Round 15 Started ---
-Item Hint: Strong market interest
-AI-Conservative-0 bids $31
-AI-Aggressive-1 bids $50
-AI-Conservative-1 bids $55
-AI-Aggressive-0 bids $81
-AI-Aggressive-1 bids $86
-Going once...
-AI-Aggressive-0 bids $91
-AI-Aggressive-1 bids $96
-AI-Aggressive-0 bids $101
-AI-Aggressive-1 bids $126
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-0 bids $131
-Going once...
-AI-Aggressive-1 bids $136
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $136 | Value: $129 | Profit: $-7
-RESULT: Winner AI-Aggressive-1 for $136 | Value: $129 | Profit: $-7
-
---- ROUND 16 ---
---- Round 16 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 bids $41
-AI-Aggressive-1 bids $46
-AI-Conservative-0 bids $51
-AI-Aggressive-1 bids $56
-AI-Aggressive-0 bids $76
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-1 bids $81
-AI-Aggressive-0 bids $86
-Going once...
-AI-Aggressive-1 bids $91
-AI-Aggressive-0 bids $96
-AI-Aggressive-1 bids $101
-AI-Aggressive-0 bids $106
-AI-Aggressive-1 bids $111
-AI-Aggressive-0 bids $116
-Going once...
-AI-Aggressive-1 bids $121
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $121 | Value: $92 | Profit: $-29
-RESULT: Winner AI-Aggressive-1 for $121 | Value: $92 | Profit: $-29
-
---- ROUND 17 ---
---- Round 17 Started ---
-Item Hint: Low market interest
-AI-Conservative-0 bids $5
-AI-Aggressive-1 bids $21
-AI-Aggressive-0 bids $26
-AI-Conservative-0 has WITHDRAWN.
-AI-Aggressive-1 bids $31
-AI-Aggressive-0 bids $36
-AI-Aggressive-1 bids $41
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $41 | Value: $42 | Profit: $1
-RESULT: Winner AI-Aggressive-1 for $41 | Value: $42 | Profit: $1
-
---- ROUND 18 ---
---- Round 18 Started ---
-Item Hint: Decent demand
-AI-Conservative-0 bids $22
-AI-Aggressive-0 bids $41
-AI-Conservative-1 bids $46
-AI-Aggressive-1 bids $51
-AI-Aggressive-0 bids $71
-AI-Aggressive-1 bids $76
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-0 bids $81
-Going once...
-AI-Aggressive-1 bids $86
-AI-Aggressive-0 bids $91
-AI-Aggressive-1 bids $96
-AI-Aggressive-0 bids $101
-AI-Aggressive-1 bids $106
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $106 | Value: $106 | Profit: $0
-RESULT: Winner AI-Aggressive-1 for $106 | Value: $106 | Profit: $0
-
---- ROUND 19 ---
---- Round 19 Started ---
-Item Hint: Low market interest
-AI-Conservative-1 bids $5
-AI-Aggressive-1 bids $19
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-0 bids $29
-AI-Aggressive-1 bids $34
-AI-Aggressive-0 bids $39
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-0 for $39 | Value: $29 | Profit: $-10
-RESULT: Winner AI-Aggressive-0 for $39 | Value: $29 | Profit: $-10
-
---- ROUND 20 ---
---- Round 20 Started ---
-Item Hint: Below average demand
-AI-Aggressive-1 bids $31
-AI-Aggressive-0 bids $45
-AI-Aggressive-1 bids $50
-AI-Aggressive-0 bids $55
-AI-Aggressive-1 bids $70
-Going once...
-AI-Aggressive-0 bids $75
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-0 for $75 | Value: $65 | Profit: $-10
-RESULT: Winner AI-Aggressive-0 for $75 | Value: $65 | Profit: $-10
-
---- ROUND 21 ---
---- Round 21 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 bids $30
-AI-Aggressive-1 bids $45
-AI-Aggressive-0 bids $60
-AI-Aggressive-1 bids $65
-AI-Aggressive-0 bids $70
-AI-Aggressive-1 bids $75
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $75 | Value: $67 | Profit: $-8
-RESULT: Winner AI-Aggressive-1 for $75 | Value: $67 | Profit: $-8
-
---- ROUND 22 ---
---- Round 22 Started ---
-Item Hint: Low market interest
-AI-Aggressive-0 bids $20
-AI-Aggressive-1 bids $25
-AI-Aggressive-0 bids $30
-AI-Aggressive-1 bids $35
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-1 for $35 | Value: $34 | Profit: $-1
-RESULT: Winner AI-Aggressive-1 for $35 | Value: $34 | Profit: $-1
-
---- ROUND 23 ---
---- Round 23 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-1 bids $51
-AI-Aggressive-0 bids $56
-AI-Conservative-1 bids $61
-AI-Aggressive-1 bids $66
-AI-Conservative-1 bids $71
-AI-Aggressive-1 bids $76
-AI-Aggressive-0 bids $100
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-1 bids $105
-Going once...
-AI-Aggressive-0 bids $110
-AI-Aggressive-1 bids $115
-AI-Aggressive-0 bids $120
-AI-Aggressive-1 bids $145
-AI-Aggressive-0 bids $150
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner AI-Aggressive-0 for $150 | Value: $128 | Profit: $-22
-RESULT: Winner AI-Aggressive-0 for $150 | Value: $128 | Profit: $-22
+RESULT: Winner AI-Aggressive-0 for $113 | Value: $90 | Profit: $-23
+RESULT: Winner AI-Aggressive-0 for $113 | Value: $90 | Profit: $-23
 
 --- ROUND 24 ---
 --- Round 24 Started ---
-Item Hint: Decent demand
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 bids $20
-AI-Aggressive-0 bids $39
-AI-Conservative-0 bids $44
-AI-Aggressive-1 bids $49
-AI-Conservative-1 bids $54
-AI-Aggressive-0 bids $59
-AI-Aggressive-1 bids $64
-Going once...
-AI-Aggressive-0 bids $69
-AI-Aggressive-1 bids $74
-AI-Aggressive-0 bids $79
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-AI-Aggressive-1 bids $84
-AI-Aggressive-0 bids $89
-AI-Aggressive-1 bids $94
-AI-Aggressive-0 bids $99
-Going once...
-AI-Aggressive-1 bids $104
-AI-Aggressive-0 bids $109
-AI-Aggressive-1 bids $114
-Going once...
-Going twice...
+AI-Balanced-1 bids $25
+AI-Aggressive-1 bids $35
 SOLD!
-RESULT: Winner AI-Aggressive-1 for $114 | Value: $95 | Profit: $-19
-RESULT: Winner AI-Aggressive-1 for $114 | Value: $95 | Profit: $-19
+RESULT: Winner AI-Aggressive-1 for $35 | Value: $55 | Profit: $20
+RESULT: Winner AI-Aggressive-1 for $35 | Value: $55 | Profit: $20
 
 --- ROUND 25 ---
 --- Round 25 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-1 decided to PASS.
-AI-Aggressive-0 bids $24
-AI-Conservative-0 bids $29
-AI-Aggressive-0 bids $34
-AI-Conservative-0 bids $39
-AI-Conservative-1 bids $44
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-1 bids $14
+AI-Balanced-0 bids $20
+AI-Conservative-0 bids $25
+AI-Aggressive-1 bids $31
+AI-Balanced-0 bids $36
+AI-Balanced-1 bids $41
+AI-Balanced-0 bids $46
+AI-Conservative-0 has WITHDRAWN.
 Going once...
-AI-Aggressive-0 bids $49
-AI-Conservative-1 bids $54
-AI-Aggressive-0 bids $59
-AI-Conservative-1 bids $64
-AI-Aggressive-0 bids $69
-Going once...
-AI-Conservative-0 bids $74
-AI-Aggressive-0 bids $79
-Going once...
-AI-Conservative-0 bids $84
-AI-Aggressive-0 bids $89
-Going once...
+AI-Balanced-1 bids $51
+AI-Aggressive-1 bids $56
+AI-Balanced-0 bids $61
+AI-Aggressive-1 bids $66
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $89 | Value: $130 | Profit: $41
-RESULT: Winner AI-Aggressive-0 for $89 | Value: $130 | Profit: $41
+RESULT: Winner AI-Aggressive-1 for $66 | Value: $72 | Profit: $6
+RESULT: Winner AI-Aggressive-1 for $66 | Value: $72 | Profit: $6
 
 --- ROUND 26 ---
 --- Round 26 Started ---
 Item Hint: Decent demand
-AI-Aggressive-1 decided to PASS.
+AI-Aggressive-0 decided to PASS.
 AI-Conservative-0 bids $21
-AI-Aggressive-0 bids $39
-AI-Conservative-0 bids $44
-AI-Conservative-1 bids $49
-AI-Aggressive-0 bids $68
+AI-Balanced-1 bids $30
+AI-Aggressive-1 bids $41
+AI-Conservative-0 bids $46
+AI-Balanced-1 bids $51
+AI-Aggressive-1 bids $56
+AI-Balanced-1 bids $61
 Going once...
+AI-Aggressive-1 bids $66
+AI-Balanced-1 bids $71
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $76
+AI-Aggressive-1 bids $81
+AI-Balanced-1 bids $86
+AI-Aggressive-1 bids $91
+Going once...
+AI-Balanced-1 bids $96
+AI-Aggressive-1 bids $116
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $68 | Value: $106 | Profit: $38
-RESULT: Winner AI-Aggressive-0 for $68 | Value: $106 | Profit: $38
+RESULT: Winner AI-Aggressive-1 for $116 | Value: $99 | Profit: $-17
+RESULT: Winner AI-Aggressive-1 for $116 | Value: $99 | Profit: $-17
 
 --- ROUND 27 ---
 --- Round 27 Started ---
-Item Hint: Low market interest
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Aggressive-0 bids $20
-AI-Conservative-1 has WITHDRAWN.
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-0 bids $30
+AI-Aggressive-1 bids $50
+AI-Balanced-1 bids $55
+AI-Balanced-0 bids $60
+AI-Aggressive-1 bids $65
+AI-Balanced-1 bids $70
+AI-Aggressive-1 bids $75
+AI-Balanced-1 bids $80
+Going once...
+AI-Aggressive-1 bids $85
+AI-Balanced-1 bids $90
+AI-Balanced-0 bids $95
+AI-Aggressive-1 bids $100
+AI-Balanced-0 bids $105
+AI-Aggressive-1 bids $110
+AI-Balanced-0 bids $115
+Going once...
+AI-Aggressive-1 bids $140
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $24 | Profit: $4
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $24 | Profit: $4
+RESULT: Winner AI-Aggressive-1 for $140 | Value: $126 | Profit: $-14
+RESULT: Winner AI-Aggressive-1 for $140 | Value: $126 | Profit: $-14
 
 --- ROUND 28 ---
 --- Round 28 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-1 decided to PASS.
-AI-Aggressive-0 bids $52
-AI-Conservative-1 bids $57
-AI-Aggressive-0 bids $62
-AI-Conservative-1 bids $67
-AI-Aggressive-0 bids $72
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-0 bids $13
+AI-Balanced-0 bids $21
+AI-Balanced-1 bids $26
+AI-Aggressive-1 bids $31
+AI-Balanced-0 bids $36
+AI-Balanced-1 bids $41
+AI-Aggressive-1 bids $46
+AI-Balanced-1 bids $51
 Going once...
-AI-Conservative-1 bids $77
-AI-Aggressive-0 bids $82
-Going once...
-AI-Conservative-1 bids $87
-AI-Aggressive-0 bids $92
-AI-Conservative-1 has WITHDRAWN.
-Going once...
+AI-Balanced-0 bids $56
+AI-Aggressive-1 bids $61
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $92 | Value: $123 | Profit: $31
-RESULT: Winner AI-Aggressive-0 for $92 | Value: $123 | Profit: $31
+RESULT: Winner AI-Aggressive-1 for $61 | Value: $68 | Profit: $7
+RESULT: Winner AI-Aggressive-1 for $61 | Value: $68 | Profit: $7
 
 --- ROUND 29 ---
 --- Round 29 Started ---
 Item Hint: Below average demand
-AI-Aggressive-1 decided to PASS.
-AI-Aggressive-0 bids $31
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-0 bids $13
+AI-Balanced-1 bids $21
+AI-Balanced-0 bids $26
+AI-Aggressive-1 bids $41
+AI-Balanced-1 bids $46
+AI-Balanced-0 bids $51
+AI-Balanced-1 bids $56
+AI-Balanced-0 bids $61
 Going once...
-AI-Conservative-1 bids $36
-AI-Aggressive-0 bids $41
-AI-Conservative-1 has WITHDRAWN.
+AI-Aggressive-1 bids $66
+AI-Balanced-0 bids $71
+AI-Aggressive-1 bids $76
 Going once...
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $41 | Value: $62 | Profit: $21
-RESULT: Winner AI-Aggressive-0 for $41 | Value: $62 | Profit: $21
+RESULT: Winner AI-Aggressive-1 for $76 | Value: $60 | Profit: $-16
+RESULT: Winner AI-Aggressive-1 for $76 | Value: $60 | Profit: $-16
 
 --- ROUND 30 ---
 --- Round 30 Started ---
-Item Hint: Below average demand
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $13
-AI-Aggressive-0 bids $31
-AI-Conservative-1 bids $36
-AI-Aggressive-0 bids $41
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-0 bids $22
+AI-Aggressive-1 bids $40
+AI-Balanced-0 bids $45
+AI-Aggressive-1 bids $50
+AI-Balanced-1 bids $55
+AI-Balanced-0 bids $60
+AI-Aggressive-1 bids $65
+AI-Balanced-0 bids $70
 Going once...
+AI-Aggressive-1 bids $75
+AI-Balanced-1 bids $80
+AI-Balanced-0 bids $85
+AI-Aggressive-1 bids $105
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $41 | Value: $64 | Profit: $23
-RESULT: Winner AI-Aggressive-0 for $41 | Value: $64 | Profit: $23
+RESULT: Winner AI-Aggressive-1 for $105 | Value: $96 | Profit: $-9
+RESULT: Winner AI-Aggressive-1 for $105 | Value: $96 | Profit: $-9
 
 --- ROUND 31 ---
 --- Round 31 Started ---
-Item Hint: Decent demand
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $20
-AI-Aggressive-0 bids $42
-AI-Conservative-0 bids $47
-AI-Aggressive-0 bids $52
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Aggressive-1 bids $20
+AI-Balanced-0 bids $25
+AI-Aggressive-1 bids $30
 Going once...
-AI-Conservative-0 bids $57
-AI-Aggressive-0 bids $62
-Going once...
+AI-Balanced-0 bids $35
+AI-Aggressive-1 bids $40
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $62 | Value: $104 | Profit: $42
-RESULT: Winner AI-Aggressive-0 for $62 | Value: $104 | Profit: $42
+RESULT: Winner AI-Aggressive-1 for $40 | Value: $37 | Profit: $-3
+RESULT: Winner AI-Aggressive-1 for $40 | Value: $37 | Profit: $-3
 
 --- ROUND 32 ---
 --- Round 32 Started ---
 Item Hint: Strong market interest
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $30
-AI-Aggressive-0 bids $53
-AI-Conservative-0 bids $58
-AI-Aggressive-0 bids $63
-AI-Conservative-0 bids $68
-AI-Aggressive-0 bids $94
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-1 bids $38
+AI-Balanced-0 bids $43
+AI-Conservative-1 bids $48
+AI-Balanced-1 bids $53
+AI-Aggressive-1 bids $58
+AI-Balanced-0 bids $63
+AI-Balanced-1 bids $68
 Going once...
-AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 bids $73
+AI-Aggressive-1 bids $78
+AI-Balanced-0 bids $83
+AI-Balanced-1 bids $88
+AI-Aggressive-1 bids $113
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $118
+AI-Aggressive-1 bids $123
+Going once...
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $94 | Value: $125 | Profit: $31
-RESULT: Winner AI-Aggressive-0 for $94 | Value: $125 | Profit: $31
+RESULT: Winner AI-Aggressive-1 for $123 | Value: $113 | Profit: $-10
+RESULT: Winner AI-Aggressive-1 for $123 | Value: $113 | Profit: $-10
 
 --- ROUND 33 ---
 --- Round 33 Started ---
 Item Hint: Decent demand
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $21
-AI-Aggressive-0 bids $41
-AI-Conservative-0 bids $46
-AI-Aggressive-0 bids $51
-AI-Conservative-1 bids $56
-AI-Aggressive-0 bids $61
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 bids $20
+AI-Balanced-1 bids $29
+AI-Aggressive-1 bids $34
+AI-Conservative-0 bids $39
+AI-Balanced-1 bids $44
+AI-Balanced-0 bids $49
+AI-Conservative-1 bids $54
+AI-Aggressive-1 bids $59
 Going once...
-AI-Conservative-1 bids $66
-AI-Aggressive-0 bids $86
+AI-Balanced-1 bids $64
+AI-Balanced-0 bids $69
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-1 bids $74
+AI-Aggressive-1 bids $79
 AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $84
+AI-Aggressive-1 bids $89
+AI-Balanced-1 bids $94
+Going once...
+AI-Aggressive-1 bids $99
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $86 | Value: $104 | Profit: $18
-RESULT: Winner AI-Aggressive-0 for $86 | Value: $104 | Profit: $18
+RESULT: Winner AI-Aggressive-1 for $99 | Value: $95 | Profit: $-4
+RESULT: Winner AI-Aggressive-1 for $99 | Value: $95 | Profit: $-4
 
 --- ROUND 34 ---
 --- Round 34 Started ---
-Item Hint: Below average demand
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $13
-AI-Aggressive-0 bids $32
-AI-Conservative-1 bids $37
-AI-Aggressive-0 bids $42
-AI-Conservative-1 has WITHDRAWN.
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 bids $41
+AI-Balanced-1 bids $46
+AI-Aggressive-1 bids $51
+AI-Balanced-1 bids $56
+AI-Aggressive-1 bids $76
+AI-Balanced-0 bids $81
+AI-Balanced-1 bids $86
+Going once...
+AI-Aggressive-1 bids $91
+AI-Balanced-1 bids $96
+AI-Aggressive-1 bids $101
 Going once...
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $42 | Value: $68 | Profit: $26
-RESULT: Winner AI-Aggressive-0 for $42 | Value: $68 | Profit: $26
+RESULT: Winner AI-Aggressive-1 for $101 | Value: $87 | Profit: $-14
+RESULT: Winner AI-Aggressive-1 for $101 | Value: $87 | Profit: $-14
 
 --- ROUND 35 ---
 --- Round 35 Started ---
-Item Hint: Low market interest
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $5
-AI-Aggressive-0 bids $20
-AI-Conservative-0 has WITHDRAWN.
+Item Hint: Extremely valuable item
+AI-Aggressive-0 decided to PASS.
+AI-Conservative-0 bids $39
+AI-Balanced-1 bids $55
+AI-Aggressive-1 bids $88
+AI-Balanced-1 bids $93
+AI-Balanced-0 bids $98
+AI-Aggressive-1 bids $103
+AI-Balanced-1 bids $108
+AI-Aggressive-1 bids $152
+Going once...
+AI-Balanced-0 bids $157
+AI-Aggressive-1 bids $162
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $37 | Profit: $17
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $37 | Profit: $17
+RESULT: Winner AI-Aggressive-1 for $162 | Value: $186 | Profit: $24
+RESULT: Winner AI-Aggressive-1 for $162 | Value: $186 | Profit: $24
 
 --- ROUND 36 ---
 --- Round 36 Started ---
-Item Hint: Low market interest
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Aggressive-0 bids $19
+AI-Balanced-0 bids $21
+AI-Balanced-1 bids $26
+AI-Conservative-0 bids $31
+AI-Balanced-1 bids $36
+AI-Balanced-0 bids $41
+AI-Balanced-1 bids $46
+AI-Conservative-0 has WITHDRAWN.
+Going once...
+AI-Balanced-0 bids $51
+AI-Balanced-1 bids $56
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $19 | Value: $27 | Profit: $8
-RESULT: Winner AI-Aggressive-0 for $19 | Value: $27 | Profit: $8
+RESULT: Winner AI-Balanced-1 for $56 | Value: $58 | Profit: $2
+RESULT: Winner AI-Balanced-1 for $56 | Value: $58 | Profit: $2
 
 --- ROUND 37 ---
 --- Round 37 Started ---
-Item Hint: Low market interest
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Aggressive-0 bids $10
+AI-Conservative-1 bids $20
+AI-Balanced-1 bids $28
+AI-Conservative-0 bids $33
+AI-Balanced-1 bids $38
+AI-Balanced-0 bids $43
+AI-Balanced-1 bids $48
+AI-Conservative-1 bids $53
+AI-Balanced-1 bids $58
+Going once...
+AI-Balanced-0 bids $63
+AI-Balanced-1 bids $68
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $73
+AI-Balanced-1 bids $78
+AI-Balanced-0 bids $83
+Going once...
+AI-Balanced-1 bids $88
+AI-Balanced-0 bids $93
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $10 | Value: $37 | Profit: $27
-RESULT: Winner AI-Aggressive-0 for $10 | Value: $37 | Profit: $27
+RESULT: Winner AI-Balanced-0 for $93 | Value: $99 | Profit: $6
+RESULT: Winner AI-Balanced-0 for $93 | Value: $99 | Profit: $6
 
 --- ROUND 38 ---
 --- Round 38 Started ---
 Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Aggressive-0 bids $20
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
+Going once...
+AI-Balanced-1 bids $30
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $34 | Profit: $14
-RESULT: Winner AI-Aggressive-0 for $20 | Value: $34 | Profit: $14
+RESULT: Winner AI-Balanced-1 for $30 | Value: $38 | Profit: $8
+RESULT: Winner AI-Balanced-1 for $30 | Value: $38 | Profit: $8
 
 --- ROUND 39 ---
 --- Round 39 Started ---
-Item Hint: Low market interest
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Aggressive-0 bids $10
+AI-Conservative-1 bids $12
+AI-Balanced-0 bids $21
+AI-Conservative-1 bids $26
+AI-Balanced-1 bids $31
+AI-Balanced-0 bids $36
+AI-Balanced-1 bids $41
+AI-Balanced-0 bids $46
+AI-Balanced-1 bids $51
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $56
+AI-Balanced-1 bids $61
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $10 | Value: $38 | Profit: $28
-RESULT: Winner AI-Aggressive-0 for $10 | Value: $38 | Profit: $28
+RESULT: Winner AI-Balanced-1 for $61 | Value: $73 | Profit: $12
+RESULT: Winner AI-Balanced-1 for $61 | Value: $73 | Profit: $12
 
 --- ROUND 40 ---
 --- Round 40 Started ---
-Item Hint: Below average demand
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $14
-AI-Conservative-1 bids $19
-AI-Conservative-0 bids $24
-AI-Conservative-1 bids $29
-AI-Aggressive-0 bids $34
+AI-Balanced-1 bids $30
+AI-Conservative-1 bids $35
+AI-Balanced-1 bids $40
+AI-Conservative-0 bids $45
+AI-Conservative-1 bids $50
+AI-Balanced-0 bids $55
+AI-Balanced-1 bids $60
 Going once...
-AI-Conservative-0 bids $39
-AI-Aggressive-0 bids $44
+AI-Balanced-0 bids $65
+AI-Balanced-1 bids $70
 AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $75
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $80
+AI-Balanced-0 bids $85
 Going once...
+AI-Balanced-1 bids $90
+AI-Balanced-0 bids $95
 SOLD!
-RESULT: Winner AI-Aggressive-0 for $44 | Value: $82 | Profit: $38
-RESULT: Winner AI-Aggressive-0 for $44 | Value: $82 | Profit: $38
+RESULT: Winner AI-Balanced-0 for $95 | Value: $111 | Profit: $16
+RESULT: Winner AI-Balanced-0 for $95 | Value: $111 | Profit: $16
 
 --- ROUND 41 ---
 --- Round 41 Started ---
 Item Hint: Strong market interest
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $29
-AI-Conservative-0 bids $34
-AI-Conservative-1 bids $39
-AI-Conservative-0 bids $44
+AI-Balanced-1 bids $39
+AI-Balanced-0 bids $44
+AI-Balanced-1 bids $49
+AI-Balanced-0 bids $54
+AI-Conservative-0 bids $59
+AI-Conservative-1 bids $64
+AI-Conservative-0 bids $69
 Going once...
-AI-Conservative-1 bids $49
-AI-Conservative-0 bids $54
-AI-Conservative-1 bids $59
-AI-Conservative-0 bids $64
-AI-Conservative-1 bids $69
+AI-Balanced-1 bids $74
+AI-Balanced-0 bids $79
+AI-Balanced-1 bids $84
+AI-Balanced-0 bids $89
+AI-Balanced-1 bids $94
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $99
 Going once...
-AI-Conservative-0 bids $74
-Going once...
-AI-Conservative-1 bids $79
-Going once...
-AI-Conservative-0 bids $84
-Going once...
-AI-Conservative-1 bids $89
-Going once...
+AI-Balanced-1 bids $104
+AI-Balanced-0 bids $109
 SOLD!
-RESULT: Winner AI-Conservative-1 for $89 | Value: $141 | Profit: $52
-RESULT: Winner AI-Conservative-1 for $89 | Value: $141 | Profit: $52
+RESULT: Winner AI-Balanced-0 for $109 | Value: $137 | Profit: $28
+RESULT: Winner AI-Balanced-0 for $109 | Value: $137 | Profit: $28
 
 --- ROUND 42 ---
 --- Round 42 Started ---
-Item Hint: Decent demand
+Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
 Going once...
-AI-Conservative-1 bids $41
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
+AI-Balanced-1 bids $30
 SOLD!
-RESULT: Winner AI-Conservative-1 for $61 | Value: $101 | Profit: $40
-RESULT: Winner AI-Conservative-1 for $61 | Value: $101 | Profit: $40
+RESULT: Winner AI-Balanced-1 for $30 | Value: $43 | Profit: $13
+RESULT: Winner AI-Balanced-1 for $30 | Value: $43 | Profit: $13
 
 --- ROUND 43 ---
 --- Round 43 Started ---
-Item Hint: Decent demand
+Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
-AI-Conservative-0 bids $46
+AI-Conservative-1 bids $12
+AI-Balanced-0 bids $21
+AI-Conservative-1 bids $26
+AI-Balanced-0 bids $31
+AI-Balanced-1 bids $36
+AI-Balanced-0 bids $41
 Going once...
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
+AI-Balanced-1 bids $46
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $51
+AI-Balanced-1 bids $56
+AI-Balanced-0 bids $61
+AI-Balanced-1 bids $66
 Going once...
 SOLD!
-RESULT: Winner AI-Conservative-1 for $61 | Value: $98 | Profit: $37
-RESULT: Winner AI-Conservative-1 for $61 | Value: $98 | Profit: $37
+RESULT: Winner AI-Balanced-1 for $66 | Value: $70 | Profit: $4
+RESULT: Winner AI-Balanced-1 for $66 | Value: $70 | Profit: $4
 
 --- ROUND 44 ---
 --- Round 44 Started ---
-Item Hint: Decent demand
+Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
+AI-Conservative-1 bids $5
+AI-Balanced-0 bids $10
+AI-Balanced-1 bids $15
+AI-Balanced-0 bids $20
+AI-Balanced-1 bids $25
 Going once...
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
+AI-Balanced-0 bids $30
 SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $91
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $91
+RESULT: Winner AI-Balanced-0 for $30 | Value: $25 | Profit: $-5
+RESULT: Winner AI-Balanced-0 for $30 | Value: $25 | Profit: $-5
 
 --- ROUND 45 ---
 --- Round 45 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
+AI-Balanced-0 bids $29
+AI-Balanced-1 bids $34
+AI-Conservative-0 bids $39
+AI-Balanced-0 bids $44
+AI-Conservative-0 bids $49
+AI-Balanced-0 bids $54
+AI-Balanced-1 bids $59
+AI-Balanced-0 bids $64
 Going once...
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-AI-Conservative-0 bids $66
-Going once...
-AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $69
 AI-Conservative-0 has WITHDRAWN.
-Going twice...
+AI-Balanced-0 bids $74
+AI-Balanced-1 bids $79
+AI-Balanced-0 bids $84
+Going once...
 SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $98
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $98
+RESULT: Winner AI-Balanced-0 for $84 | Value: $94 | Profit: $10
+RESULT: Winner AI-Balanced-0 for $84 | Value: $94 | Profit: $10
 
 --- ROUND 46 ---
 --- Round 46 Started ---
-Item Hint: Below average demand
+Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $13
-AI-Conservative-0 bids $18
-AI-Conservative-1 bids $23
-AI-Conservative-0 bids $28
-AI-Conservative-1 bids $33
+AI-Conservative-0 bids $21
+AI-Balanced-1 bids $30
+AI-Conservative-0 bids $35
+AI-Conservative-1 bids $40
+AI-Balanced-1 bids $45
+AI-Conservative-0 bids $50
+AI-Balanced-1 bids $55
 Going once...
-AI-Conservative-0 bids $38
-Going once...
+AI-Balanced-0 bids $60
+AI-Balanced-1 bids $65
+AI-Balanced-0 bids $70
 AI-Conservative-0 has WITHDRAWN.
 AI-Conservative-1 has WITHDRAWN.
-Going twice...
+AI-Balanced-1 bids $75
+Going once...
+AI-Balanced-0 bids $80
+AI-Balanced-1 bids $85
+AI-Balanced-0 bids $90
+AI-Balanced-1 bids $95
 SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
+RESULT: Winner AI-Balanced-1 for $95 | Value: $110 | Profit: $15
+RESULT: Winner AI-Balanced-1 for $95 | Value: $110 | Profit: $15
 
 --- ROUND 47 ---
 --- Round 47 Started ---
-Item Hint: Strong market interest
+Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $28
-AI-Conservative-0 bids $33
-AI-Conservative-1 bids $38
-AI-Conservative-0 bids $43
+AI-Balanced-0 bids $20
+AI-Conservative-1 bids $25
+AI-Balanced-1 bids $30
+AI-Balanced-0 bids $35
+AI-Balanced-1 bids $40
+AI-Balanced-0 bids $45
+AI-Balanced-1 bids $50
 Going once...
-AI-Conservative-1 bids $48
-AI-Conservative-0 bids $53
-AI-Conservative-1 bids $58
-AI-Conservative-0 bids $63
-AI-Conservative-1 bids $68
-AI-Conservative-0 bids $73
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $55
+AI-Balanced-1 bids $60
+AI-Balanced-0 bids $65
 Going once...
-AI-Conservative-1 bids $78
-Going once...
-AI-Conservative-0 bids $83
-Going once...
-AI-Conservative-1 bids $88
-Going once...
-AI-Conservative-0 bids $93
 SOLD!
-RESULT: Winner AI-Conservative-0 for $93 | Value: $117 | Profit: $24
-RESULT: Winner AI-Conservative-0 for $93 | Value: $117 | Profit: $24
+RESULT: Winner AI-Balanced-0 for $65 | Value: $61 | Profit: $-4
+RESULT: Winner AI-Balanced-0 for $65 | Value: $61 | Profit: $-4
 
 --- ROUND 48 ---
 --- Round 48 Started ---
-Item Hint: Low market interest
+Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $5
-AI-Conservative-1 bids $10
+AI-Balanced-1 bids $20
+AI-Conservative-0 bids $25
+AI-Balanced-1 bids $30
+AI-Conservative-1 bids $35
+AI-Balanced-0 bids $40
+AI-Balanced-1 bids $45
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $50
+AI-Balanced-1 bids $55
+AI-Conservative-0 has WITHDRAWN.
 SOLD!
-RESULT: Winner AI-Conservative-1 for $10 | Value: $35 | Profit: $25
-RESULT: Winner AI-Conservative-1 for $10 | Value: $35 | Profit: $25
+RESULT: Winner AI-Balanced-1 for $55 | Value: $77 | Profit: $22
+RESULT: Winner AI-Balanced-1 for $55 | Value: $77 | Profit: $22
 
 --- ROUND 49 ---
 --- Round 49 Started ---
-Item Hint: Strong market interest
+Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $30
-AI-Conservative-1 bids $35
-AI-Conservative-0 bids $40
-AI-Conservative-1 bids $45
-AI-Conservative-0 bids $50
-AI-Conservative-1 bids $55
+AI-Balanced-1 bids $9
+AI-Balanced-0 bids $14
+AI-Balanced-1 bids $19
+AI-Balanced-0 bids $24
 Going once...
-AI-Conservative-0 bids $60
-AI-Conservative-1 bids $65
-AI-Conservative-0 bids $70
-AI-Conservative-1 bids $75
-Going once...
-AI-Conservative-0 bids $80
-Going once...
-AI-Conservative-1 bids $85
-Going once...
-AI-Conservative-0 bids $90
-Going once...
-AI-Conservative-1 bids $95
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
+AI-Balanced-1 bids $29
+AI-Balanced-0 bids $34
 SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $117
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $117
+RESULT: Winner AI-Balanced-0 for $34 | Value: $30 | Profit: $-4
+RESULT: Winner AI-Balanced-0 for $34 | Value: $30 | Profit: $-4
 
 --- ROUND 50 ---
 --- Round 50 Started ---
 Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Conservative-0 bids $10
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
+AI-Balanced-1 bids $30
+Going once...
+AI-Balanced-0 bids $35
 SOLD!
-RESULT: Winner AI-Conservative-0 for $10 | Value: $25 | Profit: $15
-RESULT: Winner AI-Conservative-0 for $10 | Value: $25 | Profit: $15
+RESULT: Winner AI-Balanced-0 for $35 | Value: $53 | Profit: $18
+RESULT: Winner AI-Balanced-0 for $35 | Value: $53 | Profit: $18
 
 --- ROUND 51 ---
 --- Round 51 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $37
+AI-Balanced-0 bids $42
+AI-Balanced-1 bids $47
+AI-Conservative-1 bids $52
+AI-Conservative-0 bids $57
+AI-Balanced-1 bids $62
+AI-Conservative-0 bids $67
+Going once...
+AI-Balanced-1 bids $72
+AI-Balanced-0 bids $77
+AI-Balanced-1 bids $82
+AI-Balanced-0 bids $87
+AI-Balanced-1 bids $92
+AI-Balanced-0 bids $97
+AI-Balanced-1 bids $102
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $107
+AI-Balanced-1 bids $112
+AI-Balanced-0 bids $117
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-0 for $117 | Value: $144 | Profit: $27
+RESULT: Winner AI-Balanced-0 for $117 | Value: $144 | Profit: $27
+
+--- ROUND 52 ---
+--- Round 52 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $9
+AI-Balanced-0 bids $14
+AI-Balanced-1 bids $19
+AI-Balanced-0 bids $24
+Going once...
+AI-Balanced-1 bids $29
+SOLD!
+RESULT: Winner AI-Balanced-1 for $29 | Value: $23 | Profit: $-6
+RESULT: Winner AI-Balanced-1 for $29 | Value: $23 | Profit: $-6
+
+--- ROUND 53 ---
+--- Round 53 Started ---
+Item Hint: Extremely valuable item
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $58
+AI-Conservative-1 bids $63
+AI-Balanced-1 bids $68
+AI-Balanced-0 bids $73
+AI-Balanced-1 bids $78
+AI-Balanced-0 bids $83
+Going once...
+AI-Conservative-0 bids $88
+AI-Balanced-1 bids $93
+AI-Balanced-0 bids $98
+AI-Balanced-1 bids $103
+AI-Balanced-0 bids $108
+AI-Balanced-1 bids $113
+AI-Balanced-0 bids $118
+Going once...
+AI-Balanced-1 bids $123
+AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $128
+AI-Balanced-1 bids $133
+AI-Balanced-0 bids $138
+AI-Balanced-1 bids $143
+AI-Balanced-0 bids $148
+Going once...
+AI-Balanced-1 bids $153
+AI-Balanced-0 bids $158
+AI-Balanced-1 bids $163
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-1 for $163 | Value: $188 | Profit: $25
+RESULT: Winner AI-Balanced-1 for $163 | Value: $188 | Profit: $25
+
+--- ROUND 54 ---
+--- Round 54 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $13
+AI-Balanced-1 bids $21
+AI-Balanced-0 bids $26
+AI-Balanced-1 bids $31
+AI-Balanced-0 bids $36
+AI-Balanced-1 bids $41
+Going once...
+AI-Balanced-0 bids $46
+AI-Balanced-1 bids $51
+AI-Balanced-0 bids $56
+AI-Balanced-1 bids $61
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-1 for $61 | Value: $63 | Profit: $2
+RESULT: Winner AI-Balanced-1 for $61 | Value: $63 | Profit: $2
+
+--- ROUND 55 ---
+--- Round 55 Started ---
 Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
 AI-Conservative-1 bids $12
-AI-Conservative-0 bids $17
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-Going once...
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
+AI-Balanced-1 bids $30
+AI-Conservative-0 bids $35
+AI-Balanced-0 bids $40
+AI-Balanced-1 bids $45
+AI-Balanced-0 bids $50
 AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
+Going once...
+AI-Balanced-1 bids $55
+AI-Balanced-0 bids $60
+AI-Balanced-1 bids $65
+Going once...
 SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $75
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $75
+RESULT: Winner AI-Balanced-1 for $65 | Value: $64 | Profit: $-1
+RESULT: Winner AI-Balanced-1 for $65 | Value: $64 | Profit: $-1
 
---- ROUND 52 ---
---- Round 52 Started ---
+--- ROUND 56 ---
+--- Round 56 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $30
+AI-Balanced-0 bids $35
+AI-Conservative-0 bids $40
+AI-Balanced-0 bids $45
+AI-Conservative-0 bids $50
+AI-Balanced-1 bids $55
+AI-Balanced-0 bids $60
+AI-Balanced-1 bids $65
+Going once...
+AI-Balanced-0 bids $70
+AI-Balanced-1 bids $75
+AI-Balanced-0 bids $80
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-1 bids $85
+Going once...
+AI-Balanced-0 bids $90
+AI-Balanced-1 bids $95
+SOLD!
+RESULT: Winner AI-Balanced-1 for $95 | Value: $100 | Profit: $5
+RESULT: Winner AI-Balanced-1 for $95 | Value: $100 | Profit: $5
+
+--- ROUND 57 ---
+--- Round 57 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $5
+AI-Balanced-0 bids $10
+AI-Balanced-1 bids $15
+AI-Balanced-0 bids $20
+AI-Balanced-1 bids $25
+Going once...
+AI-Balanced-0 bids $30
+SOLD!
+RESULT: Winner AI-Balanced-0 for $30 | Value: $23 | Profit: $-7
+RESULT: Winner AI-Balanced-0 for $30 | Value: $23 | Profit: $-7
+
+--- ROUND 58 ---
+--- Round 58 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $21
+AI-Balanced-1 bids $26
+AI-Balanced-0 bids $31
+AI-Conservative-0 bids $36
+AI-Balanced-1 bids $41
+AI-Balanced-0 bids $46
+AI-Balanced-1 bids $51
+AI-Conservative-0 has WITHDRAWN.
+Going once...
+AI-Balanced-0 bids $56
+SOLD!
+RESULT: Winner AI-Balanced-0 for $56 | Value: $66 | Profit: $10
+RESULT: Winner AI-Balanced-0 for $56 | Value: $66 | Profit: $10
+
+--- ROUND 59 ---
+--- Round 59 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $28
+AI-Conservative-0 bids $33
+AI-Conservative-1 bids $38
+AI-Balanced-1 bids $43
+AI-Balanced-0 bids $48
+AI-Balanced-1 bids $53
+AI-Conservative-1 bids $58
+Going once...
+AI-Balanced-1 bids $63
+AI-Balanced-0 bids $68
+AI-Conservative-0 bids $73
+AI-Balanced-1 bids $78
+AI-Balanced-0 bids $83
+AI-Balanced-1 bids $88
+Going once...
+AI-Balanced-0 bids $93
+AI-Balanced-1 bids $98
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $103
+AI-Balanced-1 bids $108
+AI-Balanced-0 bids $113
+Going once...
+AI-Balanced-1 bids $118
+AI-Balanced-0 bids $123
+SOLD!
+RESULT: Winner AI-Balanced-0 for $123 | Value: $134 | Profit: $11
+RESULT: Winner AI-Balanced-0 for $123 | Value: $134 | Profit: $11
+
+--- ROUND 60 ---
+--- Round 60 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $30
+AI-Conservative-1 bids $35
+AI-Balanced-0 bids $40
+AI-Conservative-1 bids $45
+AI-Balanced-1 bids $50
+AI-Balanced-0 bids $55
+AI-Balanced-1 bids $60
+Going once...
+AI-Balanced-0 bids $65
+AI-Balanced-1 bids $70
+AI-Balanced-0 bids $75
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $80
+AI-Balanced-0 bids $85
+Going once...
+AI-Balanced-1 bids $90
+AI-Balanced-0 bids $95
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-0 for $95 | Value: $99 | Profit: $4
+RESULT: Winner AI-Balanced-0 for $95 | Value: $99 | Profit: $4
+
+--- ROUND 61 ---
+--- Round 61 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $28
+AI-Balanced-0 bids $39
+AI-Balanced-1 bids $44
+AI-Balanced-0 bids $49
+AI-Conservative-0 bids $54
+AI-Balanced-0 bids $59
+Going once...
+AI-Conservative-0 bids $64
+AI-Conservative-1 bids $69
+AI-Balanced-0 bids $74
+AI-Balanced-1 bids $79
+AI-Balanced-0 bids $84
+AI-Balanced-1 bids $89
+AI-Balanced-0 bids $94
+AI-Conservative-0 has WITHDRAWN.
+Going once...
+AI-Balanced-1 bids $99
+AI-Balanced-0 bids $104
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $109
+AI-Balanced-0 bids $114
+AI-Balanced-1 bids $119
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-1 for $119 | Value: $122 | Profit: $3
+RESULT: Winner AI-Balanced-1 for $119 | Value: $122 | Profit: $3
+
+--- ROUND 62 ---
+--- Round 62 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $30
+AI-Conservative-0 bids $35
+AI-Balanced-0 bids $40
+AI-Conservative-1 bids $45
+AI-Conservative-0 bids $50
+AI-Balanced-0 bids $55
+AI-Balanced-1 bids $60
+Going once...
+AI-Balanced-0 bids $65
+AI-Balanced-1 bids $70
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $75
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $80
+Going once...
+AI-Balanced-0 bids $85
+SOLD!
+RESULT: Winner AI-Balanced-0 for $85 | Value: $108 | Profit: $23
+RESULT: Winner AI-Balanced-0 for $85 | Value: $108 | Profit: $23
+
+--- ROUND 63 ---
+--- Round 63 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-0 bids $20
+AI-Balanced-0 bids $30
+AI-Balanced-1 bids $35
+AI-Conservative-0 bids $40
+AI-Balanced-0 bids $45
+AI-Balanced-1 bids $50
+AI-Balanced-0 bids $55
+Going once...
+AI-Balanced-1 bids $60
+AI-Balanced-0 bids $65
+AI-Balanced-1 bids $70
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $75
+AI-Balanced-1 bids $80
+Going once...
+AI-Balanced-0 bids $85
+SOLD!
+RESULT: Winner AI-Balanced-0 for $85 | Value: $104 | Profit: $19
+RESULT: Winner AI-Balanced-0 for $85 | Value: $104 | Profit: $19
+
+--- ROUND 64 ---
+--- Round 64 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $39
+AI-Balanced-1 bids $44
+AI-Conservative-1 bids $49
+AI-Balanced-0 bids $54
+AI-Balanced-1 bids $59
+AI-Conservative-0 bids $64
+AI-Balanced-0 bids $69
+Going once...
+AI-Balanced-1 bids $74
+AI-Balanced-0 bids $79
+AI-Balanced-1 bids $84
+AI-Balanced-0 bids $89
+AI-Balanced-1 bids $94
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $99
+AI-Balanced-1 bids $104
+AI-Conservative-1 has WITHDRAWN.
+Going once...
+AI-Balanced-0 bids $109
+AI-Balanced-1 bids $114
+AI-Balanced-0 bids $119
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-0 for $119 | Value: $141 | Profit: $22
+RESULT: Winner AI-Balanced-0 for $119 | Value: $141 | Profit: $22
+
+--- ROUND 65 ---
+--- Round 65 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $29
+AI-Conservative-0 bids $34
+AI-Balanced-1 bids $39
+AI-Conservative-0 bids $44
+AI-Conservative-1 bids $49
+AI-Balanced-1 bids $54
+Going once...
+AI-Balanced-0 bids $59
+AI-Balanced-1 bids $64
+AI-Balanced-0 bids $69
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-1 bids $74
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $79
+AI-Balanced-1 bids $84
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-1 for $84 | Value: $113 | Profit: $29
+RESULT: Winner AI-Balanced-1 for $84 | Value: $113 | Profit: $29
+
+--- ROUND 66 ---
+--- Round 66 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $9
+AI-Balanced-1 bids $14
+AI-Balanced-0 bids $19
+AI-Balanced-1 bids $24
+Going once...
+AI-Balanced-0 bids $29
+SOLD!
+RESULT: Winner AI-Balanced-0 for $29 | Value: $34 | Profit: $5
+RESULT: Winner AI-Balanced-0 for $29 | Value: $34 | Profit: $5
+
+--- ROUND 67 ---
+--- Round 67 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $21
+AI-Balanced-0 bids $26
+AI-Balanced-1 bids $31
+AI-Balanced-0 bids $36
+AI-Balanced-1 bids $41
+AI-Balanced-0 bids $46
+Going once...
+AI-Balanced-1 bids $51
+AI-Balanced-0 bids $56
+Going once...
+AI-Balanced-1 bids $61
+SOLD!
+RESULT: Winner AI-Balanced-1 for $61 | Value: $65 | Profit: $4
+RESULT: Winner AI-Balanced-1 for $61 | Value: $65 | Profit: $4
+
+--- ROUND 68 ---
+--- Round 68 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-0 bids $20
+AI-Balanced-1 bids $25
+AI-Conservative-1 bids $30
+AI-Balanced-1 bids $35
+AI-Balanced-0 bids $40
+Going once...
+AI-Balanced-1 bids $45
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $50
+AI-Balanced-1 bids $55
+AI-Balanced-0 bids $60
+AI-Balanced-1 bids $65
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-1 for $65 | Value: $67 | Profit: $2
+RESULT: Winner AI-Balanced-1 for $65 | Value: $67 | Profit: $2
+
+--- ROUND 69 ---
+--- Round 69 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-0 bids $5
+AI-Balanced-0 bids $10
+AI-Balanced-1 bids $15
+AI-Balanced-0 bids $20
+AI-Balanced-1 bids $25
+Going once...
+AI-Balanced-0 bids $30
+AI-Balanced-1 bids $35
+SOLD!
+RESULT: Winner AI-Balanced-1 for $35 | Value: $42 | Profit: $7
+RESULT: Winner AI-Balanced-1 for $35 | Value: $42 | Profit: $7
+
+--- ROUND 70 ---
+--- Round 70 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-0 bids $5
+AI-Balanced-1 bids $10
+AI-Balanced-0 bids $15
+AI-Balanced-1 bids $20
+AI-Balanced-0 bids $25
+Going once...
+AI-Balanced-1 bids $30
+AI-Balanced-0 bids $35
+SOLD!
+RESULT: Winner AI-Balanced-0 for $35 | Value: $38 | Profit: $3
+RESULT: Winner AI-Balanced-0 for $35 | Value: $38 | Profit: $3
+
+--- ROUND 71 ---
+--- Round 71 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $29
+AI-Balanced-0 bids $34
+AI-Balanced-1 bids $39
+AI-Conservative-1 bids $44
+AI-Balanced-1 bids $49
+AI-Balanced-0 bids $54
+Going once...
+AI-Balanced-1 bids $59
+AI-Balanced-0 bids $64
+AI-Balanced-1 bids $69
+AI-Conservative-1 has WITHDRAWN.
+AI-Balanced-0 bids $74
+AI-Balanced-1 bids $79
+AI-Balanced-0 bids $84
+Going once...
+AI-Balanced-1 bids $89
+AI-Balanced-0 bids $94
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-0 for $94 | Value: $107 | Profit: $13
+RESULT: Winner AI-Balanced-0 for $94 | Value: $107 | Profit: $13
+
+--- ROUND 72 ---
+--- Round 72 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-0 bids $30
+AI-Balanced-0 bids $39
+AI-Conservative-0 bids $44
+AI-Balanced-1 bids $49
+AI-Conservative-1 bids $54
+AI-Balanced-1 bids $59
+AI-Conservative-0 bids $64
+AI-Balanced-0 bids $69
+Going once...
+AI-Conservative-0 bids $74
+AI-Balanced-0 bids $79
+AI-Balanced-1 bids $84
+AI-Balanced-0 bids $89
+AI-Balanced-1 bids $94
+AI-Balanced-0 bids $99
+Going once...
+AI-Balanced-1 bids $104
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-0 bids $109
+AI-Balanced-1 bids $114
+AI-Balanced-0 bids $119
+Going once...
+SOLD!
+RESULT: Winner AI-Balanced-0 for $119 | Value: $133 | Profit: $14
+RESULT: Winner AI-Balanced-0 for $119 | Value: $133 | Profit: $14
+
+--- ROUND 73 ---
+--- Round 73 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $21
+AI-Conservative-0 bids $26
+AI-Conservative-1 bids $31
+AI-Balanced-1 bids $36
+AI-Conservative-0 bids $41
+Going once...
+AI-Conservative-1 bids $46
+AI-Balanced-1 bids $51
+AI-Conservative-1 bids $56
+AI-Balanced-1 bids $61
+Going once...
+AI-Conservative-1 bids $66
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-1 bids $71
+SOLD!
+RESULT: Winner AI-Balanced-1 for $71 | Value: $98 | Profit: $27
+RESULT: Winner AI-Balanced-1 for $71 | Value: $98 | Profit: $27
+
+--- ROUND 74 ---
+--- Round 74 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-0 bids $28
+AI-Conservative-1 bids $33
+AI-Balanced-1 bids $39
+AI-Conservative-0 bids $44
+AI-Conservative-1 bids $49
+AI-Conservative-0 bids $54
+AI-Conservative-1 bids $59
+Going once...
+AI-Balanced-1 bids $64
+AI-Conservative-1 bids $69
+AI-Balanced-1 bids $74
+Going once...
+AI-Conservative-0 bids $79
+AI-Balanced-1 bids $84
+Going once...
+AI-Conservative-0 bids $89
+AI-Balanced-1 bids $94
+AI-Conservative-0 has WITHDRAWN.
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+SOLD!
+RESULT: Winner AI-Balanced-1 for $94 | Value: $133 | Profit: $39
+RESULT: Winner AI-Balanced-1 for $94 | Value: $133 | Profit: $39
+
+--- ROUND 75 ---
+--- Round 75 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 bids $30
+AI-Conservative-0 bids $35
+AI-Balanced-1 bids $40
+AI-Conservative-0 bids $45
+AI-Balanced-1 bids $50
+AI-Conservative-1 bids $55
+Going once...
+AI-Balanced-1 bids $60
+Going once...
+AI-Conservative-1 bids $65
+AI-Conservative-0 has WITHDRAWN.
+AI-Balanced-1 bids $70
+SOLD!
+RESULT: Winner AI-Balanced-1 for $70 | Value: $99 | Profit: $29
+RESULT: Winner AI-Balanced-1 for $70 | Value: $99 | Profit: $29
+
+--- ROUND 76 ---
+--- Round 76 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Conservative-1 bids $30
+AI-Balanced-1 bids $39
+AI-Conservative-1 bids $44
+AI-Conservative-0 bids $49
+AI-Conservative-1 bids $54
+Going once...
+AI-Conservative-0 bids $59
+AI-Conservative-1 bids $64
+AI-Balanced-1 bids $69
+AI-Conservative-1 bids $74
+AI-Balanced-1 bids $79
+Going once...
+AI-Conservative-1 bids $84
+AI-Balanced-1 bids $89
+Going once...
+AI-Conservative-1 bids $94
+AI-Balanced-1 bids $99
+AI-Conservative-0 has WITHDRAWN.
+SOLD!
+RESULT: Winner AI-Balanced-1 for $99 | Value: $134 | Profit: $35
+RESULT: Winner AI-Balanced-1 for $99 | Value: $134 | Profit: $35
+
+--- ROUND 77 ---
+--- Round 77 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $21
 AI-Conservative-1 bids $26
 AI-Conservative-0 bids $31
@@ -998,95 +1660,47 @@ AI-Conservative-0 bids $41
 AI-Conservative-1 bids $46
 Going once...
 AI-Conservative-0 bids $51
-Going once...
 AI-Conservative-1 bids $56
 Going once...
 AI-Conservative-0 bids $61
 Going once...
 AI-Conservative-1 bids $66
 SOLD!
-RESULT: Winner AI-Conservative-1 for $66 | Value: $104 | Profit: $38
-RESULT: Winner AI-Conservative-1 for $66 | Value: $104 | Profit: $38
+RESULT: Winner AI-Conservative-1 for $66 | Value: $91 | Profit: $25
+RESULT: Winner AI-Conservative-1 for $66 | Value: $91 | Profit: $25
 
---- ROUND 53 ---
---- Round 53 Started ---
+--- ROUND 78 ---
+--- Round 78 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $14
+AI-Conservative-1 bids $19
+AI-Conservative-0 bids $24
+AI-Conservative-1 bids $29
+AI-Conservative-0 bids $34
+Going once...
+SOLD!
+RESULT: Winner AI-Conservative-0 for $34 | Value: $76 | Profit: $42
+RESULT: Winner AI-Conservative-0 for $34 | Value: $76 | Profit: $42
+
+--- ROUND 79 ---
+--- Round 79 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $20
-AI-Conservative-0 bids $25
-AI-Conservative-1 bids $30
-AI-Conservative-0 bids $35
-AI-Conservative-1 bids $40
-Going once...
-AI-Conservative-0 bids $45
-AI-Conservative-1 bids $50
-AI-Conservative-0 bids $55
-Going once...
-AI-Conservative-1 bids $60
-Going once...
-AI-Conservative-0 bids $65
-SOLD!
-RESULT: Winner AI-Conservative-0 for $65 | Value: $92 | Profit: $27
-RESULT: Winner AI-Conservative-0 for $65 | Value: $92 | Profit: $27
-
---- ROUND 54 ---
---- Round 54 Started ---
-Item Hint: Low market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $5
-AI-Conservative-1 bids $10
-SOLD!
-RESULT: Winner AI-Conservative-1 for $10 | Value: $37 | Profit: $27
-RESULT: Winner AI-Conservative-1 for $10 | Value: $37 | Profit: $27
-
---- ROUND 55 ---
---- Round 55 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $28
-AI-Conservative-1 bids $33
-AI-Conservative-0 bids $38
-AI-Conservative-1 bids $43
-AI-Conservative-0 bids $48
-AI-Conservative-1 bids $53
-Going once...
-AI-Conservative-0 bids $58
-AI-Conservative-1 bids $63
-AI-Conservative-0 bids $68
-Going once...
-AI-Conservative-1 bids $73
-Going once...
-AI-Conservative-0 bids $78
-Going once...
-AI-Conservative-1 bids $83
-Going once...
-AI-Conservative-0 bids $88
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $130
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $130
-
---- ROUND 56 ---
---- Round 56 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-1 bids $21
 AI-Conservative-0 bids $26
 AI-Conservative-1 bids $31
 AI-Conservative-0 bids $36
 AI-Conservative-1 bids $41
-Going once...
 AI-Conservative-0 bids $46
 AI-Conservative-1 bids $51
+Going once...
 AI-Conservative-0 bids $56
 Going once...
 AI-Conservative-1 bids $61
@@ -1098,37 +1712,103 @@ AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $102
+RESULT: Item goes UNSOLD | Value: $100
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $102
+RESULT: Item goes UNSOLD | Value: $100
 
---- ROUND 57 ---
---- Round 57 Started ---
+--- ROUND 80 ---
+--- Round 80 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-AI-Conservative-1 bids $42
-AI-Conservative-0 bids $47
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $21
+AI-Conservative-0 bids $26
+AI-Conservative-1 bids $31
+AI-Conservative-0 bids $36
+AI-Conservative-1 bids $41
 Going once...
-AI-Conservative-1 bids $52
+AI-Conservative-0 bids $46
+AI-Conservative-1 bids $51
 Going once...
-AI-Conservative-0 bids $57
+AI-Conservative-0 bids $56
 Going once...
-AI-Conservative-1 bids $62
+AI-Conservative-1 bids $61
 Going once...
+AI-Conservative-0 bids $66
+Going once...
+AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 has WITHDRAWN.
+Going twice...
 SOLD!
-RESULT: Winner AI-Conservative-1 for $62 | Value: $89 | Profit: $27
-RESULT: Winner AI-Conservative-1 for $62 | Value: $89 | Profit: $27
+DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $104
+DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $104
 
---- ROUND 58 ---
---- Round 58 Started ---
+--- ROUND 81 ---
+--- Round 81 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $5
+AI-Conservative-0 bids $10
+SOLD!
+RESULT: Winner AI-Conservative-0 for $10 | Value: $26 | Profit: $16
+RESULT: Winner AI-Conservative-0 for $10 | Value: $26 | Profit: $16
+
+--- ROUND 82 ---
+--- Round 82 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $30
+AI-Conservative-0 bids $35
+AI-Conservative-1 bids $40
+AI-Conservative-0 bids $45
+AI-Conservative-1 bids $50
+AI-Conservative-0 bids $55
+Going once...
+AI-Conservative-1 bids $60
+AI-Conservative-0 bids $65
+AI-Conservative-1 bids $70
+Going once...
+AI-Conservative-0 bids $75
+Going once...
+AI-Conservative-1 bids $80
+Going once...
+AI-Conservative-0 bids $85
+Going once...
+AI-Conservative-1 bids $90
+SOLD!
+RESULT: Winner AI-Conservative-1 for $90 | Value: $126 | Profit: $36
+RESULT: Winner AI-Conservative-1 for $90 | Value: $126 | Profit: $36
+
+--- ROUND 83 ---
+--- Round 83 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $5
+AI-Conservative-1 bids $10
+SOLD!
+RESULT: Winner AI-Conservative-1 for $10 | Value: $53 | Profit: $43
+RESULT: Winner AI-Conservative-1 for $10 | Value: $53 | Profit: $43
+
+--- ROUND 84 ---
+--- Round 84 Started ---
 Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $13
 AI-Conservative-1 bids $18
 AI-Conservative-0 bids $23
@@ -1137,42 +1817,82 @@ AI-Conservative-0 bids $33
 Going once...
 AI-Conservative-1 bids $38
 Going once...
-AI-Conservative-1 has WITHDRAWN.
 AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
+RESULT: Item goes UNSOLD | Value: $76
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
+RESULT: Item goes UNSOLD | Value: $76
 
---- ROUND 59 ---
---- Round 59 Started ---
+--- ROUND 85 ---
+--- Round 85 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $22
 AI-Conservative-1 bids $27
 AI-Conservative-0 bids $32
 AI-Conservative-1 bids $37
 AI-Conservative-0 bids $42
+Going once...
 AI-Conservative-1 bids $47
-Going once...
 AI-Conservative-0 bids $52
-Going once...
 AI-Conservative-1 bids $57
 Going once...
 AI-Conservative-0 bids $62
 Going once...
+AI-Conservative-1 bids $67
+Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Conservative-0 has WITHDRAWN.
+Going twice...
 SOLD!
-RESULT: Winner AI-Conservative-0 for $62 | Value: $99 | Profit: $37
-RESULT: Winner AI-Conservative-0 for $62 | Value: $99 | Profit: $37
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $100
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $100
 
---- ROUND 60 ---
---- Round 60 Started ---
+--- ROUND 86 ---
+--- Round 86 Started ---
+Item Hint: Strong market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $30
+AI-Conservative-1 bids $35
+AI-Conservative-0 bids $40
+AI-Conservative-1 bids $45
+AI-Conservative-0 bids $50
+Going once...
+AI-Conservative-1 bids $55
+AI-Conservative-0 bids $60
+AI-Conservative-1 bids $65
+AI-Conservative-0 bids $70
+Going once...
+AI-Conservative-1 bids $75
+Going once...
+AI-Conservative-0 bids $80
+Going once...
+AI-Conservative-1 bids $85
+Going once...
+AI-Conservative-0 bids $90
+Going once...
+SOLD!
+RESULT: Winner AI-Conservative-0 for $90 | Value: $125 | Profit: $35
+RESULT: Winner AI-Conservative-0 for $90 | Value: $125 | Profit: $35
+
+--- ROUND 87 ---
+--- Round 87 Started ---
 Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $12
 AI-Conservative-1 bids $17
 AI-Conservative-0 bids $22
@@ -1181,27 +1901,90 @@ AI-Conservative-0 bids $32
 Going once...
 AI-Conservative-1 bids $37
 Going once...
+AI-Conservative-1 has WITHDRAWN.
+AI-Conservative-0 has WITHDRAWN.
+Going twice...
+SOLD!
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $83
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $83
+
+--- ROUND 88 ---
+--- Round 88 Started ---
+Item Hint: Below average demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $13
+AI-Conservative-1 bids $18
+AI-Conservative-0 bids $23
+AI-Conservative-1 bids $28
+AI-Conservative-0 bids $33
+Going once...
+AI-Conservative-1 bids $38
+Going once...
 AI-Conservative-0 has WITHDRAWN.
 AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $64
+RESULT: Item goes UNSOLD | Value: $69
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $64
+RESULT: Item goes UNSOLD | Value: $69
 
---- ROUND 61 ---
---- Round 61 Started ---
+--- ROUND 89 ---
+--- Round 89 Started ---
+Item Hint: Low market interest
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $5
+AI-Conservative-0 bids $10
+SOLD!
+RESULT: Winner AI-Conservative-0 for $10 | Value: $29 | Profit: $19
+RESULT: Winner AI-Conservative-0 for $10 | Value: $29 | Profit: $19
+
+--- ROUND 90 ---
+--- Round 90 Started ---
+Item Hint: Decent demand
+AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
+AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $22
+AI-Conservative-1 bids $27
+AI-Conservative-0 bids $32
+AI-Conservative-1 bids $37
+AI-Conservative-0 bids $42
+Going once...
+AI-Conservative-1 bids $47
+AI-Conservative-0 bids $52
+Going once...
+AI-Conservative-1 bids $57
+Going once...
+AI-Conservative-0 bids $62
+Going once...
+SOLD!
+RESULT: Winner AI-Conservative-0 for $62 | Value: $96 | Profit: $34
+RESULT: Winner AI-Conservative-0 for $62 | Value: $96 | Profit: $34
+
+--- ROUND 91 ---
+--- Round 91 Started ---
 Item Hint: Strong market interest
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $29
 AI-Conservative-1 bids $34
 AI-Conservative-0 bids $39
 AI-Conservative-1 bids $44
 AI-Conservative-0 bids $49
-Going once...
 AI-Conservative-1 bids $54
+Going once...
 AI-Conservative-0 bids $59
 AI-Conservative-1 bids $64
 AI-Conservative-0 bids $69
@@ -1213,637 +1996,82 @@ Going once...
 AI-Conservative-1 bids $84
 Going once...
 AI-Conservative-0 bids $89
-Going once...
-AI-Conservative-1 has WITHDRAWN.
 SOLD!
-RESULT: Winner AI-Conservative-0 for $89 | Value: $132 | Profit: $43
-RESULT: Winner AI-Conservative-0 for $89 | Value: $132 | Profit: $43
+RESULT: Winner AI-Conservative-0 for $89 | Value: $125 | Profit: $36
+RESULT: Winner AI-Conservative-0 for $89 | Value: $125 | Profit: $36
 
---- ROUND 62 ---
---- Round 62 Started ---
+--- ROUND 92 ---
+--- Round 92 Started ---
 Item Hint: Extremely valuable item
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-AI-Conservative-0 bids $66
-AI-Conservative-1 bids $71
-AI-Conservative-0 bids $76
-AI-Conservative-1 bids $81
-AI-Conservative-0 bids $86
-Going once...
-AI-Conservative-1 bids $91
-Going once...
-AI-Conservative-0 bids $96
-Going once...
-AI-Conservative-1 bids $101
-Going once...
-AI-Conservative-0 bids $106
-Going once...
-AI-Conservative-1 bids $111
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-SOLD!
-RESULT: Winner AI-Conservative-1 for $111 | Value: $172 | Profit: $61
-RESULT: Winner AI-Conservative-1 for $111 | Value: $172 | Profit: $61
-
---- ROUND 63 ---
---- Round 63 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $13
-AI-Conservative-1 bids $18
-AI-Conservative-0 bids $23
-AI-Conservative-1 bids $28
-AI-Conservative-0 bids $33
-Going once...
-AI-Conservative-1 bids $38
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $61
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $61
-
---- ROUND 64 ---
---- Round 64 Started ---
-Item Hint: Low market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Conservative-0 bids $10
-AI-Conservative-1 has WITHDRAWN.
-SOLD!
-RESULT: Winner AI-Conservative-0 for $10 | Value: $31 | Profit: $21
-RESULT: Winner AI-Conservative-0 for $10 | Value: $31 | Profit: $21
-
---- ROUND 65 ---
---- Round 65 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $12
-AI-Conservative-1 bids $17
-AI-Conservative-0 bids $22
-AI-Conservative-1 bids $27
-AI-Conservative-0 bids $32
-Going once...
-AI-Conservative-1 bids $37
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $70
-
---- ROUND 66 ---
---- Round 66 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
-Going once...
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-AI-Conservative-0 bids $66
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $92
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $92
-
---- ROUND 67 ---
---- Round 67 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $13
-AI-Conservative-0 bids $18
-AI-Conservative-1 bids $23
-AI-Conservative-0 bids $28
-AI-Conservative-1 bids $33
-Going once...
-AI-Conservative-0 bids $38
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $68
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $68
-
---- ROUND 68 ---
---- Round 68 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $20
-AI-Conservative-1 bids $25
-AI-Conservative-0 bids $30
-AI-Conservative-1 bids $35
-AI-Conservative-0 bids $40
-AI-Conservative-1 bids $45
-Going once...
-AI-Conservative-0 bids $50
-Going once...
-AI-Conservative-1 bids $55
-Going once...
-AI-Conservative-0 bids $60
-Going once...
-AI-Conservative-1 bids $65
-AI-Conservative-0 has WITHDRAWN.
-SOLD!
-RESULT: Winner AI-Conservative-1 for $65 | Value: $104 | Profit: $39
-RESULT: Winner AI-Conservative-1 for $65 | Value: $104 | Profit: $39
-
---- ROUND 69 ---
---- Round 69 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $28
-AI-Conservative-1 bids $33
-AI-Conservative-0 bids $38
-AI-Conservative-1 bids $43
-AI-Conservative-0 bids $48
-AI-Conservative-1 bids $53
-Going once...
-AI-Conservative-0 bids $58
-AI-Conservative-1 bids $63
-AI-Conservative-0 bids $68
-AI-Conservative-1 bids $73
-Going once...
-AI-Conservative-0 bids $78
-Going once...
-AI-Conservative-1 bids $83
-Going once...
-AI-Conservative-0 bids $88
-Going once...
-AI-Conservative-1 bids $93
-SOLD!
-RESULT: Winner AI-Conservative-1 for $93 | Value: $142 | Profit: $49
-RESULT: Winner AI-Conservative-1 for $93 | Value: $142 | Profit: $49
-
---- ROUND 70 ---
---- Round 70 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $21
-AI-Conservative-1 bids $26
-AI-Conservative-0 bids $31
-AI-Conservative-1 bids $36
-AI-Conservative-0 bids $41
-Going once...
-AI-Conservative-1 bids $46
-AI-Conservative-0 bids $51
-Going once...
-AI-Conservative-1 bids $56
-Going once...
-AI-Conservative-0 bids $61
-Going once...
-AI-Conservative-1 bids $66
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $100
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $100
-
---- ROUND 71 ---
---- Round 71 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $22
-AI-Conservative-1 bids $27
-AI-Conservative-0 bids $32
+AI-Balanced-1 decided to PASS.
 AI-Conservative-1 bids $37
 AI-Conservative-0 bids $42
-Going once...
 AI-Conservative-1 bids $47
 AI-Conservative-0 bids $52
-Going once...
 AI-Conservative-1 bids $57
 Going once...
 AI-Conservative-0 bids $62
-Going once...
 AI-Conservative-1 bids $67
+AI-Conservative-0 bids $72
+AI-Conservative-1 bids $77
+AI-Conservative-0 bids $82
+Going once...
+AI-Conservative-1 bids $87
+AI-Conservative-0 bids $92
+Going once...
+AI-Conservative-1 bids $97
+Going once...
+AI-Conservative-0 bids $102
+Going once...
+AI-Conservative-1 bids $107
+Going once...
+AI-Conservative-0 bids $112
+Going once...
+AI-Conservative-1 bids $117
 Going once...
 AI-Conservative-1 has WITHDRAWN.
 AI-Conservative-0 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $95
+RESULT: Item goes UNSOLD | Value: $140
 DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $95
+RESULT: Item goes UNSOLD | Value: $140
 
---- ROUND 72 ---
---- Round 72 Started ---
-Item Hint: Low market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $5
-AI-Conservative-1 bids $10
-SOLD!
-RESULT: Winner AI-Conservative-1 for $10 | Value: $10 | Profit: $0
-RESULT: Winner AI-Conservative-1 for $10 | Value: $10 | Profit: $0
-
---- ROUND 73 ---
---- Round 73 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $28
-AI-Conservative-0 bids $33
-AI-Conservative-1 bids $38
-AI-Conservative-0 bids $43
-AI-Conservative-1 bids $48
-AI-Conservative-0 bids $53
-Going once...
-AI-Conservative-1 bids $58
-AI-Conservative-0 bids $63
-AI-Conservative-1 bids $68
-AI-Conservative-0 bids $73
-Going once...
-AI-Conservative-1 bids $78
-Going once...
-AI-Conservative-0 bids $83
-Going once...
-AI-Conservative-1 bids $88
-Going once...
-AI-Conservative-0 bids $93
-SOLD!
-RESULT: Winner AI-Conservative-0 for $93 | Value: $145 | Profit: $52
-RESULT: Winner AI-Conservative-0 for $93 | Value: $145 | Profit: $52
-
---- ROUND 74 ---
---- Round 74 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $28
-AI-Conservative-1 bids $33
-AI-Conservative-0 bids $38
-AI-Conservative-1 bids $43
-AI-Conservative-0 bids $48
-Going once...
-AI-Conservative-1 bids $53
-AI-Conservative-0 bids $58
-AI-Conservative-1 bids $63
-AI-Conservative-0 bids $68
-Going once...
-AI-Conservative-1 bids $73
-Going once...
-AI-Conservative-0 bids $78
-Going once...
-AI-Conservative-1 bids $83
-Going once...
-AI-Conservative-0 bids $88
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $124
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $124
-
---- ROUND 75 ---
---- Round 75 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $21
-AI-Conservative-1 bids $26
-AI-Conservative-0 bids $31
-AI-Conservative-1 bids $36
-AI-Conservative-0 bids $41
-AI-Conservative-1 bids $46
-Going once...
-AI-Conservative-0 bids $51
-Going once...
-AI-Conservative-1 bids $56
-Going once...
-AI-Conservative-0 bids $61
-Going once...
-AI-Conservative-1 bids $66
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $99
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $99
-
---- ROUND 76 ---
---- Round 76 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-Going once...
-AI-Conservative-1 bids $41
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-AI-Conservative-0 bids $66
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $90
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $90
-
---- ROUND 77 ---
---- Round 77 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $20
-AI-Conservative-0 bids $25
-AI-Conservative-1 bids $30
-AI-Conservative-0 bids $35
-AI-Conservative-1 bids $40
-AI-Conservative-0 bids $45
-Going once...
-AI-Conservative-1 bids $50
-AI-Conservative-0 bids $55
-Going once...
-AI-Conservative-1 bids $60
-Going once...
-AI-Conservative-0 bids $65
-AI-Conservative-1 has WITHDRAWN.
-SOLD!
-RESULT: Winner AI-Conservative-0 for $65 | Value: $108 | Profit: $43
-RESULT: Winner AI-Conservative-0 for $65 | Value: $108 | Profit: $43
-
---- ROUND 78 ---
---- Round 78 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $30
-AI-Conservative-0 bids $35
-AI-Conservative-1 bids $40
-AI-Conservative-0 bids $45
-AI-Conservative-1 bids $50
-Going once...
-AI-Conservative-0 bids $55
-AI-Conservative-1 bids $60
-AI-Conservative-0 bids $65
-AI-Conservative-1 bids $70
-AI-Conservative-0 bids $75
-Going once...
-AI-Conservative-1 bids $80
-Going once...
-AI-Conservative-0 bids $85
-Going once...
-AI-Conservative-1 bids $90
-Going once...
-AI-Conservative-0 bids $95
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $125
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $125
-
---- ROUND 79 ---
---- Round 79 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $28
-AI-Conservative-0 bids $33
-AI-Conservative-1 bids $38
-AI-Conservative-0 bids $43
-AI-Conservative-1 bids $48
-AI-Conservative-0 bids $53
-Going once...
-AI-Conservative-1 bids $58
-AI-Conservative-0 bids $63
-AI-Conservative-1 bids $68
-AI-Conservative-0 bids $73
-Going once...
-AI-Conservative-1 bids $78
-Going once...
-AI-Conservative-0 bids $83
-Going once...
-AI-Conservative-1 bids $88
-Going once...
-AI-Conservative-0 bids $93
-SOLD!
-RESULT: Winner AI-Conservative-0 for $93 | Value: $134 | Profit: $41
-RESULT: Winner AI-Conservative-0 for $93 | Value: $134 | Profit: $41
-
---- ROUND 80 ---
---- Round 80 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $20
-AI-Conservative-0 bids $25
-AI-Conservative-1 bids $30
-AI-Conservative-0 bids $35
-AI-Conservative-1 bids $40
-Going once...
-AI-Conservative-0 bids $45
-AI-Conservative-1 bids $50
-AI-Conservative-0 bids $55
-Going once...
-AI-Conservative-1 bids $60
-Going once...
-AI-Conservative-0 bids $65
-AI-Conservative-1 has WITHDRAWN.
-SOLD!
-RESULT: Winner AI-Conservative-0 for $65 | Value: $90 | Profit: $25
-RESULT: Winner AI-Conservative-0 for $65 | Value: $90 | Profit: $25
-
---- ROUND 81 ---
---- Round 81 Started ---
+--- ROUND 93 ---
+--- Round 93 Started ---
 Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-1 bids $13
 AI-Conservative-0 bids $18
 AI-Conservative-1 bids $23
 AI-Conservative-0 bids $28
-Going once...
 AI-Conservative-1 bids $33
 Going once...
 AI-Conservative-0 bids $38
 Going once...
-AI-Conservative-1 has WITHDRAWN.
 AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $74
+RESULT: Item goes UNSOLD | Value: $62
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $74
+RESULT: Item goes UNSOLD | Value: $62
 
---- ROUND 82 ---
---- Round 82 Started ---
+--- ROUND 94 ---
+--- Round 94 Started ---
 Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $13
-AI-Conservative-1 bids $18
-AI-Conservative-0 bids $23
-AI-Conservative-1 bids $28
-AI-Conservative-0 bids $33
-Going once...
-AI-Conservative-1 bids $38
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $67
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $67
-
---- ROUND 83 ---
---- Round 83 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $12
-AI-Conservative-0 bids $17
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $71
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $71
-
---- ROUND 84 ---
---- Round 84 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-Going once...
-AI-Conservative-1 bids $41
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-Going once...
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-SOLD!
-RESULT: Winner AI-Conservative-1 for $61 | Value: $98 | Profit: $37
-RESULT: Winner AI-Conservative-1 for $61 | Value: $98 | Profit: $37
-
---- ROUND 85 ---
---- Round 85 Started ---
-Item Hint: Low market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $5
-AI-Conservative-0 bids $10
-SOLD!
-RESULT: Winner AI-Conservative-0 for $10 | Value: $33 | Profit: $23
-RESULT: Winner AI-Conservative-0 for $10 | Value: $33 | Profit: $23
-
---- ROUND 86 ---
---- Round 86 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $30
-AI-Conservative-0 bids $35
-AI-Conservative-1 bids $40
-AI-Conservative-0 bids $45
-AI-Conservative-1 bids $50
-Going once...
-AI-Conservative-0 bids $55
-AI-Conservative-1 bids $60
-AI-Conservative-0 bids $65
-AI-Conservative-1 bids $70
-AI-Conservative-0 bids $75
-Going once...
-AI-Conservative-1 bids $80
-Going once...
-AI-Conservative-0 bids $85
-Going once...
-AI-Conservative-1 bids $90
-Going once...
-AI-Conservative-0 bids $95
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $125
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $125
-
---- ROUND 87 ---
---- Round 87 Started ---
-Item Hint: Below average demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-1 bids $14
 AI-Conservative-0 bids $19
 AI-Conservative-1 bids $24
@@ -1857,94 +2085,30 @@ AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $74
+RESULT: Item goes UNSOLD | Value: $72
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $74
+RESULT: Item goes UNSOLD | Value: $72
 
---- ROUND 88 ---
---- Round 88 Started ---
-Item Hint: Below average demand
+--- ROUND 95 ---
+--- Round 95 Started ---
+Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $12
-AI-Conservative-1 bids $17
-AI-Conservative-0 bids $22
-AI-Conservative-1 bids $27
-AI-Conservative-0 bids $32
-Going once...
-AI-Conservative-1 bids $37
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $5
+AI-Conservative-1 bids $10
 SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $54
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $54
+RESULT: Winner AI-Conservative-1 for $10 | Value: $30 | Profit: $20
+RESULT: Winner AI-Conservative-1 for $10 | Value: $30 | Profit: $20
 
---- ROUND 89 ---
---- Round 89 Started ---
+--- ROUND 96 ---
+--- Round 96 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-AI-Conservative-1 bids $42
-Going once...
-AI-Conservative-0 bids $47
-AI-Conservative-1 bids $52
-Going once...
-AI-Conservative-0 bids $57
-Going once...
-AI-Conservative-1 bids $62
-Going once...
-AI-Conservative-0 bids $67
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $81
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $81
-
---- ROUND 90 ---
---- Round 90 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $31
-AI-Conservative-1 bids $36
-AI-Conservative-0 bids $41
-AI-Conservative-1 bids $46
-AI-Conservative-0 bids $51
-Going once...
-AI-Conservative-1 bids $56
-AI-Conservative-0 bids $61
-AI-Conservative-1 bids $66
-AI-Conservative-0 bids $71
-Going once...
-AI-Conservative-1 bids $76
-Going once...
-AI-Conservative-0 bids $81
-Going once...
-AI-Conservative-1 bids $86
-Going once...
-AI-Conservative-0 bids $91
-Going once...
-SOLD!
-RESULT: Winner AI-Conservative-0 for $91 | Value: $129 | Profit: $38
-RESULT: Winner AI-Conservative-0 for $91 | Value: $129 | Profit: $38
-
---- ROUND 91 ---
---- Round 91 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
+AI-Balanced-1 decided to PASS.
 AI-Conservative-0 bids $21
 AI-Conservative-1 bids $26
 AI-Conservative-0 bids $31
@@ -1958,276 +2122,102 @@ AI-Conservative-1 bids $56
 Going once...
 AI-Conservative-0 bids $61
 Going once...
-AI-Conservative-1 bids $66
-Going once...
-AI-Conservative-0 has WITHDRAWN.
-AI-Conservative-1 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $90
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $90
-
---- ROUND 92 ---
---- Round 92 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-AI-Conservative-1 bids $42
-Going once...
-AI-Conservative-0 bids $47
-AI-Conservative-1 bids $52
-Going once...
-AI-Conservative-0 bids $57
-Going once...
-AI-Conservative-1 bids $62
-Going once...
-AI-Conservative-0 bids $67
-Going once...
 AI-Conservative-0 has WITHDRAWN.
 AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $113
+RESULT: Item goes UNSOLD | Value: $105
 DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $113
-
---- ROUND 93 ---
---- Round 93 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $22
-AI-Conservative-0 bids $27
-AI-Conservative-1 bids $32
-AI-Conservative-0 bids $37
-AI-Conservative-1 bids $42
-Going once...
-AI-Conservative-0 bids $47
-AI-Conservative-1 bids $52
-Going once...
-AI-Conservative-0 bids $57
-Going once...
-AI-Conservative-1 bids $62
-Going once...
-SOLD!
-RESULT: Winner AI-Conservative-1 for $62 | Value: $102 | Profit: $40
-RESULT: Winner AI-Conservative-1 for $62 | Value: $102 | Profit: $40
-
---- ROUND 94 ---
---- Round 94 Started ---
-Item Hint: Strong market interest
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $29
-AI-Conservative-1 bids $34
-AI-Conservative-0 bids $39
-AI-Conservative-1 bids $44
-AI-Conservative-0 bids $49
-Going once...
-AI-Conservative-1 bids $54
-AI-Conservative-0 bids $59
-AI-Conservative-1 bids $64
-AI-Conservative-0 bids $69
-AI-Conservative-1 bids $74
-Going once...
-AI-Conservative-0 bids $79
-Going once...
-AI-Conservative-1 bids $84
-Going once...
-AI-Conservative-0 bids $89
-Going once...
-AI-Conservative-1 bids $94
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $129
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $129
-
---- ROUND 95 ---
---- Round 95 Started ---
-Item Hint: Decent demand
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
-Going once...
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
-AI-Conservative-0 bids $56
-Going once...
-AI-Conservative-1 bids $61
-Going once...
-AI-Conservative-0 bids $66
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $100
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $100
-
---- ROUND 96 ---
---- Round 96 Started ---
-Item Hint: Extremely valuable item
-AI-Aggressive-0 decided to PASS.
-AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $38
-AI-Conservative-1 bids $43
-AI-Conservative-0 bids $48
-AI-Conservative-1 bids $53
-AI-Conservative-0 bids $58
-Going once...
-AI-Conservative-1 bids $63
-AI-Conservative-0 bids $68
-AI-Conservative-1 bids $73
-AI-Conservative-0 bids $78
-AI-Conservative-1 bids $83
-Going once...
-AI-Conservative-0 bids $88
-AI-Conservative-1 bids $93
-Going once...
-AI-Conservative-0 bids $98
-Going once...
-AI-Conservative-1 bids $103
-Going once...
-AI-Conservative-0 bids $108
-Going once...
-AI-Conservative-1 bids $113
-Going once...
-AI-Conservative-0 bids $118
-Going once...
-AI-Conservative-1 bids $123
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
-SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $181
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $181
+RESULT: Item goes UNSOLD | Value: $105
 
 --- ROUND 97 ---
 --- Round 97 Started ---
-Item Hint: Low market interest
+Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $5
-AI-Conservative-1 bids $10
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $13
+AI-Conservative-0 bids $18
+AI-Conservative-1 bids $23
+AI-Conservative-0 bids $28
+AI-Conservative-1 bids $33
+Going once...
+AI-Conservative-0 bids $38
+Going once...
+AI-Conservative-1 has WITHDRAWN.
 AI-Conservative-0 has WITHDRAWN.
+Going twice...
 SOLD!
-RESULT: Winner AI-Conservative-1 for $10 | Value: $35 | Profit: $25
-RESULT: Winner AI-Conservative-1 for $10 | Value: $35 | Profit: $25
+DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $71
+DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $71
 
 --- ROUND 98 ---
 --- Round 98 Started ---
-Item Hint: Strong market interest
+Item Hint: Low market interest
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-0 bids $29
-AI-Conservative-1 bids $34
-AI-Conservative-0 bids $39
-AI-Conservative-1 bids $44
-AI-Conservative-0 bids $49
-Going once...
-AI-Conservative-1 bids $54
-AI-Conservative-0 bids $59
-AI-Conservative-1 bids $64
-AI-Conservative-0 bids $69
-AI-Conservative-1 bids $74
-Going once...
-AI-Conservative-0 bids $79
-Going once...
-AI-Conservative-1 bids $84
-Going once...
-AI-Conservative-0 bids $89
-Going once...
-AI-Conservative-1 bids $94
-Going once...
-AI-Conservative-1 has WITHDRAWN.
-AI-Conservative-0 has WITHDRAWN.
-Going twice...
+AI-Balanced-1 decided to PASS.
+AI-Conservative-1 bids $5
+AI-Conservative-0 bids $10
 SOLD!
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $130
-DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $130
+RESULT: Winner AI-Conservative-0 for $10 | Value: $31 | Profit: $21
+RESULT: Winner AI-Conservative-0 for $10 | Value: $31 | Profit: $21
 
 --- ROUND 99 ---
 --- Round 99 Started ---
-Item Hint: Strong market interest
+Item Hint: Below average demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $29
-AI-Conservative-0 bids $34
-AI-Conservative-1 bids $39
-AI-Conservative-0 bids $44
-AI-Conservative-1 bids $49
-AI-Conservative-0 bids $54
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $13
+AI-Conservative-1 bids $18
+AI-Conservative-0 bids $23
+AI-Conservative-1 bids $28
+AI-Conservative-0 bids $33
 Going once...
-AI-Conservative-1 bids $59
-AI-Conservative-0 bids $64
-AI-Conservative-1 bids $69
-AI-Conservative-0 bids $74
+AI-Conservative-1 bids $38
 Going once...
-AI-Conservative-1 bids $79
-Going once...
-AI-Conservative-0 bids $84
-Going once...
-AI-Conservative-1 bids $89
-Going once...
-AI-Conservative-0 bids $94
-Going once...
-AI-Conservative-0 has WITHDRAWN.
 AI-Conservative-1 has WITHDRAWN.
+AI-Conservative-0 has WITHDRAWN.
 Going twice...
 SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $123
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $123
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $64
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $64
 
 --- ROUND 100 ---
 --- Round 100 Started ---
 Item Hint: Decent demand
 AI-Aggressive-0 decided to PASS.
+AI-Balanced-0 decided to PASS.
 AI-Aggressive-1 decided to PASS.
-AI-Conservative-1 bids $21
-AI-Conservative-0 bids $26
-AI-Conservative-1 bids $31
-AI-Conservative-0 bids $36
-AI-Conservative-1 bids $41
+AI-Balanced-1 decided to PASS.
+AI-Conservative-0 bids $22
+AI-Conservative-1 bids $27
+AI-Conservative-0 bids $32
+AI-Conservative-1 bids $37
+AI-Conservative-0 bids $42
 Going once...
-AI-Conservative-0 bids $46
-AI-Conservative-1 bids $51
+AI-Conservative-1 bids $47
+AI-Conservative-0 bids $52
+AI-Conservative-1 bids $57
 Going once...
-AI-Conservative-0 bids $56
+AI-Conservative-0 bids $62
 Going once...
-AI-Conservative-1 bids $61
+AI-Conservative-1 bids $67
 Going once...
-AI-Conservative-0 bids $66
-Going once...
-AI-Conservative-1 has WITHDRAWN.
 AI-Conservative-0 has WITHDRAWN.
+AI-Conservative-1 has WITHDRAWN.
 Going twice...
 SOLD!
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $103
-DISQUALIFIED: AI-Conservative-0 withdrew/passed and cannot win.
-RESULT: Item goes UNSOLD | Value: $103
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $101
+DISQUALIFIED: AI-Conservative-1 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $101
