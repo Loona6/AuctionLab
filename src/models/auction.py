@@ -22,6 +22,7 @@ class Auction:
         self.current_max_patience = self.base_patience
         self.current_patience = self.base_patience
         self.auction_state = "Active" 
+        self.last_state_change_tick = 0
         self.full_session_log = [] # Persistent history for file export
         
         # Real-time deadline for smooth clock display (ms)
@@ -72,6 +73,7 @@ class Auction:
         self.pending_withdrawals = []
         self.last_bidder_standing = False
         self.auction_locked = False
+        self.last_state_change_tick = 0
         self.round_logs = []
         
         self.log_event(f"--- Round {round_num} Started ---")
@@ -121,6 +123,7 @@ class Auction:
         # else: plenty of time left — leave the clock alone, no jump
             
         self.auction_state = "Active"
+        self.last_state_change_tick = self.ticks
         # Sync real-time deadline after any patience change
         try:
             import pygame
@@ -341,6 +344,7 @@ class Auction:
             elif new_state == "Going Twice": 
                 self.log_event("Going twice...")
             self.auction_state = new_state
+            self.last_state_change_tick = self.ticks
 
         self.ticks += 1
 

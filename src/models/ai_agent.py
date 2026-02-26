@@ -71,7 +71,7 @@ class AIAgent:
             int(h_max * (1 + range_max_offset))
         )
         
-        # 2. Lock in Conviction Point
+        # 2. Lock in Conviction Point 
         p_min, p_max = self.personal_range
         if self.strategy == "Conservative":
             self.conviction_point = p_min

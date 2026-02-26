@@ -1,45 +1,35 @@
 ========================================
- LAST SESSION: 2026-02-23 19:41:10
+ LAST SESSION: 2026-02-26 21:13:13
 ========================================
 --- Round 1 Started ---
-Item Hint: Low market interest
-AI-4 bids $10
-AI-2 bids $20
-AI-5 bids $30
-AI-3 bids $35
-AI-1 bids $40
-Going once...
-Going twice...
-You bids $45
-Going once...
-Going twice...
-You bids $50
-Going once...
-Going twice...
-SOLD!
-RESULT: Winner You for $50 | Value: $36 | Profit: $-14
---- Round 2 Started ---
 Item Hint: Decent demand
-AI-5 bids $42
-AI-2 bids $47
-AI-1 bids $52
-AI-3 bids $72
-AI-2 bids $77
-AI-5 bids $82
-AI-1 bids $87
-AI-3 bids $92
-You bids $97
-AI-2 bids $102
+AI-2 bids $42
+AI-1 bids $47
+AI-5 bids $52
+AI-4 bids $57
+AI-1 bids $62
+AI-5 bids $67
+You bids $117
 Going once...
 Going twice...
-You bids $107
-You bids $300
-Going once...
-*** AI-1 has WITHDRAWN - YOU HOLD THE FLOOR ***
-AI-2 has WITHDRAWN.
-AI-3 has WITHDRAWN.
-AI-5 has WITHDRAWN.
 SOLD!
-RESULT: Winner You for $300 | Value: $109 | Profit: $-191
---- Round 3 Started ---
+RESULT: Winner You for $117 | Value: $111 | Profit: $-6
+--- Round 2 Started ---
 Item Hint: Below average demand
+AI-2 bids $15
+AI-5 bids $31
+AI-1 bids $36
+AI-5 bids $41
+AI-1 bids $56
+AI-2 bids $61
+AI-1 bids $66
+Going once...
+AI-2 bids $71
+AI-1 bids $76
+AI-5 bids $81
+Going once...
+Going twice...
+SOLD!
+RESULT: Winner AI-5 for $81 | Value: $72 | Profit: $-9
+--- Round 3 Started ---
+Item Hint: Strong market interest

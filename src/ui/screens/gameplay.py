@@ -66,6 +66,16 @@ class GameScreen:
         self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
         self.feedback_msg = ""
         
+        # --- Animation & Screen Shake State ---
+        self.shake_offset = [0, 0]
+        self.shake_duration = 0
+        self.screen_flash = 0 # Alpha value
+        try:
+            self.gavel_img = pygame.image.load("assets/images/gavel.png").convert_alpha()
+            self.gavel_img = pygame.transform.smoothscale(self.gavel_img, (120, 120))
+        except:
+            self.gavel_img = None
+            
         # --- UI Components ---
         self._init_ui()
 
@@ -251,7 +261,7 @@ class GameScreen:
             # Only override if user isn't currently editing (i.e. box not focused)
             if self.auction.is_active and not self.input_box.active:
                 next_min = self.auction.highest_bid + MIN_INCREMENT
-                if self.proposed_bid != next_min:
+                if self.proposed_bid < next_min:
                     self.proposed_bid = next_min
                     self.input_box.set_text(self.proposed_bid)
             
@@ -277,32 +287,66 @@ class GameScreen:
         self.btn_place_bid.update(mouse_pos)
         self.btn_pass.update(mouse_pos)
         self.btn_withdraw.update(mouse_pos)
+        
+        # --- Animation Updates ---
+        if self.shake_duration > 0:
+            import random
+            self.shake_offset = [random.randint(-5, 5), random.randint(-5, 5)]
+            self.shake_duration -= 1
+        else:
+            self.shake_offset = [0, 0]
+            
+        if self.screen_flash > 0:
+            self.screen_flash = max(0, self.screen_flash - 15)
+            
+        # Trigger Flash/Shake on specific state changes
+        if self.auction.is_active:
+            # Check if state JUST changed (within one tick)
+            is_new_state = (self.auction.ticks - self.auction.last_state_change_tick) <= 1
+            if is_new_state:
+                if self.auction.auction_state == "Going Twice":
+                    self.screen_flash = 40 # Subtle red tint flash
+                elif self.auction.auction_state == "Active" and self.auction.last_state_change_tick > 0:
+                     # New bid reset
+                     pass 
+        else:
+            # Sold/Round End
+            if not self.auction.is_active and self.auction.highest_bidder and self.screen_flash == 0 and not self.played_round_end_sound:
+                 self.screen_flash = 120
+                 self.shake_duration = 10
 
     def draw(self, surface):
         surface.fill(THEME_BG)
         
+        # Apply Screen Shake Offset to all content
+        ox, oy = self.shake_offset
+        
         # Header
-        self.btn_quit.draw(surface, self.font_sm)
+        self.btn_quit.draw(surface, self.font_sm) # Quit button stays fixed or shakes? Usually fixed is better for UI, but let's shake it for impact
         self._draw_top_bar(surface)
         
         # --- Layout Panels ---
-        x_cursor = self.pad
+        x_cursor = self.pad + ox
+        y_panels = self.start_y + oy
         
         # 1. Left Panel (Item Info)
-        self._draw_panel(surface, x_cursor, self.start_y, self.col1_w, self.panel_h)
-        self._draw_left_content(surface, x_cursor, self.start_y, self.col1_w)
+        self._draw_panel(surface, x_cursor, y_panels, self.col1_w, self.panel_h)
+        self._draw_left_content(surface, x_cursor, y_panels, self.col1_w)
         
         x_cursor += self.col1_w + self.pad
         
         # 2. Center Panel (Auction Floor)
-        self._draw_panel(surface, x_cursor, self.start_y, self.col2_w, self.panel_h)
-        self._draw_center_content(surface, x_cursor, self.start_y, self.col2_w)
+        self._draw_panel(surface, x_cursor, y_panels, self.col2_w, self.panel_h)
+        self._draw_center_content(surface, x_cursor, y_panels, self.col2_w)
+        
+        # --- Draw Auctioneer Callout (Overlaying center panel) ---
+        self._draw_auctioneer_callout(surface, x_cursor, y_panels, self.col2_w)
         
         x_cursor += self.col2_w + self.pad
         
         # 3. Right Panel (Controls)
-        self._draw_panel(surface, x_cursor, self.start_y, self.col3_w, self.panel_h)
-        self._draw_right_content(surface, x_cursor, self.start_y, self.col3_w)
+        self._draw_panel(surface, x_cursor, y_panels, self.col3_w, self.panel_h)
+        self._draw_right_content(surface, x_cursor, y_panels, self.col3_w)
 
         # --- Overlays ---
         if self.show_quit_confirm:
@@ -363,7 +407,16 @@ class GameScreen:
                 progress = self.auction.current_patience / self.auction.current_max_patience
         
         fill_w = int(bar_w * max(0, progress))
-        color = THEME_ACCENT_GREEN if progress > 0.5 else (255, 200, 0) if progress > 0.2 else THEME_ACCENT_RED
+        
+        # Urgency Colors
+        if progress > 0.3:
+            color = THEME_ACCENT_GREEN
+        elif progress > 0.1:
+            color = (255, 165, 0) # Orange
+        else:
+            # Blinking red
+            blink = (pygame.time.get_ticks() // 250) % 2
+            color = THEME_ACCENT_RED if blink else (100, 0, 0)
         
         if fill_w > 0:
             pygame.draw.rect(surface, color, (bar_x, bar_y, fill_w, bar_h), border_radius=4)
@@ -374,8 +427,68 @@ class GameScreen:
         else:
             seconds_left = self._get_display_seconds()
             
-        color = THEME_ACCENT_GREEN if seconds_left > 5 else THEME_ACCENT_RED
         draw_text(surface, f"00:{seconds_left:02d}", SCREEN_WIDTH - 60, 40, self.font_md, color, "center")
+
+    def _draw_auctioneer_callout(self, surface, x, y, w):
+        if not self.auction.is_active and self.auction.auction_state != "Active":
+            # We handle SOLD/Round End specifically
+            state = self.auction.auction_state
+        else:
+            state = self.auction.auction_state
+            
+        if state not in ["Going Once", "Going Twice", "Active"] and self.auction.is_active:
+             return
+             
+        # Center of the panel
+        cx, cy = x + w // 2, y + self.panel_h // 2 + 100
+        
+        # Animation variables
+        ticks_since_change = self.auction.ticks - self.auction.last_state_change_tick
+        pulse_val = (pygame.time.get_ticks() // 5) % 100
+        
+        callout_text = ""
+        color = THEME_ACCENT_GOLD
+        scale = 1.0
+        
+        if state == "Going Once":
+            callout_text = "GOING ONCE!"
+            color = (255, 255, 0) # Yellow
+            scale = 1.0 + (pulse_val / 1000) # Slight pulse
+        elif state == "Going Twice":
+            callout_text = "GOING TWICE!!"
+            color = (255, 140, 0) # Orange
+            scale = 1.1 + (pulse_val / 500) # Bigger pulse
+        elif not self.auction.is_active and self.auction.highest_bidder:
+            callout_text = "SOLD!!!"
+            color = THEME_ACCENT_RED
+            scale = 1.5
+            
+        if not callout_text: return
+        
+        # 1. Gavel Animation
+        if self.gavel_img:
+            # Downward snap animation based on ticks_since_change
+            # First 3 ticks: -30 to 0 degrees
+            angle = max(-30, -30 + (ticks_since_change * 10))
+            if not self.auction.is_active: angle = 0 # Settled
+            
+            rotated_gavel = pygame.transform.rotate(self.gavel_img, angle)
+            g_rect = rotated_gavel.get_rect(center=(cx, cy - 80))
+            surface.blit(rotated_gavel, g_rect)
+            
+        # 2. Pulsing Text
+        pulse_font = pygame.font.SysFont(FONT_NAME, int(50 * scale), bold=True)
+        # Drop shadow for readability
+        draw_text(surface, callout_text, cx + 2, cy + 2, pulse_font, (0,0,0), "center")
+        draw_text(surface, callout_text, cx, cy, pulse_font, color, "center")
+        
+        # 3. Screen Flash / Shake
+        if self.screen_flash > 0:
+            flash_surf = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+            flash_color = (255, 255, 255) if not self.auction.is_active else (255, 0, 0)
+            flash_surf.fill(flash_color)
+            flash_surf.set_alpha(self.screen_flash)
+            surface.blit(flash_surf, (0,0))
 
     def _draw_panel(self, surface, x, y, w, h):
         rect = pygame.Rect(x, y, w, h)
@@ -451,9 +564,25 @@ class GameScreen:
                     label += " [WD]"
                     name_color = THEME_ACCENT_RED
 
+            # Winner Highlight
+            if is_winning and not self.auction.is_active:
+                 # Flash green/gold for the winner row
+                 row_rect = pygame.Rect(x + 35, row_y - 5, w - 70, 30)
+                 blink = (pygame.time.get_ticks() // 200) % 2
+                 if blink: pygame.draw.rect(surface, (0, 100, 0), row_rect, border_radius=5)
+                 
             draw_text(surface, label, x + 40, row_y, self.font_sm, name_color, "left")
             draw_text(surface, f"${p_budget}", cx, row_y, self.font_sm, THEME_TEXT_MAIN, "center")
             draw_text(surface, f"${p_bid}" if p_bid else "-", x + w - 40, row_y, self.font_sm, name_color, "right")
+            
+            # Show Profit popup above winner if recently won
+            if is_winning and not self.auction.is_active:
+                 profit = self.auction.current_item.get_true_value() - self.auction.highest_bid
+                 p_text = f"+${profit}" if profit >= 0 else f"${profit}"
+                 p_color = THEME_ACCENT_GREEN if profit >= 0 else THEME_ACCENT_RED
+                 # Floating effect
+                 float_y = row_y - 20 - ( (pygame.time.get_ticks() // 10) % 20 )
+                 draw_text(surface, p_text, x + 100, float_y, self.font_sm, p_color, "center")
             
             row_y += 35
             
@@ -463,18 +592,45 @@ class GameScreen:
         # Activity Feed
         draw_text(surface, "ACTIVITY LOG", x + 40, row_y + 40, self.font_sm, THEME_TEXT_SUB, "left")
         
+        # Subtle Ticker Background
+        log_box_rect = pygame.Rect(x + 30, row_y + 65, w - 60, self.panel_h - (row_y - y + 80))
+        pygame.draw.rect(surface, (15, 17, 25), log_box_rect, border_radius=10)
+        
         log_y = row_y + 75
         logs = self.auction.get_recent_logs()
         for log in logs:
-            color = THEME_TEXT_MAIN
-            if "!!!" in log or "RESULT" in log:
-                color = THEME_ACCENT_GOLD
-            elif "WITHDRAWN" in log:
-                color = THEME_ACCENT_RED
+            # 1. Filter Redundancy (Going once/twice is already central)
+            if "Going once" in log or "Going twice" in log:
+                continue
+                
+            # 2. Determine Event Type & Color
+            accent_color = THEME_TEXT_SUB
+            text_color = THEME_TEXT_MAIN
             
-            # Wrap logs if they are too long for the center column
-            log_y = self._draw_wrapped_text(surface, f"> {log}", x + 40, log_y, w - 80, self.font_sm, color, "left")
-            log_y += 5 # Small gap between log entries
+            if "bids" in log.lower():
+                accent_color = THEME_ACCENT_CYAN
+            elif "sold" in log.lower() or "result" in log.upper():
+                accent_color = THEME_ACCENT_GOLD
+                text_color = THEME_ACCENT_GOLD
+            elif "withdrawn" in log.lower() or "disqualified" in log.upper():
+                accent_color = THEME_ACCENT_RED
+            elif "!!!" in log:
+                accent_color = THEME_ACCENT_GOLD
+            
+            # 3. Draw Vertical Accent Line
+            if log_y + 20 > log_box_rect.bottom:
+                break
+                
+            pygame.draw.line(surface, accent_color, (x + 40, log_y + 2), (x + 40, log_y + 18), 3)
+            
+            # 4. Draw Clean Text (No ">" prefix)
+            clean_log = log.replace("--- ", "").replace(" ---", "")
+            log_y = self._draw_wrapped_text(surface, clean_log, x + 50, log_y, w - 90, self.font_sm, text_color, "left")
+            log_y += 8 # Better spacing
+            
+            # Final safety: stop if we've passed the bottom
+            if log_y > log_box_rect.bottom - 20:
+                break
 
     def _draw_right_content(self, surface, x, y, w):
         cx = x + w // 2

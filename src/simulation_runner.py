@@ -31,7 +31,7 @@ def run_evaluation_simulation(num_rounds=100):
     strategies = ["Aggressive", "Balanced", "Conservative"]
     for i in range(2):
         for strat in strategies:
-            agent = AIAgent(f"AI-{strat}-{i}", budget=500, strategy_type=strat)
+            agent = AIAgent(f"AI-{strat}-{i}", budget=3000, strategy_type=strat)
             auction.agents.append(agent)
 
     with open(report_path, "w", encoding="utf-8") as f:
