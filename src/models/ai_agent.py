@@ -19,31 +19,69 @@ class AIAgent:
         self.items_won = 0
         self.next_action_tick = 0 
         
-        # --- PHASE 3: SPITE LOGIC ---
+        # --- NEW STATE LOGIC ---
+        self.state = "Active" # "Active", "Pass", "Withdraw"
+        self.personal_range = (0, 0)
+        self.conviction_point = 0
+        
+        # --- SPITE LOGIC ---
         self.has_spite_bid = False
-        self.spite_cooldown = 0 # Dramatic delay
+        self.spite_cooldown = 0  # Set > 0 when armed; fire only after countdown
+        self.is_spite_armed = False  # Guards against immediate fire
+        
+        # --- BLUFF LOGIC ---
+        self.is_bluffing = False   # Conservative bluff entry
+        self.bluff_bids_placed = 0 # How many bids placed in bluff mode
 
     def reset_for_new_round(self):
+        self.state = "Active"
         self.is_active = (self.budget > 0)
         self.bid_history = []
         self.next_action_tick = 0
         self.has_spite_bid = False
         self.spite_cooldown = 0
-
-    def on_price_update(self):
-        """Trigger reaction delay"""
-        strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
-        min_s, max_s = strat.get('reaction_speed', (2, 8))
-        self.next_action_tick = random.randint(min_s, max_s)
+        self.is_spite_armed = False
+        self.is_bluffing = False
+        self.bluff_bids_placed = 0
+        self.has_used_jump_bid = False
 
     def form_belief(self, hint_text, round_num=1, total_rounds=5):
-        hint_data = HINT_CONFIG.get(hint_text, HINT_CONFIG["Decent demand"])
+        hint_data = HINT_CONFIG.get(hint_text, list(HINT_CONFIG.values())[2])
+        h_min, h_max = hint_data['range']
         base_value = hint_data['base_value']
-        safe_cap = hint_data['safe_cap']
         
         strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
-        noise = random.uniform(strat['noise_range'][0], strat['noise_range'][1])
         
+        # 1. Establish Personal Range (The "Vibe")
+        # Conservative thinks: "mediocre" -> Pessimistic (-15% to -5% of hint range)
+        # Aggressive thinks: "underselling" -> Optimistic (+5% to +20% of hint range)
+        # Balanced thinks: "could go either way" -> Balanced (-5% to +5% of hint range)
+        if self.strategy == "Conservative":
+            range_min_offset = random.uniform(-0.15, -0.05)
+            range_max_offset = random.uniform(-0.10, 0.00)
+        elif self.strategy == "Aggressive":
+            range_min_offset = random.uniform(0.05, 0.15)
+            range_max_offset = random.uniform(0.10, 0.20)
+        else:
+            range_min_offset = random.uniform(-0.05, 0.05)
+            range_max_offset = random.uniform(-0.05, 0.05)
+            
+        self.personal_range = (
+            int(h_min * (1 + range_min_offset)),
+            int(h_max * (1 + range_max_offset))
+        )
+        
+        # 2. Lock in Conviction Point 
+        p_min, p_max = self.personal_range
+        if self.strategy == "Conservative":
+            self.conviction_point = p_min
+        elif self.strategy == "Aggressive":
+            self.conviction_point = p_max
+        else:
+            self.conviction_point = (p_min + p_max) // 2
+
+        # Legacy compatibility for now
+        noise = random.uniform(strat['noise_range'][0], strat['noise_range'][1])
         self.estimated_value = int(base_value * (1 + noise))
         self.max_bid_limit = int(self.estimated_value * strat['risk_ceiling'])
         
@@ -55,94 +93,219 @@ class AIAgent:
                 self.max_bid_limit = int(self.max_bid_limit * 1.10)
                 
         # Safety Clamp
-        hard_ceiling = int(safe_cap * 1.2)
+        # Bug A: Tighten safety to avoid massive losses even for Aggressive bots
+        hard_ceiling = int(hint_data['safe_cap'] * 1.1) 
         self.max_bid_limit = min(self.max_bid_limit, hard_ceiling)
 
-    def calculate_bid(self, auction_state, min_increment):
-        ticks_left = auction_state['ticks_remaining']
-        current_price = auction_state['current_price']
+    def pre_entry_check(self, opening_bid):
+        """Part 2: Pre-Entry Check (When Do They PASS?)"""
+        p_min, p_max = self.personal_range
         
-        if not self.is_active: return None
-        if auction_state['highest_bidder_id'] == self.id: return None
-        if current_price >= self.budget: return None
+        # Bug 2 Fix: Relax constraints. Default to Active.
+        # Only Pass if budget is destroyed or opening bid is above conviction point.
+        from src.config import MIN_INCREMENT
+        
+        # Rule A: Price already too high (exceeds top of personal range)
+        if opening_bid > p_max:
+             self.state = "Pass"
+             return
 
-        # --- PHASE 3: SPITE COOLDOWN ---
-        if self.spite_cooldown > 0:
-            self.spite_cooldown -= 1
-            if self.spite_cooldown == 0:
-                # Surprise Attack!
-                bid_amount = current_price + min_increment
-                self.bid_history.append(bid_amount)
-                return bid_amount
+        # Rule B: Budget too low (less than 2 raises possible)
+        if (opening_bid + 2 * MIN_INCREMENT) > self.budget:
+             self.state = "Pass"
+             return
+             
+        # Rule C: Estimate too pessimistic (Conservative only)
+        # If open price leaves too thin a margin (e.g. < 10% of their base valuation)
+        if self.strategy == "Conservative":
+            margin = self.conviction_point - opening_bid
+            if margin < (self.conviction_point * 0.1): # Too pessimistic to bother
+                 # Bluff Exception (15% chance to enter anyway)
+                 if random.random() < 0.15:
+                     self.is_bluffing = True
+                     self.state = "Active"
+                     # Note: Auction handles logging this if added correctly
+                     return
+                 self.state = "Pass"
+                 return
+
+        self.state = "Active"
+
+    def handle_event(self, event_type, data):
+        """Part 3: Mid-Auction Events (When Do They WITHDRAW?)"""
+        if self.state != "Active":
+            return
+
+        current_price = data.get('current_price', 0)
+        min_increment = data.get('min_increment', 5)
+        highest_bidder_id = data.get('highest_bidder_id')
+
+        # Event 1: Someone places a new bid (General Price Check)
+        if event_type == "new_bid":
+            # Bug 1 Fix: Only reset delay if we don't already have a pending action
+            # to avoid getting "locked in place" by rapid fire bids from others.
+            if self.next_action_tick <= 1:
+                strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
+                min_s, max_s = strat.get('reaction_speed', (2, 8))
+                self.next_action_tick = random.randint(min_s, max_s)
+
+            # Margin check — human reaction logic
+            # Part 3, Event 1: New bid forces CP check
+            if self.strategy == "Conservative":
+                if current_price >= self.conviction_point:
+                    # Quiet withdrawal
+                    self.state = "Withdraw" if self.bid_history else "Pass"
+                    return
+            
+            elif self.strategy == "Balanced":
+                if current_price >= self.conviction_point:
+                    # Hesitant withdrawal (add a delay before actually folding)
+                    if not hasattr(self, 'is_watching') or not self.is_watching:
+                        self.is_watching = True
+                        self.watch_ticks = random.randint(3, 7) # Delay folding
+                    return
+            
+            # Aggressive: check for War Mode or Spite Bid trigger
+            if self.strategy == "Aggressive":
+                # Part 3, Event 4: One-Shot Warning
+                if (current_price + 2 * min_increment) > self.budget and not self.has_spite_bid:
+                    self.has_spite_bid = True
+                    self.spite_cooldown = data.get('spite_delay', 5)
+                    self.is_spite_armed = True
+
+        # Event 2: Their own bid gets outbid (Emotional Trigger)
+        if event_type == "outbid":
+            # Set shorter reaction delay for "retaliation"
+            self.next_action_tick = random.randint(1, 3)
+
+            if self.strategy == "Conservative":
+                # Part 3, Event 2: Chase check
+                # A Conservative immediately re-checks if chasing makes sense
+                if (current_price + min_increment) > self.conviction_point:
+                    self.state = "Withdraw" if self.bid_history else "Pass"
+                    return
+            elif self.strategy == "Balanced":
+                # Part 3, Event 2: Chase check
+                # A Balanced might chase once more, but hesitates if near CP
+                if (current_price + 2 * min_increment) >= self.conviction_point:
+                    if not getattr(self, 'is_watching', False):
+                        self.is_watching = True
+                        self.watch_ticks = random.randint(3, 7)
+                    return
+            # Aggressive treats it as a personal attack (War Mode trigger)
+
+        # Event 3: Timer thresholds (Hesitation vs Sniper)
+        if event_type == "timer_tick":
+            timer = data.get('ticks_remaining', 40)
+            if timer <= 15: # "Going Once/Twice" phase
+                # Part 3, Event 3: Hesitation vs Sniper
+                # If current_price is uncomfortably close to CP (within 2 increments)
+                if (self.conviction_point - current_price) < (2 * min_increment):
+                    # They hesitate and refuse to panic-bid
+                    self.state = "Withdraw" if self.bid_history else "Pass"
+                    return
+                # ELSE: If price is still WELL below CP, they stay in to snipe (handled in calculate_bid)
+
+        # Event 4: The One-Shot Warning (Spite Bid Trigger)
+        if event_type == "budget_warning":
+            if (current_price + 2 * min_increment) > self.max_bid_limit:
+                if self.strategy == "Aggressive" and not self.has_spite_bid:
+                    self.has_spite_bid = True
+                    self.spite_cooldown = data.get('spite_delay', 5)
+                    self.is_spite_armed = True
+
+    def calculate_bid(self, auction_state, min_increment):
+        """Simplified bidding loop based on state and delays"""
+        if self.state != "Active":
+            return None
+            
+        current_price = auction_state['current_price']
+        if auction_state['highest_bidder_id'] == self.id:
+            return None
+            
+        if current_price >= self.budget:
+            self.state = "Withdraw" if self.bid_history else "Pass"
             return None
 
-        # --- 1. ADRENALINE OVERRIDE ---
-        if ticks_left < 12:
-            self.next_action_tick = 0
+        # --- SPITE BID EXECUTION (The "Wall") ---
+        # ... spite logic remains ...
+        if self.has_spite_bid and self.is_spite_armed:
+            if self.spite_cooldown > 0:
+                self.spite_cooldown -= 1
+                return None
+            else:
+                wall_bid = min(self.budget, self.max_bid_limit) 
+                if wall_bid <= current_price:
+                    self.state = "Withdraw" if self.bid_history else "Pass"
+                    return None
+                self.state = "Withdraw"
+                return wall_bid
 
-        # Reaction Delay
+        # --- BLUFF HANDLER ---
+        if self.is_bluffing:
+            if self.bluff_bids_placed >= 1:
+                self.state = "Withdraw" if self.bid_history else "Pass"
+                return None
+
+        # Balanced Hesitation Delay
+        if self.strategy == "Balanced" and getattr(self, 'is_watching', False):
+            if self.watch_ticks > 0:
+                self.watch_ticks -= 1
+                return None
+            else:
+                self.state = "Withdraw" if self.bid_history else "Pass"
+                return None
+
+        # ... keep reaction delay ...
         if self.next_action_tick > 0:
             self.next_action_tick -= 1
             return None
 
+        # ... keep first bid logic ...
         next_min_bid = current_price + min_increment
+        if not self.bid_history:
+             calculated_start = int(self.conviction_point * 0.30)
+             bid_amount = max(next_min_bid, calculated_start)
+        else:
+             bid_amount = next_min_bid
 
-        # --- PHASE 2: WAR MODE ---
-        # If the price is already higher than our value, we ignore profit target
-        # and bid blindly up to our Risk Ceiling.
-        is_war_mode = (current_price >= self.estimated_value)
-        
-        # --- 2. THE AUDIT ---
-        if next_min_bid > self.max_bid_limit:
-            # --- PHASE 3: SPITE BID CHECK ---
-            if self.strategy == "Aggressive" and not self.has_spite_bid:
-                # Only spite against the Human Player
-                if auction_state['highest_bidder_id'] == "You":
-                    # Only if we are within 1 bid of our limit (The Ego Check)
-                    if (next_min_bid - min_increment) <= self.max_bid_limit:
-                        self.has_spite_bid = True
-                        self.spite_cooldown = 10 # 2-second hesitation (5 ticks/s)
+        # Final safety check before bidding
+        if bid_amount > self.max_bid_limit:
+            if self.strategy == "Aggressive":
+                pass
+            else:
+                self.state = "Withdraw" if self.bid_history else "Pass"
             return None
 
-        # --- 3. PROFIT TARGET ---
+        # --- TACTICS (Bug 4 Fix) ---
         strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
-        target_margin = strat.get('profit_target', 0)
-        
-        # Reduce profit target in "Going Once/Twice" phase
-        if auction_state.get('state') in ["Going Once", "Going Twice"]:
-            target_margin *= 0.5
-
-        potential_profit = self.estimated_value - next_min_bid
-        min_profit_needed = self.estimated_value * target_margin
-        
-        # Only check profit if NOT in War Mode or Desperate
-        if self.items_won > 0 and not is_war_mode:
-            if potential_profit < min_profit_needed:
-                return None
-
-        # --- 4. TACTICS ---
         tactics = strat.get('tactics', [])
         
-        # SMART SNIPER
-        if 'snipe' in tactics and ticks_left > 20:
-             if current_price > (self.max_bid_limit * 0.5):
-                 return None
+        # SNIPER logic
+        if 'snipe' in tactics and auction_state['ticks_remaining'] > 15:
+            # Only snipe if price is very low, otherwise wait for timer
+            if current_price > (self.conviction_point * 0.7):
+                return None
 
-        # BAITER
-        if 'bait' in tactics:
-            if current_price > (self.max_bid_limit * 0.85):
-                 if random.random() < 0.5: return None
+        # Jump Bid (Intimidation): Once per round, lower third of range only.
+        # Jump Bid = Current Bid + Math.floor(bot.conviction_point * 0.15).
+        # Bug B Fix: Double check the flag and the range
+        if 'jump_bid' in tactics and not self.has_used_jump_bid:
+            p_min, p_max = self.personal_range
+            range_third = p_min + (p_max - p_min) // 3
+            if current_price < range_third and random.random() < TACTIC_CONFIG['jump_bid_chance']:
+                jump_magnitude = int(self.conviction_point * 0.15)
+                if (current_price + jump_magnitude) < self.max_bid_limit:
+                    bid_amount = current_price + jump_magnitude
+                    self.has_used_jump_bid = True
+                    # Set extra delay after an intimidation bid
+                    self.next_action_tick += 3
 
-        # BID SIZING
-        bid_amount = next_min_bid
+        if self.is_bluffing:
+            if self.bluff_bids_placed == 0:
+                pass # First bid log handled by Auction
+            self.bluff_bids_placed += 1
         
-        # Intimidation
-        if 'jump_bid' in tactics and current_price < (self.max_bid_limit * 0.6):
-            if random.random() < TACTIC_CONFIG['jump_bid_chance']:
-                jump = min_increment * random.randint(2, 3)
-                if (current_price + jump) < self.max_bid_limit:
-                    bid_amount = current_price + jump
-
         self.bid_history.append(bid_amount)
         return bid_amount
 

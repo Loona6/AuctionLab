@@ -32,6 +32,7 @@ sim_results.txt
 sim_output.txt
 sim_evaluation_report.txt
 gameplay_logs.txt
+*.txt
 
 # Data and Logs
 *.json
