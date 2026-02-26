@@ -26,6 +26,7 @@ def run_evaluation_simulation(num_rounds=100):
     }
 
     auction = Auction()
+    auction.total_rounds_sim = num_rounds
     auction.agents = []
     
     strategies = ["Aggressive", "Balanced", "Conservative"]

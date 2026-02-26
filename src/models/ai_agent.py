@@ -96,6 +96,14 @@ class AIAgent:
         # Bug A: Tighten safety to avoid massive losses even for Aggressive bots
         hard_ceiling = int(hint_data['safe_cap'] * 1.1) 
         self.max_bid_limit = min(self.max_bid_limit, hard_ceiling)
+        
+        # Part 2: Gate 6 Setup - Strategy Specific Strategic Ceiling
+        if self.strategy == "Aggressive":
+             self.strategic_ceiling = int(self.estimated_value * 1.05) # Allow 5% loss
+        elif self.strategy == "Balanced":
+             self.strategic_ceiling = int(self.estimated_value * 0.95) # Require 5% profit
+        else: # Conservative
+             self.strategic_ceiling = int(self.estimated_value * 0.90) # Require 10% profit
 
     def pre_entry_check(self, opening_bid):
         """Part 2: Pre-Entry Check (When Do They PASS?)"""
@@ -158,12 +166,15 @@ class AIAgent:
                     return
             
             elif self.strategy == "Balanced":
-                if current_price >= self.conviction_point:
+                if current_price >= self.strategic_ceiling:
                     # Hesitant withdrawal (add a delay before actually folding)
-                    if not hasattr(self, 'is_watching') or not self.is_watching:
+                    if not getattr(self, 'is_watching', False):
                         self.is_watching = True
                         self.watch_ticks = random.randint(3, 7) # Delay folding
                     return
+                else:
+                    # If we were watching but price is now safe, stop watching
+                    self.is_watching = False
             
             # Aggressive: check for War Mode or Spite Bid trigger
             if self.strategy == "Aggressive":
@@ -186,12 +197,16 @@ class AIAgent:
                     return
             elif self.strategy == "Balanced":
                 # Part 3, Event 2: Chase check
-                # A Balanced might chase once more, but hesitates if near CP
-                if (current_price + 2 * min_increment) >= self.conviction_point:
+                # A Balanced might chase once more, but hesitates if near ceiling
+                if (current_price + 2 * min_increment) >= self.strategic_ceiling:
                     if not getattr(self, 'is_watching', False):
                         self.is_watching = True
                         self.watch_ticks = random.randint(3, 7)
                     return
+                else:
+                    # Below ceiling: retaliate
+                    self.is_watching = False
+                    self.next_action_tick = random.randint(1, 3)
             # Aggressive treats it as a personal attack (War Mode trigger)
 
         # Event 3: Timer thresholds (Hesitation vs Sniper)
@@ -253,8 +268,13 @@ class AIAgent:
                 self.watch_ticks -= 1
                 return None
             else:
-                self.state = "Withdraw" if self.bid_history else "Pass"
-                return None
+                # Hesitation over. Fold ONLY if price is still above ceiling.
+                if current_price >= self.strategic_ceiling:
+                     self.state = "Withdraw" if self.bid_history else "Pass"
+                     return None
+                else:
+                    # Reset watching and continue bidding
+                    self.is_watching = False
 
         # ... keep reaction delay ...
         if self.next_action_tick > 0:
@@ -269,20 +289,21 @@ class AIAgent:
         else:
              bid_amount = next_min_bid
 
-        # Final safety check before bidding
-        if bid_amount > self.max_bid_limit:
-            if self.strategy == "Aggressive":
-                pass
-            else:
-                self.state = "Withdraw" if self.bid_history else "Pass"
-            return None
+        # Final safety check before bidding (Gate 6: Universal Profit Floor)
+        if bid_amount > self.strategic_ceiling:
+             self.state = "Withdraw" if self.bid_history else "Pass"
+             return None
 
         # --- TACTICS (Bug 4 Fix) ---
         strat = STRATEGY_CONFIG.get(self.strategy, STRATEGY_CONFIG["Balanced"])
         tactics = strat.get('tactics', [])
         
-        # SNIPER logic
-        if 'snipe' in tactics and auction_state['ticks_remaining'] > 15:
+        # SNIPER logic (Gate 7 adjustment)
+        if 'snipe' in tactics and auction_state.get('ticks_remaining', 40) > 15:
+            # Skip sniper delay if floor is empty OR we are the last active participant
+            if not auction_state.get('highest_bidder_id') or auction_state.get('active_participant_count', 0) == 1:
+                return bid_amount
+                
             # Only snipe if price is very low, otherwise wait for timer
             if current_price > (self.conviction_point * 0.7):
                 return None

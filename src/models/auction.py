@@ -16,6 +16,7 @@ class Auction:
         self.round_num = 0
         self.is_active = False 
         self.auction_locked = False # Bug 1: Atomic lock for final ticks
+        self.total_rounds_sim = 5   # Default for UI play
         
         # --- PACING CONFIG ---
         self.base_patience = 40  # 8 seconds (at 5 ticks/sec)
@@ -87,7 +88,7 @@ class Auction:
         # random.shuffle(self.agents) # Removed: Master list should not be shuffled.
         for agent in self.agents:
             agent.reset_for_new_round()
-            agent.form_belief(self.current_item.get_hint(), round_num, total_rounds=5)
+            agent.form_belief(self.current_item.get_hint(), round_num, total_rounds=self.total_rounds_sim)
             agent.pre_entry_check(0) # Part 2: Pre-Entry Check
             if agent.state == "Pass":
                 self.log_event(f"{agent.id} decided to PASS.")
@@ -300,6 +301,10 @@ class Auction:
         
         # Recalculate active list (in case agents withdrew during timer_tick)
         active_agents = [a for a in self.agents if a.is_active and a.state == "Active"]
+        active_participants = list(active_agents)
+        if self.human_player and not self.human_player.has_withdrawn and not self.human_player.is_passing:
+            active_participants.append(self.human_player)
+
         shuffled_active_agents = list(active_agents)
         random.shuffle(shuffled_active_agents)
 
@@ -308,7 +313,8 @@ class Auction:
             'current_price': self.highest_bid,
             'highest_bidder_id': self.highest_bidder.id if self.highest_bidder else None,
             'ticks_remaining': self.current_patience,
-            'state': self.auction_state
+            'state': self.auction_state,
+            'active_participant_count': len(active_participants)
         }
         
         from src.config import MIN_INCREMENT

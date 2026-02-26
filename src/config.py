@@ -29,7 +29,7 @@ STRATEGY_CONFIG = {
         'noise_range': (-0.12, 0.12),   # Widened from 0.10
         'risk_ceiling': 1.03,           # Increased from 0.98: Premium payer
         'profit_target': 0.05,
-        'reaction_speed': (3, 7),
+        'reaction_speed': (1, 4),
         'aggressiveness': 0.5,
         'tactics': ['bait']
     },
