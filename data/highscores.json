@@ -1,62 +1,62 @@
 [
     {
         "name": "You",
-        "profit": 265,
-        "items": 3,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": 177,
-        "items": 2,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": 3,
-        "items": 3,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -10,
-        "items": 1,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -11,
-        "items": 1,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -22,
-        "items": 1,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -22,
-        "items": 1,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -28,
-        "items": 2,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -38,
-        "items": 2,
-        "date": ""
-    },
-    {
-        "name": "You",
-        "profit": -38,
+        "profit": 465,
         "items": 4,
-        "date": ""
+        "date": "2026-02-25"
+    },
+    {
+        "name": "You",
+        "profit": 410,
+        "items": 4,
+        "date": "2026-02-26"
+    },
+    {
+        "name": "You",
+        "profit": 380,
+        "items": 5,
+        "date": "2026-02-20"
+    },
+    {
+        "name": "You",
+        "profit": 310,
+        "items": 3,
+        "date": "2026-02-21"
+    },
+    {
+        "name": "You",
+        "profit": 240,
+        "items": 4,
+        "date": "2026-02-22"
+    },
+    {
+        "name": "You",
+        "profit": 150,
+        "items": 2,
+        "date": "2026-02-23"
+    },
+    {
+        "name": "You",
+        "profit": 100,
+        "items": 3,
+        "date": "2026-02-24"
+    },
+    {
+        "name": "You",
+        "profit": 85,
+        "items": 2,
+        "date": "2026-02-25"
+    },
+    {
+        "name": "You",
+        "profit": -25,
+        "items": 1,
+        "date": "2026-02-19"
+    },
+    {
+        "name": "You",
+        "profit": -20,
+        "items": 1,
+        "date": "2026-02-18"
     }
 ]

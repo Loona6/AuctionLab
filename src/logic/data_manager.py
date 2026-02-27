@@ -18,27 +18,22 @@ class DataManager:
         try:
             with open(cls.HIGHSCORES_FILE, "r") as f:
                 data = json.load(f)
-                # Filter out sessions with no items won and sort
-                valid = [s for s in data if s.get('items', 0) > 0]
-                return sorted(valid, key=lambda x: x['profit'], reverse=True)
+                # Sort by profit descending (Full history preserved)
+                return sorted(data, key=lambda x: x['profit'], reverse=True)
         except (json.JSONDecodeError, IOError):
             return []
 
     @classmethod
     def save_highscore(cls, player_name, profit, items_won):
-        if items_won <= 0:
-            return # Don't save sessions where no items were won
-            
         cls.ensure_data_dir()
         scores = cls.load_highscores()
         scores.append({
             "name": player_name,
             "profit": profit,
             "items": items_won,
-            "date": "" # Could add timestamp
+            "date": "" # Placeholder for timestamp
         })
-        # Sort by profit descending and keep top 10
-        scores = sorted(scores, key=lambda x: x['profit'], reverse=True)[:10]
+        # Note: We now keep the full history in the file
         with open(cls.HIGHSCORES_FILE, "w") as f:
             json.dump(scores, f, indent=4)
 
@@ -49,6 +44,8 @@ class DataManager:
                 "total_sessions": 0,
                 "lifetime_profit": 0,
                 "total_items": 0,
+                "max_profit": 0,
+                "max_items": 0,
                 "playstyle_counts": {}
             }
         try:
@@ -64,6 +61,10 @@ class DataManager:
         stats["total_sessions"] = stats.get("total_sessions", 0) + 1
         stats["lifetime_profit"] = stats.get("lifetime_profit", 0) + session_profit
         stats["total_items"] = stats.get("total_items", 0) + session_items
+        
+        # New Peak Metrics
+        stats["max_profit"] = max(stats.get("max_profit", 0), session_profit)
+        stats["max_items"] = max(stats.get("max_items", 0), session_items)
         
         counts = stats.get("playstyle_counts", {})
         counts[playstyle] = counts.get(playstyle, 0) + 1

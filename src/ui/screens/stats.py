@@ -64,11 +64,20 @@ class StatsScreen:
         avg_profit = stats.get('lifetime_profit', 0) / stats.get('total_sessions', 1) if stats.get('total_sessions', 0) > 0 else 0
         avg_items = stats.get('total_items', 0) / stats.get('total_sessions', 1) if stats.get('total_sessions', 0) > 0 else 0
         
-        row_h = 40
+        row_h = 35
         curr_y = mid_y + 60
-        self._draw_row(surface, 60, curr_y, left_w, "Avg. Profit / Session:", f"$ {int(avg_profit):,}")
+        self._draw_row(surface, 60, curr_y, left_w, "Personal Best Profit:", f"$ {stats.get('max_profit', 0):,}")
         curr_y += row_h
-        self._draw_row(surface, 60, curr_y, left_w, "Avg. Items / Session:", f"{avg_items:.1f}")
+        self._draw_row(surface, 60, curr_y, left_w, "Personal Best Collection:", f"{stats.get('max_items', 0)} Items")
+        curr_y += row_h
+        
+        # Win ratio calculation (Items won vs total rounds played)
+        total_rounds = stats.get('total_sessions', 0) * 5
+        win_ratio = (stats.get('total_items', 0) / total_rounds) * 100 if total_rounds > 0 else 0
+        self._draw_row(surface, 60, curr_y, left_w, "Overall Round Win Ratio:", f"{win_ratio:.1f}%")
+        curr_y += row_h
+        
+        self._draw_row(surface, 60, curr_y, left_w, "Avg. Profit / Session:", f"$ {int(avg_profit):,}")
         curr_y += row_h
         self._draw_row(surface, 60, curr_y, left_w, "Total Playstyles Tracked:", str(len(stats.get("playstyle_counts", {}))))
         
