@@ -53,7 +53,10 @@ class HighScoreScreen:
         # Determine Top values
         top_profit = scores[0]['profit']
         most_items = max([s['items'] for s in scores])
-        total_sessions = len(scores)
+        
+        # Load unified session count from stats
+        stats = DataManager.load_stats()
+        total_sessions = stats.get("total_sessions", 0)
         
         # Center cards
         start_x = (SCREEN_WIDTH - (card_w * 3 + gap * 2)) // 2

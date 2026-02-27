@@ -19,17 +19,17 @@ HINT_CONFIG = {
 STRATEGY_CONFIG = {
     "Aggressive": {
         'noise_range': (-0.05, 0.20),   # Widened from 0.15
-        'risk_ceiling': 1.10,           # Increased from 1.02: Willing to overpay in wars
+        'risk_ceiling': 1.08,           # Decreased slightly from 1.10 to reduce massive overbids
         'profit_target': 0.01,
-        'reaction_speed': (1, 3),
+        'reaction_speed': (8, 14),      # Much slower baseline response (1.6s - 2.8s)
         'aggressiveness': 0.9,
         'tactics': ['jump_bid', 'intimidate']
     },
     "Balanced": {
         'noise_range': (-0.12, 0.12),   # Widened from 0.10
-        'risk_ceiling': 1.03,           # Increased from 0.98: Premium payer
+        'risk_ceiling': 1.05,           # Increased from 1.03 to help compete against Aggressive
         'profit_target': 0.05,
-        'reaction_speed': (1, 4),
+        'reaction_speed': (8, 14),     # Sped up slightly so they don't get locked out (was 10, 16)
         'aggressiveness': 0.5,
         'tactics': ['bait']
     },
@@ -37,7 +37,7 @@ STRATEGY_CONFIG = {
         'noise_range': (-0.20, -0.02),  # Widened from -0.15
         'risk_ceiling': 0.98,           # Increased from 0.93: Willing to pay near base
         'profit_target': 0.10,
-        'reaction_speed': (2, 5),
+        'reaction_speed': (12, 18),     # Heavily paced sniper delays (2.4s - 3.6s)
         'aggressiveness': 0.1,
         'tactics': ['snipe']
     }

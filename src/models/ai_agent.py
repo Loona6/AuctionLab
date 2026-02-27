@@ -37,7 +37,11 @@ class AIAgent:
         self.state = "Active"
         self.is_active = (self.budget > 0)
         self.bid_history = []
-        self.next_action_tick = 0
+        
+        # Presentation pacing: Add a 3s to 5s initial startup delay for bots
+        # so they don't immediately machine-gun bids on tick 0
+        self.next_action_tick = random.randint(15, 25)
+        
         self.has_spite_bid = False
         self.spite_cooldown = 0
         self.is_spite_armed = False
@@ -170,7 +174,7 @@ class AIAgent:
                     # Hesitant withdrawal (add a delay before actually folding)
                     if not getattr(self, 'is_watching', False):
                         self.is_watching = True
-                        self.watch_ticks = random.randint(3, 7) # Delay folding
+                        self.watch_ticks = random.randint(1, 3) # Reduced delay folding (was 3-7) because ticks take longer now
                     return
                 else:
                     # If we were watching but price is now safe, stop watching
@@ -186,8 +190,8 @@ class AIAgent:
 
         # Event 2: Their own bid gets outbid (Emotional Trigger)
         if event_type == "outbid":
-            # Set shorter reaction delay for "retaliation"
-            self.next_action_tick = random.randint(1, 3)
+            # Set shorter reaction delay for "retaliation", but still paced for readability
+            self.next_action_tick = random.randint(4, 9)
 
             if self.strategy == "Conservative":
                 # Part 3, Event 2: Chase check
@@ -201,12 +205,12 @@ class AIAgent:
                 if (current_price + 2 * min_increment) >= self.strategic_ceiling:
                     if not getattr(self, 'is_watching', False):
                         self.is_watching = True
-                        self.watch_ticks = random.randint(3, 7)
+                        self.watch_ticks = random.randint(1, 3) # Reduced hesitation
                     return
                 else:
                     # Below ceiling: retaliate
                     self.is_watching = False
-                    self.next_action_tick = random.randint(1, 3)
+                    self.next_action_tick = random.randint(4, 9)
             # Aggressive treats it as a personal attack (War Mode trigger)
 
         # Event 3: Timer thresholds (Hesitation vs Sniper)

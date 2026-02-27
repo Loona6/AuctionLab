@@ -2,305 +2,305 @@
 AUCTION LAB SYSTEM EVALUATION REPORT - 100 ROUNDS
 ============================================================
 
-ROUND 001 | Item: 112 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $101 | Profit: $11
+ROUND 001 | Item: 75 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $76 | Profit: $-1
 ----------------------------------------
-ROUND 002 | Item: 102 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $105 | Profit: $-3
+ROUND 002 | Item: 78 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $76 | Profit: $2
 ----------------------------------------
-ROUND 003 | Item: 96 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $118 | Profit: $-22
+ROUND 003 | Item: 32 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $35 | Profit: $-3
 ----------------------------------------
-ROUND 004 | Item: 36 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $40 | Profit: $-4
+ROUND 004 | Item: 74 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $72 | Profit: $2
 ----------------------------------------
-ROUND 005 | Item: 71 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $71 | Profit: $0
+ROUND 005 | Item: 136 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $135 | Profit: $1
 ----------------------------------------
-ROUND 006 | Item: 63 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $75 | Profit: $-12
+ROUND 006 | Item: 30 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $34 | Profit: $-4
 ----------------------------------------
-ROUND 007 | Item: 80 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $102 | Profit: $-22
+ROUND 007 | Item: 102 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $118 | Profit: $-16
 ----------------------------------------
-ROUND 008 | Item: 98 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $108 | Profit: $-10
+ROUND 008 | Item: 95 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $114 | Profit: $-19
 ----------------------------------------
-ROUND 009 | Item: 109 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $106 | Profit: $3
+ROUND 009 | Item: 77 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $75 | Profit: $2
 ----------------------------------------
-ROUND 010 | Item: 22 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $40 | Profit: $-18
+ROUND 010 | Item: 100 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $114 | Profit: $-14
 ----------------------------------------
-ROUND 011 | Item: 65 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $71 | Profit: $-6
+ROUND 011 | Item: 101 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $103 | Profit: $-2
 ----------------------------------------
-ROUND 012 | Item: 26 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $36 | Profit: $-10
+ROUND 012 | Item: 140 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $130 | Profit: $10
 ----------------------------------------
-ROUND 013 | Item: 77 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $81 | Profit: $-4
+ROUND 013 | Item: 73 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $74 | Profit: $-1
 ----------------------------------------
-ROUND 014 | Item: 120 | Hint: "Strong market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $139 | Profit: $-19
+ROUND 014 | Item: 127 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $149 | Profit: $-22
 ----------------------------------------
-ROUND 015 | Item: 134 | Hint: "Strong market interest"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $138 | Profit: $-4
+ROUND 015 | Item: 102 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $106 | Profit: $-4
 ----------------------------------------
-ROUND 016 | Item: 26 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $35 | Profit: $-9
+ROUND 016 | Item: 20 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $35 | Profit: $-15
 ----------------------------------------
-ROUND 017 | Item: 75 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $77 | Profit: $-2
+ROUND 017 | Item: 56 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $72 | Profit: $-16
 ----------------------------------------
-ROUND 018 | Item: 113 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $106 | Profit: $7
+ROUND 018 | Item: 97 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $107 | Profit: $-10
 ----------------------------------------
-ROUND 019 | Item: 36 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $36 | Profit: $0
+ROUND 019 | Item: 74 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $79 | Profit: $-5
 ----------------------------------------
-ROUND 020 | Item: 37 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $40 | Profit: $-3
+ROUND 020 | Item: 130 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $146 | Profit: $-16
 ----------------------------------------
-ROUND 021 | Item: 89 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $110 | Profit: $-21
+ROUND 021 | Item: 146 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $136 | Profit: $10
 ----------------------------------------
-ROUND 022 | Item: 69 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $75 | Profit: $-6
+ROUND 022 | Item: 63 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $73 | Profit: $-10
 ----------------------------------------
-ROUND 023 | Item: 90 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-0 (Aggressive) for $113 | Profit: $-23
+ROUND 023 | Item: 105 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $110 | Profit: $-5
 ----------------------------------------
-ROUND 024 | Item: 55 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $35 | Profit: $20
+ROUND 024 | Item: 69 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $70 | Profit: $-1
 ----------------------------------------
-ROUND 025 | Item: 72 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $66 | Profit: $6
+ROUND 025 | Item: 69 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $70 | Profit: $-1
 ----------------------------------------
-ROUND 026 | Item: 99 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $116 | Profit: $-17
+ROUND 026 | Item: 71 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $75 | Profit: $-4
 ----------------------------------------
-ROUND 027 | Item: 126 | Hint: "Strong market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $140 | Profit: $-14
+ROUND 027 | Item: 33 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $39 | Profit: $-6
 ----------------------------------------
-ROUND 028 | Item: 68 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $61 | Profit: $7
+ROUND 028 | Item: 119 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $133 | Profit: $-14
 ----------------------------------------
-ROUND 029 | Item: 60 | Hint: "Below average demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $76 | Profit: $-16
+ROUND 029 | Item: 76 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $80 | Profit: $-4
 ----------------------------------------
-ROUND 030 | Item: 96 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $105 | Profit: $-9
+ROUND 030 | Item: 126 | Hint: "Strong market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $141 | Profit: $-15
 ----------------------------------------
-ROUND 031 | Item: 37 | Hint: "Low market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $40 | Profit: $-3
+ROUND 031 | Item: 24 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $34 | Profit: $-10
 ----------------------------------------
-ROUND 032 | Item: 113 | Hint: "Strong market interest"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $123 | Profit: $-10
+ROUND 032 | Item: 92 | Hint: "Decent demand"
+  RESULT: Winner AI-Aggressive-1 (Aggressive) for $114 | Profit: $-22
 ----------------------------------------
-ROUND 033 | Item: 95 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $99 | Profit: $-4
+ROUND 033 | Item: 56 | Hint: "Below average demand"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $73 | Profit: $-17
 ----------------------------------------
-ROUND 034 | Item: 87 | Hint: "Decent demand"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $101 | Profit: $-14
+ROUND 034 | Item: 100 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $90 | Profit: $10
 ----------------------------------------
-ROUND 035 | Item: 186 | Hint: "Extremely valuable item"
-  RESULT: Winner AI-Aggressive-1 (Aggressive) for $162 | Profit: $24
+ROUND 035 | Item: 109 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $89 | Profit: $20
 ----------------------------------------
-ROUND 036 | Item: 58 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $56 | Profit: $2
+ROUND 036 | Item: 103 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $85 | Profit: $18
 ----------------------------------------
-ROUND 037 | Item: 99 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $93 | Profit: $6
+ROUND 037 | Item: 64 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $65 | Profit: $-1
 ----------------------------------------
-ROUND 038 | Item: 38 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $30 | Profit: $8
+ROUND 038 | Item: 69 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $55 | Profit: $14
 ----------------------------------------
-ROUND 039 | Item: 73 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $61 | Profit: $12
+ROUND 039 | Item: 96 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $95 | Profit: $1
 ----------------------------------------
-ROUND 040 | Item: 111 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $95 | Profit: $16
+ROUND 040 | Item: 100 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $89 | Profit: $11
 ----------------------------------------
-ROUND 041 | Item: 137 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $109 | Profit: $28
+ROUND 041 | Item: 135 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $114 | Profit: $21
 ----------------------------------------
-ROUND 042 | Item: 43 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $30 | Profit: $13
+ROUND 042 | Item: 142 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $125 | Profit: $17
 ----------------------------------------
-ROUND 043 | Item: 70 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $66 | Profit: $4
+ROUND 043 | Item: 104 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $93 | Profit: $11
 ----------------------------------------
-ROUND 044 | Item: 25 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $30 | Profit: $-5
+ROUND 044 | Item: 119 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $115 | Profit: $4
 ----------------------------------------
-ROUND 045 | Item: 94 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $84 | Profit: $10
+ROUND 045 | Item: 38 | Hint: "Low market interest"
+  RESULT: Winner AI-Aggressive-0 (Aggressive) for $34 | Profit: $4
 ----------------------------------------
-ROUND 046 | Item: 110 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $95 | Profit: $15
+ROUND 046 | Item: 77 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $61 | Profit: $16
 ----------------------------------------
-ROUND 047 | Item: 61 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $65 | Profit: $-4
+ROUND 047 | Item: 27 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $30 | Profit: $-3
 ----------------------------------------
-ROUND 048 | Item: 77 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $55 | Profit: $22
+ROUND 048 | Item: 102 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $95 | Profit: $7
 ----------------------------------------
-ROUND 049 | Item: 30 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $34 | Profit: $-4
+ROUND 049 | Item: 73 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $60 | Profit: $13
 ----------------------------------------
-ROUND 050 | Item: 53 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $35 | Profit: $18
+ROUND 050 | Item: 29 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $35 | Profit: $-6
 ----------------------------------------
-ROUND 051 | Item: 144 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $117 | Profit: $27
+ROUND 051 | Item: 119 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $133 | Profit: $-14
 ----------------------------------------
-ROUND 052 | Item: 23 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $29 | Profit: $-6
+ROUND 052 | Item: 64 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $59 | Profit: $5
 ----------------------------------------
-ROUND 053 | Item: 188 | Hint: "Extremely valuable item"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $163 | Profit: $25
+ROUND 053 | Item: 100 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $85 | Profit: $15
 ----------------------------------------
-ROUND 054 | Item: 63 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $61 | Profit: $2
+ROUND 054 | Item: 20 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $30 | Profit: $-10
 ----------------------------------------
-ROUND 055 | Item: 64 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $65 | Profit: $-1
+ROUND 055 | Item: 91 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $89 | Profit: $2
 ----------------------------------------
-ROUND 056 | Item: 100 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $95 | Profit: $5
+ROUND 056 | Item: 139 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $130 | Profit: $9
 ----------------------------------------
-ROUND 057 | Item: 23 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $30 | Profit: $-7
+ROUND 057 | Item: 63 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $61 | Profit: $2
 ----------------------------------------
-ROUND 058 | Item: 66 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $56 | Profit: $10
+ROUND 058 | Item: 95 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $93 | Profit: $2
 ----------------------------------------
-ROUND 059 | Item: 134 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $123 | Profit: $11
+ROUND 059 | Item: 70 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $65 | Profit: $5
 ----------------------------------------
-ROUND 060 | Item: 99 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $95 | Profit: $4
+ROUND 060 | Item: 106 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $79 | Profit: $27
 ----------------------------------------
-ROUND 061 | Item: 122 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $119 | Profit: $3
+ROUND 061 | Item: 95 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $84 | Profit: $11
 ----------------------------------------
-ROUND 062 | Item: 108 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $85 | Profit: $23
+ROUND 062 | Item: 31 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $30 | Profit: $1
 ----------------------------------------
-ROUND 063 | Item: 104 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $85 | Profit: $19
+ROUND 063 | Item: 79 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $60 | Profit: $19
 ----------------------------------------
-ROUND 064 | Item: 141 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $119 | Profit: $22
+ROUND 064 | Item: 106 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $100 | Profit: $6
 ----------------------------------------
-ROUND 065 | Item: 113 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $84 | Profit: $29
+ROUND 065 | Item: 76 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $66 | Profit: $10
 ----------------------------------------
-ROUND 066 | Item: 34 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $29 | Profit: $5
+ROUND 066 | Item: 19 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $30 | Profit: $-11
 ----------------------------------------
-ROUND 067 | Item: 65 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $61 | Profit: $4
+ROUND 067 | Item: 102 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $95 | Profit: $7
 ----------------------------------------
-ROUND 068 | Item: 67 | Hint: "Below average demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $65 | Profit: $2
+ROUND 068 | Item: 94 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $90 | Profit: $4
 ----------------------------------------
-ROUND 069 | Item: 42 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $35 | Profit: $7
+ROUND 069 | Item: 93 | Hint: "Decent demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $89 | Profit: $4
 ----------------------------------------
-ROUND 070 | Item: 38 | Hint: "Low market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $35 | Profit: $3
+ROUND 070 | Item: 131 | Hint: "Strong market interest"
+  RESULT: Winner AI-Balanced-1 (Balanced) for $107 | Profit: $24
 ----------------------------------------
-ROUND 071 | Item: 107 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $94 | Profit: $13
+ROUND 071 | Item: 63 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $41 | Profit: $22
 ----------------------------------------
-ROUND 072 | Item: 133 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-0 (Balanced) for $119 | Profit: $14
+ROUND 072 | Item: 39 | Hint: "Low market interest"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $9 | Profit: $30
 ----------------------------------------
-ROUND 073 | Item: 98 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $71 | Profit: $27
+ROUND 073 | Item: 68 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $40 | Profit: $28
 ----------------------------------------
-ROUND 074 | Item: 133 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $94 | Profit: $39
+ROUND 074 | Item: 64 | Hint: "Below average demand"
+  RESULT: Winner AI-Balanced-0 (Balanced) for $40 | Profit: $24
 ----------------------------------------
-ROUND 075 | Item: 99 | Hint: "Decent demand"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $70 | Profit: $29
+ROUND 075 | Item: 173 | Hint: "Extremely valuable item"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $119 | Profit: $54
 ----------------------------------------
-ROUND 076 | Item: 134 | Hint: "Strong market interest"
-  RESULT: Winner AI-Balanced-1 (Balanced) for $99 | Profit: $35
-----------------------------------------
-ROUND 077 | Item: 91 | Hint: "Decent demand"
-  RESULT: Winner AI-Conservative-1 (Conservative) for $66 | Profit: $25
-----------------------------------------
-ROUND 078 | Item: 76 | Hint: "Below average demand"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $34 | Profit: $42
-----------------------------------------
-ROUND 079 | Item: 100 | Hint: "Decent demand"
+ROUND 076 | Item: 100 | Hint: "Decent demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 080 | Item: 104 | Hint: "Decent demand"
+ROUND 077 | Item: 36 | Hint: "Low market interest"
+  RESULT: Winner AI-Conservative-1 (Conservative) for $10 | Profit: $26
+----------------------------------------
+ROUND 078 | Item: 104 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-1 (Conservative) for $66 | Profit: $38
+----------------------------------------
+ROUND 079 | Item: 127 | Hint: "Strong market interest"
+  RESULT: Winner AI-Conservative-1 (Conservative) for $90 | Profit: $37
+----------------------------------------
+ROUND 080 | Item: 91 | Hint: "Decent demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 081 | Item: 26 | Hint: "Low market interest"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $16
+ROUND 081 | Item: 103 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $62 | Profit: $41
 ----------------------------------------
-ROUND 082 | Item: 126 | Hint: "Strong market interest"
-  RESULT: Winner AI-Conservative-1 (Conservative) for $90 | Profit: $36
+ROUND 082 | Item: 40 | Hint: "Low market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $30
 ----------------------------------------
-ROUND 083 | Item: 53 | Hint: "Low market interest"
-  RESULT: Winner AI-Conservative-1 (Conservative) for $10 | Profit: $43
+ROUND 083 | Item: 69 | Hint: "Below average demand"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $33 | Profit: $36
 ----------------------------------------
-ROUND 084 | Item: 76 | Hint: "Below average demand"
+ROUND 084 | Item: 99 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $61 | Profit: $38
+----------------------------------------
+ROUND 085 | Item: 63 | Hint: "Below average demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 085 | Item: 100 | Hint: "Decent demand"
+ROUND 086 | Item: 105 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $65 | Profit: $40
+----------------------------------------
+ROUND 087 | Item: 114 | Hint: "Strong market interest"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 086 | Item: 125 | Hint: "Strong market interest"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $90 | Profit: $35
+ROUND 088 | Item: 37 | Hint: "Low market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $27
 ----------------------------------------
-ROUND 087 | Item: 83 | Hint: "Below average demand"
+ROUND 089 | Item: 91 | Hint: "Decent demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 088 | Item: 69 | Hint: "Below average demand"
+ROUND 090 | Item: 77 | Hint: "Below average demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 089 | Item: 29 | Hint: "Low market interest"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $19
+ROUND 091 | Item: 106 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-1 (Conservative) for $61 | Profit: $45
 ----------------------------------------
-ROUND 090 | Item: 96 | Hint: "Decent demand"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $62 | Profit: $34
+ROUND 092 | Item: 42 | Hint: "Low market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $32
 ----------------------------------------
-ROUND 091 | Item: 125 | Hint: "Strong market interest"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $89 | Profit: $36
+ROUND 093 | Item: 18 | Hint: "Low market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $8
 ----------------------------------------
-ROUND 092 | Item: 140 | Hint: "Extremely valuable item"
+ROUND 094 | Item: 102 | Hint: "Decent demand"
+  RESULT: Winner AI-Conservative-1 (Conservative) for $61 | Profit: $41
+----------------------------------------
+ROUND 095 | Item: 69 | Hint: "Below average demand"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $34 | Profit: $35
+----------------------------------------
+ROUND 096 | Item: 95 | Hint: "Decent demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 093 | Item: 62 | Hint: "Below average demand"
+ROUND 097 | Item: 135 | Hint: "Strong market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $90 | Profit: $45
+----------------------------------------
+ROUND 098 | Item: 135 | Hint: "Strong market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $89 | Profit: $46
+----------------------------------------
+ROUND 099 | Item: 80 | Hint: "Decent demand"
   RESULT: NO WINNER (None (Disqualified))
 ----------------------------------------
-ROUND 094 | Item: 72 | Hint: "Below average demand"
-  RESULT: NO WINNER (None (Disqualified))
-----------------------------------------
-ROUND 095 | Item: 30 | Hint: "Low market interest"
-  RESULT: Winner AI-Conservative-1 (Conservative) for $10 | Profit: $20
-----------------------------------------
-ROUND 096 | Item: 105 | Hint: "Decent demand"
-  RESULT: NO WINNER (None (Disqualified))
-----------------------------------------
-ROUND 097 | Item: 71 | Hint: "Below average demand"
-  RESULT: NO WINNER (None (Disqualified))
-----------------------------------------
-ROUND 098 | Item: 31 | Hint: "Low market interest"
-  RESULT: Winner AI-Conservative-0 (Conservative) for $10 | Profit: $21
-----------------------------------------
-ROUND 099 | Item: 64 | Hint: "Below average demand"
-  RESULT: NO WINNER (None (Disqualified))
-----------------------------------------
-ROUND 100 | Item: 101 | Hint: "Decent demand"
-  RESULT: NO WINNER (None (Disqualified))
+ROUND 100 | Item: 120 | Hint: "Strong market interest"
+  RESULT: Winner AI-Conservative-0 (Conservative) for $92 | Profit: $28
 ----------------------------------------
 
 
@@ -309,27 +309,27 @@ FINAL AGGREGATE PERFORMANCE SUMMARY
 ============================================================
 
 STRATEGY: Aggressive
-  Wins:            35 (40.2%)
-  Avg Bid:         $87.06
-  Avg Profit/Win:  $-5.91
-  Total Profit:    $-207
-  Est. ROI:        -6.8%
+  Wins:            34 (37.0%)
+  Avg Bid:         $89.18
+  Avg Profit/Win:  $-6.65
+  Total Profit:    $-226
+  Est. ROI:        -7.5%
 ------------------------------
 STRATEGY: Balanced
-  Wins:            41 (47.1%)
-  Avg Bid:         $74.05
-  Avg Profit/Win:  $11.83
-  Total Profit:    $485
-  Est. ROI:        16.0%
+  Wins:            40 (43.5%)
+  Avg Bid:         $75.03
+  Avg Profit/Win:  $9.38
+  Total Profit:    $375
+  Est. ROI:        12.5%
 ------------------------------
 STRATEGY: Conservative
-  Wins:            11 (12.6%)
-  Avg Bid:         $43.73
-  Avg Profit/Win:  $29.73
-  Total Profit:    $327
-  Est. ROI:        68.0%
+  Wins:            18 (19.6%)
+  Avg Bid:         $54.06
+  Avg Profit/Win:  $35.94
+  Total Profit:    $647
+  Est. ROI:        66.5%
 ------------------------------
 
 TOTAL ROUNDS:        100
-TOTAL NO-WIN ROUNDS: 13
+TOTAL NO-WIN ROUNDS: 8
 ============================================================
