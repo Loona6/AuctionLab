@@ -379,6 +379,8 @@ class Auction:
                 self.highest_bidder.session_profit += profit
             if hasattr(self.highest_bidder, 'items_won'):
                 self.highest_bidder.items_won += 1
+            if hasattr(self.highest_bidder, 'items_value_won'):
+                self.highest_bidder.items_value_won += true_val
         elif is_disqualified:
              self.log_event(f"DISQUALIFIED: {self.highest_bidder.id} withdrew/passed and cannot win.")
              winner_id = "None (Disqualified)"

@@ -746,41 +746,92 @@ class GameScreen:
 
         else:
             # --- FINAL GAME OVER SCREEN ---
-            box_w, box_h = 700, 500
-            pygame.draw.rect(surface, THEME_PANEL_BG, (cx-box_w//2, cy-box_h//2, box_w, box_h), border_radius=20)
-            pygame.draw.rect(surface, THEME_ACCENT_GOLD, (cx-box_w//2, cy-box_h//2, box_w, box_h), 2, border_radius=20)
+            box_w, box_h = 950, 560
+            box_x, box_y = cx - box_w // 2, cy - box_h // 2
+            pygame.draw.rect(surface, THEME_PANEL_BG, (box_x, box_y, box_w, box_h), border_radius=20)
+            pygame.draw.rect(surface, THEME_ACCENT_GOLD, (box_x, box_y, box_w, box_h), 2, border_radius=20)
 
-            draw_text(surface, "SESSION SUMMARY", cx, cy - 210, self.font_header if hasattr(self, 'font_header') else self.font_xl, THEME_ACCENT_GOLD, "center")
+            draw_text(surface, "SESSION SUMMARY", cx, box_y + 40, self.font_header if hasattr(self, 'font_header') else self.font_xl, THEME_ACCENT_GOLD, "center")
             
-            # Session Stats
+            # --- CALCULATE GLOBAL STANDINGS (Net Worth) ---
+            participants = []
+            for p in [self.player] + self.auction.agents:
+                # Net Worth = Final Budget + Value of Items Won
+                net_worth = p.budget + (getattr(p, 'items_value_won', 0))
+                participants.append({
+                    'id': p.id,
+                    'is_player': p.id == self.player.id,
+                    'budget': p.budget,
+                    'item_val': getattr(p, 'items_value_won', 0),
+                    'net_worth': net_worth
+                })
+            
+            # Sort by Net Worth
+            participants.sort(key=lambda x: x['net_worth'], reverse=True)
+            winner = participants[0]
+
+            # Divider line (Vertical)
+            pygame.draw.line(surface, THEME_BORDER, (cx, box_y + 80), (cx, box_y + box_h - 60), 1)
+
+            # --- COLUMN 1: GLOBAL (LEFT) ---
+            lx = box_x + (box_w // 4)
+            ly = box_y + 100
+            
+            # Winner Announcement
+            w_text = f"Winner: {winner['id']}"
+            draw_text(surface, w_text, lx, ly, self.font_lg, THEME_ACCENT_GOLD, "center")
+            draw_text(surface, f"Net Worth: ${winner['net_worth']}", lx, ly + 35, self.font_md, THEME_TEXT_MAIN, "center")
+            
+            # Breakdown of Wealth for Winner
+            draw_text(surface, f"Budget: ${winner['budget']}  |  Item Value: ${winner['item_val']}", 
+                      lx, ly + 65, self.font_sm, THEME_TEXT_SUB, "center")
+
+            # Leaderboard
+            ly_board = ly + 110
+            draw_text(surface, "LEADERBOARD", lx, ly_board, self.font_sm, THEME_ACCENT_CYAN, "center")
+            pygame.draw.line(surface, THEME_BORDER, (lx - 150, ly_board + 15), (lx + 150, ly_board + 15), 1)
+            
+            ly_row = ly_board + 30
+            for i, p in enumerate(participants[:6]): # Show top 6
+                rank_color = THEME_ACCENT_GOLD if i == 0 else (THEME_TEXT_MAIN if p['is_player'] else THEME_TEXT_SUB)
+                p_label = f"{i+1}. {p['id']}"
+                if p['is_player']: p_label += " (YOU)"
+                
+                draw_text(surface, p_label, lx - 150, ly_row, self.font_sm, rank_color, "left")
+                draw_text(surface, f"${p['net_worth']}", lx + 150, ly_row, self.font_sm, THEME_TEXT_MAIN, "right")
+                ly_row += 30
+
+            # --- COLUMN 2: PERSONAL (RIGHT) ---
+            rx = box_x + (box_w * 3 // 4)
+            ry = box_y + 100
+            
+            # Personal Session Stats
             final_profit = self.player.session_profit
             p_color = THEME_ACCENT_GREEN if final_profit >= 0 else THEME_ACCENT_RED
-            metrics = PlaystyleAnalyzer.get_behavior_metrics(self.player)
-            style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
             
-            # Stats Grid
-            self._draw_overlay_stat(surface, cx - 220, cy - 100, "TOTAL PROFIT", f"${final_profit}", p_color)
-            self._draw_overlay_stat(surface, cx,       cy - 100, "ITEMS WON", f"{self.player.items_won}", THEME_ACCENT_GOLD)
-            self._draw_overlay_stat(surface, cx + 220, cy - 100, "FINAL BUDGET", f"${self.player.budget}", THEME_TEXT_MAIN)
+            draw_text(surface, "YOUR PERFORMANCE", rx, ry, self.font_sm, THEME_ACCENT_CYAN, "center")
+            self._draw_overlay_stat(surface, rx - 100, ry + 40, "PROFIT", f"${final_profit}", p_color)
+            self._draw_overlay_stat(surface, rx + 100, ry + 40, "WON", f"{self.player.items_won}", THEME_ACCENT_GOLD)
             
             # Playstyle Badge
-            pygame.draw.rect(surface, (35, 40, 60), (cx-300, cy - 10, 600, 160), border_radius=15)
-            draw_text(surface, "YOUR PLAYSTYLE", cx, cy + 5, self.font_sm, THEME_ACCENT_CYAN, "center")
-            draw_text(surface, style_name.upper(), cx, cy + 45, self.font_lg, THEME_ACCENT_GOLD, "center")
+            badge_y = ry + 120
+            pygame.draw.rect(surface, (35, 40, 60), (rx - 180, badge_y, 360, 140), border_radius=15)
+            
+            style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
+            draw_text(surface, "PLAYSTYLE", rx, badge_y + 15, self.font_sm, THEME_ACCENT_CYAN, "center")
+            draw_text(surface, style_name.upper(), rx, badge_y + 45, self.font_md, THEME_ACCENT_GOLD, "center")
             
             # Description (Wrapped)
-            self._draw_wrapped_text(surface, style_desc, cx, cy + 85, 550, self.font_sm, THEME_TEXT_MAIN)
+            self._draw_wrapped_text(surface, style_desc, rx, badge_y + 75, 320, self.font_sm, THEME_TEXT_MAIN)
             
             # Detailed Metrics
-            m_y = cy + 180
-            draw_text(surface, f"Avg Reaction: {metrics['avg_reaction']}", cx - 200, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            draw_text(surface, f"First Bid: {metrics['first_bid_time']}", cx, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            draw_text(surface, f"Risk: {metrics['risk']}", cx + 200, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            
-            draw_text(surface, f"Withdrawals: {metrics['withdrawals']} | Passes: {metrics['passes']}", 
-                      cx, m_y + 22, self.font_sm, THEME_ACCENT_CYAN, "center")
+            metrics = PlaystyleAnalyzer.get_behavior_metrics(self.player)
+            m_y = badge_y + 160
+            draw_text(surface, f"Avg React: {metrics['avg_reaction']} | First: {metrics['first_bid_time']}", rx, m_y, self.font_sm, THEME_TEXT_SUB, "center")
+            draw_text(surface, f"Risk: {metrics['risk']} | WD/Pass: {metrics['withdrawals']}/{metrics['passes']}", 
+                      rx, m_y + 22, self.font_sm, THEME_TEXT_SUB, "center")
 
-            draw_text(surface, "Press [SPACE] to Restart Game", cx, cy + 225, self.font_sm, THEME_ACCENT_CYAN, "center")
+            draw_text(surface, "Press [SPACE] to Restart Game", cx, box_y + box_h - 35, self.font_sm, THEME_ACCENT_CYAN, "center")
 
     def _draw_wrapped_text(self, surface, text, x, y, max_w, font, color, align="center"):
         words = text.split()

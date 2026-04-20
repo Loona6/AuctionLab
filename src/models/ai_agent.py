@@ -17,6 +17,7 @@ class AIAgent:
         self.is_active = True
         self.session_profit = 0
         self.items_won = 0
+        self.items_value_won = 0
         self.next_action_tick = 0 
         
         # --- NEW STATE LOGIC ---

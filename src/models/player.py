@@ -12,6 +12,7 @@ class Player:
         self.session_profit = 0
         self.lifetime_profit = 0
         self.items_won = 0
+        self.items_value_won = 0
         self.sessions_played = 0
         
         # --- Round State ---
