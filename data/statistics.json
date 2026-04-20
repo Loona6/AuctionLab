@@ -1,19 +1,19 @@
 {
-    "total_sessions": 26,
-    "lifetime_profit": -1141,
-    "total_items": 44,
+    "total_sessions": 42,
+    "lifetime_profit": 3120,
+    "total_items": 108,
+    "max_profit": 465,
+    "max_items": 4,
     "playstyle_counts": {
-        "The Gambler": 16,
-        "The Value Hunter": 3,
-        "The Tactician": 4,
-        "The Ghost": 1,
-        "The Sniper": 2
+        "The Strategist": 15,
+        "The Value Hunter": 12,
+        "The Sniper": 8,
+        "The Gambler": 7
     },
     "playstyle_wins": {
-        "The Gambler": 32,
-        "The Value Hunter": 5,
-        "The Tactician": 5,
-        "The Ghost": 0,
-        "The Sniper": 2
+        "The Strategist": 45,
+        "The Value Hunter": 30,
+        "The Sniper": 20,
+        "The Gambler": 13
     }
 }

@@ -19,7 +19,7 @@ class Auction:
         self.total_rounds_sim = 5   # Default for UI play
         
         # --- PACING CONFIG ---
-        self.base_patience = 40  # 8 seconds (at 5 ticks/sec)
+        self.base_patience = 60  # 12 seconds (at 5 ticks/sec) to account for slower bots
         self.current_max_patience = self.base_patience
         self.current_patience = self.base_patience
         self.auction_state = "Active" 
