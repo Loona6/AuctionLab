@@ -1,19 +1,42 @@
 {
-    "total_sessions": 45,
-    "lifetime_profit": 3086,
-    "total_items": 112,
-    "max_profit": 465,
-    "max_items": 4,
+    "total_sessions": 151,
+    "lifetime_profit": 17414,
+    "total_items": 335,
+    "max_profit": 650,
+    "max_items": 5,
     "playstyle_counts": {
-        "The Strategist": 15,
-        "The Value Hunter": 12,
-        "The Sniper": 11,
-        "The Gambler": 7
+        "The Strategist": 40,
+        "The Value Hunter": 36,
+        "The Bully": 30,
+        "The Sniper": 25,
+        "The Gambler": 20
     },
     "playstyle_wins": {
-        "The Strategist": 45,
+        "The Strategist": 100,
+        "The Value Hunter": 55,
+        "The Bully": 120,
+        "The Sniper": 20,
+        "The Gambler": 40
+    },
+    "playstyle_profits": {
+        "The Strategist": 10000,
+        "The Value Hunter": 2714,
+        "The Bully": -1500,
+        "The Sniper": 6000,
+        "The Gambler": 200
+    },
+    "playstyle_spent": {
+        "The Strategist": 40000,
+        "The Value Hunter": 14422,
+        "The Bully": 60000,
+        "The Sniper": 12000,
+        "The Gambler": 24000
+    },
+    "playstyle_successes": {
+        "The Strategist": 32,
         "The Value Hunter": 30,
-        "The Sniper": 24,
-        "The Gambler": 13
+        "The Bully": 6,
+        "The Sniper": 15,
+        "The Gambler": 8
     }
 }

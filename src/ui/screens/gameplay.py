@@ -186,7 +186,7 @@ class GameScreen:
                     session_profit = self.player.session_profit
                     style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
                     DataManager.save_highscore(self.player.name, session_profit, self.player.items_won)
-                    DataManager.update_stats(session_profit, self.player.items_won, style_name)
+                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name)
                     # Save final logs
                     self.auction.save_session_logs("gameplay_logs.txt")
                     self.reset()

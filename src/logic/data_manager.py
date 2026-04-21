@@ -55,7 +55,7 @@ class DataManager:
             return {}
 
     @classmethod
-    def update_stats(cls, session_profit, session_items, playstyle):
+    def update_stats(cls, session_profit, session_items, session_spent, playstyle):
         cls.ensure_data_dir()
         stats = cls.load_stats()
         stats["total_sessions"] = stats.get("total_sessions", 0) + 1
@@ -74,6 +74,22 @@ class DataManager:
         wins_mapping = stats.get("playstyle_wins", {})
         wins_mapping[playstyle] = wins_mapping.get(playstyle, 0) + session_items
         stats["playstyle_wins"] = wins_mapping
+        
+        # Track total profit per playstyle for avg profit calculation
+        profits_mapping = stats.get("playstyle_profits", {})
+        profits_mapping[playstyle] = profits_mapping.get(playstyle, 0) + session_profit
+        stats["playstyle_profits"] = profits_mapping
+        
+        # Track total spent per playstyle for ROI calculation
+        spent_mapping = stats.get("playstyle_spent", {})
+        spent_mapping[playstyle] = spent_mapping.get(playstyle, 0) + session_spent
+        stats["playstyle_spent"] = spent_mapping
+        
+        # Track number of profitable sessions (Successes)
+        success_mapping = stats.get("playstyle_successes", {})
+        if session_profit > 0:
+            success_mapping[playstyle] = success_mapping.get(playstyle, 0) + 1
+        stats["playstyle_successes"] = success_mapping
         
         with open(cls.STATS_FILE, "w") as f:
             json.dump(stats, f, indent=4)

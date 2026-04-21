@@ -55,6 +55,12 @@
     },
     {
         "name": "You",
+        "profit": 0,
+        "items": 0,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -13,
         "items": 3,
         "date": ""
@@ -67,14 +73,38 @@
     },
     {
         "name": "You",
+        "profit": -21,
+        "items": 1,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -25,
         "items": 1,
         "date": "2026-02-19"
     },
     {
         "name": "You",
-        "profit": -21,
+        "profit": -40,
         "items": 1,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": -89,
+        "items": 2,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": -154,
+        "items": 2,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": -86,
+        "items": 3,
         "date": ""
     }
 ]

@@ -377,6 +377,8 @@ class Auction:
             self.highest_bidder.update_budget(self.highest_bid)
             if hasattr(self.highest_bidder, 'session_profit'):
                 self.highest_bidder.session_profit += profit
+            if hasattr(self.highest_bidder, 'session_spent'):
+                self.highest_bidder.session_spent += self.highest_bid
             if hasattr(self.highest_bidder, 'items_won'):
                 self.highest_bidder.items_won += 1
             if hasattr(self.highest_bidder, 'items_value_won'):
