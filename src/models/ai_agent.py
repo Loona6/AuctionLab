@@ -16,13 +16,18 @@ class AIAgent:
         self.bid_history = []
         self.is_active = True
         self.session_profit = 0
+        self.session_spent = 0
+        self.session_penalties = 0
+        self.lockout_rounds = 0
         self.items_won = 0
+        self.items_value_won = 0
         self.next_action_tick = 0 
         
         # --- NEW STATE LOGIC ---
         self.state = "Active" # "Active", "Pass", "Withdraw"
         self.personal_range = (0, 0)
         self.conviction_point = 0
+        self.strategic_ceiling = 0 # To avoid AttributeError during early events
         
         # --- SPITE LOGIC ---
         self.has_spite_bid = False
@@ -235,7 +240,7 @@ class AIAgent:
 
     def calculate_bid(self, auction_state, min_increment):
         """Simplified bidding loop based on state and delays"""
-        if self.state != "Active":
+        if self.state != "Active" or getattr(self, 'lockout_rounds', 0) > 0:
             return None
             
         current_price = auction_state['current_price']

@@ -10,6 +10,7 @@ THEME_BORDER = (60, 65, 85)
 THEME_ACCENT_PURPLE = (155, 89, 182)
 THEME_ACCENT_CYAN = (0, 255, 255)
 THEME_ACCENT_RED = (231, 76, 60)
+THEME_ACCENT_GOLD = (255, 215, 0)
 THEME_TEXT_MAIN = (236, 240, 241)
 THEME_TEXT_SUB = (149, 165, 166)
 
@@ -83,30 +84,56 @@ class StatsScreen:
         
         # Right Panel: Playstyle Frequency
         right_x = (SCREEN_WIDTH // 2) + 10
-        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Playstyle Success Rate")
+        self._draw_panel(surface, right_x, mid_y, left_w, 450, "Playstyle Success Rate")
         
         h_y = mid_y + 60
-        draw_text(surface, "STYLE", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB)
-        draw_text(surface, "SESS", right_x + 160, h_y, self.font_txt, THEME_TEXT_SUB)
-        draw_text(surface, "WIN %", right_x + 240, h_y, self.font_txt, THEME_TEXT_SUB)
+        draw_text(surface, "STYLE", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB, "left")
+        draw_text(surface, "SESS", right_x + 160, h_y, self.font_txt, THEME_TEXT_SUB, "left")
+        draw_text(surface, "AVG PROF", right_x + 250, h_y, self.font_txt, THEME_TEXT_SUB, "left")
+        draw_text(surface, "ROI", right_x + 380, h_y, self.font_txt, THEME_TEXT_SUB, "left")
+        draw_text(surface, "SUCCESS %", right_x + 480, h_y, self.font_txt, THEME_TEXT_SUB, "left")
         pygame.draw.line(surface, THEME_BORDER, (right_x+20, h_y+25), (right_x+left_w-20, h_y+25), 1)
         
         # Table Rows for playstyles
         counts = stats.get("playstyle_counts", {})
-        wins_map = stats.get("playstyle_wins", {})
+        profits_map = stats.get("playstyle_profits", {})
+        success_map = stats.get("playstyle_successes", {})
+        spent_map = stats.get("playstyle_spent", {})
         
-        sorted_styles = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+        # Sort by Success % then Avg Profit
+        sorted_styles = sorted(counts.items(), 
+                               key=lambda x: (success_map.get(x[0], 0) / max(1, x[1])), 
+                               reverse=True)
         
         row_y = h_y + 35
-        for style, count in sorted_styles[:5]: # Top 5
-            wins = wins_map.get(style, 0)
-            # Max items per session is 5
-            win_rate = (wins / (count * 5)) * 100 if count > 0 else 0
+        for style, count in sorted_styles: # Show all recorded styles
+            total_profit = profits_map.get(style, 0)
+            total_spent = spent_map.get(style, 0)
+            avg_profit = total_profit / count if count > 0 else 0
             
-            draw_text(surface, style, right_x + 20, row_y, self.font_txt, THEME_TEXT_MAIN)
-            draw_text(surface, str(count), right_x + 160, row_y, self.font_txt, THEME_TEXT_MAIN)
-            draw_text(surface, f"{win_rate:.1f}%", right_x + 240, row_y, self.font_txt, THEME_ACCENT_CYAN)
-            row_y += 40
+            successes = success_map.get(style, 0)
+            success_rate = (successes / count) * 100 if count > 0 else 0
+            roi = (total_profit / total_spent) * 100 if total_spent > 0 else 0
+            
+            # --- Draw Rows (All Left Aligned) ---
+            draw_text(surface, style, right_x + 20, row_y, self.font_txt, THEME_TEXT_MAIN, "left")
+            draw_text(surface, str(count), right_x + 160, row_y, self.font_txt, THEME_TEXT_MAIN, "left")
+            
+            # Avg Profit
+            prof_color = THEME_ACCENT_CYAN if avg_profit >= 0 else THEME_ACCENT_RED
+            prof_text = f"${int(avg_profit)}" if style in profits_map else "N/A"
+            draw_text(surface, prof_text, right_x + 250, row_y, self.font_txt, prof_color, "left")
+            
+            # ROI
+            roi_color = THEME_ACCENT_CYAN if roi >= 0 else THEME_ACCENT_RED
+            roi_text = f"{int(roi)}%" if style in spent_map else "N/A"
+            draw_text(surface, roi_text, right_x + 380, row_y, self.font_txt, roi_color, "left")
+
+            # Success %
+            success_color = THEME_ACCENT_CYAN if success_rate > 50 else (THEME_ACCENT_GOLD if success_rate > 0 else THEME_ACCENT_RED)
+            draw_text(surface, f"{success_rate:.0f}%", right_x + 480, row_y, self.font_txt, success_color, "left")
+            
+            row_y += 32 # Tighter spacing to fit more styles
 
     def _draw_stat_card(self, surface, x, y, w, h, label, value, color):
         rect = pygame.Rect(x, y, w, h)

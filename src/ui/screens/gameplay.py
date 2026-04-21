@@ -62,6 +62,9 @@ class GameScreen:
         self.frozen_progress = None # Freeze timer on sale
         self.frozen_seconds = None
         
+        self.show_withdrawal_confirm = False # NEW: Safety modal state
+        self.pause_start_ticks = 0           # NEW: Tracking pause time
+        
         # Pre-set the user's proposed bid (Highest + Increment)
         self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
         self.feedback_msg = ""
@@ -93,6 +96,8 @@ class GameScreen:
         self.input_box.set_text(self.proposed_bid)
         self.frozen_progress = None
         self.frozen_seconds = None
+        self.show_withdrawal_confirm = False
+        self.auction.is_paused = False
         
         # Reset Session Counters (Though fresh player handles it, being explicit)
         self.player.withdrawal_count = 0
@@ -124,6 +129,10 @@ class GameScreen:
         self.btn_confirm_quit = NeonButton(SCREEN_WIDTH//2 - 110, SCREEN_HEIGHT//2 + 20, 100, 40, "YES", THEME_ACCENT_RED, "confirm_exit")
         self.btn_cancel_quit = NeonButton(SCREEN_WIDTH//2 + 10, SCREEN_HEIGHT//2 + 20, 100, 40, "NO", THEME_BORDER, "cancel_exit")
 
+        # Withdrawal Confirmation Buttons
+        self.btn_confirm_wd = NeonButton(SCREEN_WIDTH//2 - 110, SCREEN_HEIGHT//2 + 20, 100, 40, "CONFIRM", THEME_ACCENT_RED, "confirm_wd")
+        self.btn_cancel_wd = NeonButton(SCREEN_WIDTH//2 + 10, SCREEN_HEIGHT//2 + 20, 100, 40, "CANCEL", THEME_BORDER, "cancel_wd")
+
     def handle_events(self, event):
         # --- Quit Confirmation Handling ---
         if self.show_quit_confirm:
@@ -131,6 +140,27 @@ class GameScreen:
                 return "back"
             if self.btn_cancel_quit.is_clicked(event):
                 self.show_quit_confirm = False
+            return None
+
+        # --- Withdrawal Confirmation Handling ---
+        if self.show_withdrawal_confirm:
+            if self.btn_confirm_wd.is_clicked(event):
+                if self.auction.withdraw_bid(self.player):
+                    self.player.has_withdrawn = True
+                    penalty = max(10, int(self.auction.highest_bid * 0.05))
+                    self.feedback_msg = f"PENALTY! -${penalty} paid."
+                    self.shake_duration = 10
+                self.show_withdrawal_confirm = False
+                self.auction.is_paused = False
+                # Compensation for pause duration
+                duration = pygame.time.get_ticks() - self.pause_start_ticks
+                self.auction.patience_deadline_ms += duration
+            if self.btn_cancel_wd.is_clicked(event):
+                self.show_withdrawal_confirm = False
+                self.auction.is_paused = False
+                # Compensation for pause duration
+                duration = pygame.time.get_ticks() - self.pause_start_ticks
+                self.auction.patience_deadline_ms += duration
             return None
 
         # --- Menu Navigation ---
@@ -163,14 +193,17 @@ class GameScreen:
                 self._attempt_bid()
                 
             if self.btn_withdraw.is_clicked(event):
-                if self.auction.withdraw_bid(self.player):
-                    self.player.has_withdrawn = True
-                    self.feedback_msg = "Bid Withdrawn!"
-                    # Update input box to new required bid
-                    self.proposed_bid = self.auction.highest_bid + MIN_INCREMENT
-                    self.input_box.set_text(self.proposed_bid)
+                is_winner = self.auction.highest_bidder and self.auction.highest_bidder.id == self.player.id
+                if is_winner:
+                    self.show_withdrawal_confirm = True
+                    self.auction.is_paused = True
+                    self.pause_start_ticks = pygame.time.get_ticks()
                 else:
-                    self.feedback_msg = "Cannot Withdraw!"
+                    if self.auction.withdraw_bid(self.player):
+                        self.player.has_withdrawn = True
+                        self.feedback_msg = "Bid Withdrawn!"
+                    else:
+                        self.feedback_msg = "Cannot Withdraw!"
 
             if self.btn_pass.is_clicked(event):
                 was_leading = (self.auction.highest_bidder and self.auction.highest_bidder.id == self.player.id)
@@ -186,7 +219,7 @@ class GameScreen:
                     session_profit = self.player.session_profit
                     style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
                     DataManager.save_highscore(self.player.name, session_profit, self.player.items_won)
-                    DataManager.update_stats(session_profit, self.player.items_won, style_name)
+                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name)
                     # Save final logs
                     self.auction.save_session_logs("gameplay_logs.txt")
                     self.reset()
@@ -216,6 +249,10 @@ class GameScreen:
         if self.player.is_passing:
             self.feedback_msg = "You have passed this round!"
             return
+            
+        if getattr(self.player, 'lockout_rounds', 0) > 0:
+            self.feedback_msg = "LOCKED OUT: Wait for the next round!"
+            return
 
         val = self.proposed_bid
         
@@ -243,9 +280,14 @@ class GameScreen:
             self.btn_cancel_quit.update(mouse_pos)
             return
 
+        if self.show_withdrawal_confirm:
+            self.btn_confirm_wd.update(mouse_pos)
+            self.btn_cancel_wd.update(mouse_pos)
+            return
+
         # --- Simulation Tick (Every 200ms) ---
         now = pygame.time.get_ticks()
-        if now - self.last_tick_time >= 200:
+        if now - self.last_tick_time >= 200 and not self.auction.is_paused:
             self.auction.run_tick()
             self.last_tick_time = now
             
@@ -351,6 +393,8 @@ class GameScreen:
         # --- Overlays ---
         if self.show_quit_confirm:
             self._draw_quit_overlay(surface)
+        elif self.show_withdrawal_confirm:
+            self._draw_withdrawal_confirm_overlay(surface)
         elif not self.auction.is_active:
             self._draw_round_end_overlay(surface)
 
@@ -372,6 +416,29 @@ class GameScreen:
         
         self.btn_confirm_quit.draw(surface, self.font_md)
         self.btn_cancel_quit.draw(surface, self.font_md)
+
+    def _draw_withdrawal_confirm_overlay(self, surface):
+        # Dim background
+        s = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+        s.set_alpha(180)
+        s.fill((10, 10, 15))
+        surface.blit(s, (0,0))
+        
+        # Dialog Box
+        box_w, box_h = 450, 240
+        rect = pygame.Rect(SCREEN_WIDTH//2 - box_w//2, SCREEN_HEIGHT//2 - box_h//2, box_w, box_h)
+        pygame.draw.rect(surface, THEME_PANEL_BG, rect, border_radius=15)
+        pygame.draw.rect(surface, THEME_ACCENT_RED, rect, 2, border_radius=15)
+        
+        # Calculate penalty for display
+        penalty = max(10, int(self.auction.highest_bid * 0.05))
+        
+        draw_text(surface, "CONFIRM WITHDRAWAL?", rect.centerx, rect.top + 30, self.font_lg, THEME_ACCENT_RED, "center")
+        draw_text(surface, f"Penalty: ${penalty}", rect.centerx, rect.top + 70, self.font_md, THEME_ACCENT_GOLD, "center")
+        draw_text(surface, "You will also be locked out for the round.", rect.centerx, rect.top + 105, self.font_sm, THEME_TEXT_SUB, "center")
+        
+        self.btn_confirm_wd.draw(surface, self.font_md)
+        self.btn_cancel_wd.draw(surface, self.font_md)
 
     def _get_display_seconds(self):
         """Compute remaining seconds from real-time deadline for stutter-free display."""
@@ -677,7 +744,15 @@ class GameScreen:
         self.btn_plus.draw(surface, self.font_md)
         
         self.btn_place_bid.rect.y = input_y + 140
-        bid_color = THEME_TEXT_SUB if self.player.is_passing else THEME_ACCENT_GREEN
+        is_locked = getattr(self.player, 'lockout_rounds', 0) > 0
+        
+        if is_locked:
+            bid_color = (150, 70, 70) # Muted red
+            self.btn_place_bid.text = "🔒 LOCKED"
+        else:
+            bid_color = THEME_TEXT_SUB if self.player.is_passing else THEME_ACCENT_GREEN
+            self.btn_place_bid.text = "PLACE BID"
+            
         self.btn_place_bid.base_color = bid_color
         self.btn_place_bid.draw(surface, self.font_md)
         
@@ -746,41 +821,92 @@ class GameScreen:
 
         else:
             # --- FINAL GAME OVER SCREEN ---
-            box_w, box_h = 700, 500
-            pygame.draw.rect(surface, THEME_PANEL_BG, (cx-box_w//2, cy-box_h//2, box_w, box_h), border_radius=20)
-            pygame.draw.rect(surface, THEME_ACCENT_GOLD, (cx-box_w//2, cy-box_h//2, box_w, box_h), 2, border_radius=20)
+            box_w, box_h = 950, 560
+            box_x, box_y = cx - box_w // 2, cy - box_h // 2
+            pygame.draw.rect(surface, THEME_PANEL_BG, (box_x, box_y, box_w, box_h), border_radius=20)
+            pygame.draw.rect(surface, THEME_ACCENT_GOLD, (box_x, box_y, box_w, box_h), 2, border_radius=20)
 
-            draw_text(surface, "SESSION SUMMARY", cx, cy - 210, self.font_header if hasattr(self, 'font_header') else self.font_xl, THEME_ACCENT_GOLD, "center")
+            draw_text(surface, "SESSION SUMMARY", cx, box_y + 40, self.font_header if hasattr(self, 'font_header') else self.font_xl, THEME_ACCENT_GOLD, "center")
             
-            # Session Stats
+            # --- CALCULATE GLOBAL STANDINGS (Net Worth) ---
+            participants = []
+            for p in [self.player] + self.auction.agents:
+                # Net Worth = Final Budget + Value of Items Won
+                net_worth = p.budget + (getattr(p, 'items_value_won', 0))
+                participants.append({
+                    'id': p.id,
+                    'is_player': p.id == self.player.id,
+                    'budget': p.budget,
+                    'item_val': getattr(p, 'items_value_won', 0),
+                    'net_worth': net_worth
+                })
+            
+            # Sort by Net Worth
+            participants.sort(key=lambda x: x['net_worth'], reverse=True)
+            winner = participants[0]
+
+            # Divider line (Vertical)
+            pygame.draw.line(surface, THEME_BORDER, (cx, box_y + 80), (cx, box_y + box_h - 60), 1)
+
+            # --- COLUMN 1: GLOBAL (LEFT) ---
+            lx = box_x + (box_w // 4)
+            ly = box_y + 100
+            
+            # Winner Announcement
+            w_text = f"Winner: {winner['id']}"
+            draw_text(surface, w_text, lx, ly, self.font_lg, THEME_ACCENT_GOLD, "center")
+            draw_text(surface, f"Net Worth: ${winner['net_worth']}", lx, ly + 35, self.font_md, THEME_TEXT_MAIN, "center")
+            
+            # Breakdown of Wealth for Winner
+            draw_text(surface, f"Budget: ${winner['budget']}  |  Item Value: ${winner['item_val']}", 
+                      lx, ly + 65, self.font_sm, THEME_TEXT_SUB, "center")
+
+            # Leaderboard
+            ly_board = ly + 110
+            draw_text(surface, "LEADERBOARD", lx, ly_board, self.font_sm, THEME_ACCENT_CYAN, "center")
+            pygame.draw.line(surface, THEME_BORDER, (lx - 150, ly_board + 15), (lx + 150, ly_board + 15), 1)
+            
+            ly_row = ly_board + 30
+            for i, p in enumerate(participants[:6]): # Show top 6
+                rank_color = THEME_ACCENT_GOLD if i == 0 else (THEME_TEXT_MAIN if p['is_player'] else THEME_TEXT_SUB)
+                p_label = f"{i+1}. {p['id']}"
+                if p['is_player']: p_label += " (YOU)"
+                
+                draw_text(surface, p_label, lx - 150, ly_row, self.font_sm, rank_color, "left")
+                draw_text(surface, f"${p['net_worth']}", lx + 150, ly_row, self.font_sm, THEME_TEXT_MAIN, "right")
+                ly_row += 30
+
+            # --- COLUMN 2: PERSONAL (RIGHT) ---
+            rx = box_x + (box_w * 3 // 4)
+            ry = box_y + 100
+            
+            # Personal Session Stats
             final_profit = self.player.session_profit
             p_color = THEME_ACCENT_GREEN if final_profit >= 0 else THEME_ACCENT_RED
-            metrics = PlaystyleAnalyzer.get_behavior_metrics(self.player)
-            style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
             
-            # Stats Grid
-            self._draw_overlay_stat(surface, cx - 220, cy - 100, "TOTAL PROFIT", f"${final_profit}", p_color)
-            self._draw_overlay_stat(surface, cx,       cy - 100, "ITEMS WON", f"{self.player.items_won}", THEME_ACCENT_GOLD)
-            self._draw_overlay_stat(surface, cx + 220, cy - 100, "FINAL BUDGET", f"${self.player.budget}", THEME_TEXT_MAIN)
+            draw_text(surface, "YOUR PERFORMANCE", rx, ry, self.font_sm, THEME_ACCENT_CYAN, "center")
+            self._draw_overlay_stat(surface, rx - 100, ry + 40, "PROFIT", f"${final_profit}", p_color)
+            self._draw_overlay_stat(surface, rx + 100, ry + 40, "WON", f"{self.player.items_won}", THEME_ACCENT_GOLD)
             
             # Playstyle Badge
-            pygame.draw.rect(surface, (35, 40, 60), (cx-300, cy - 10, 600, 160), border_radius=15)
-            draw_text(surface, "YOUR PLAYSTYLE", cx, cy + 5, self.font_sm, THEME_ACCENT_CYAN, "center")
-            draw_text(surface, style_name.upper(), cx, cy + 45, self.font_lg, THEME_ACCENT_GOLD, "center")
+            badge_y = ry + 120
+            pygame.draw.rect(surface, (35, 40, 60), (rx - 180, badge_y, 360, 140), border_radius=15)
+            
+            style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
+            draw_text(surface, "PLAYSTYLE", rx, badge_y + 15, self.font_sm, THEME_ACCENT_CYAN, "center")
+            draw_text(surface, style_name.upper(), rx, badge_y + 45, self.font_md, THEME_ACCENT_GOLD, "center")
             
             # Description (Wrapped)
-            self._draw_wrapped_text(surface, style_desc, cx, cy + 85, 550, self.font_sm, THEME_TEXT_MAIN)
+            self._draw_wrapped_text(surface, style_desc, rx, badge_y + 75, 320, self.font_sm, THEME_TEXT_MAIN)
             
             # Detailed Metrics
-            m_y = cy + 180
-            draw_text(surface, f"Avg Reaction: {metrics['avg_reaction']}", cx - 200, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            draw_text(surface, f"First Bid: {metrics['first_bid_time']}", cx, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            draw_text(surface, f"Risk: {metrics['risk']}", cx + 200, m_y, self.font_sm, THEME_TEXT_SUB, "center")
-            
-            draw_text(surface, f"Withdrawals: {metrics['withdrawals']} | Passes: {metrics['passes']}", 
-                      cx, m_y + 22, self.font_sm, THEME_ACCENT_CYAN, "center")
+            metrics = PlaystyleAnalyzer.get_behavior_metrics(self.player)
+            m_y = badge_y + 160
+            draw_text(surface, f"Avg React: {metrics['avg_reaction']} | First: {metrics['first_bid_time']}", rx, m_y, self.font_sm, THEME_TEXT_SUB, "center")
+            draw_text(surface, f"Risk: {metrics['risk']} | WD/Pass: {metrics['withdrawals']}/{metrics['passes']}", 
+                      rx, m_y + 22, self.font_sm, THEME_TEXT_SUB, "center")
 
-            draw_text(surface, "Press [SPACE] to Restart Game", cx, cy + 225, self.font_sm, THEME_ACCENT_CYAN, "center")
+            draw_text(surface, "Press [SPACE] to Restart Game", cx, box_y + box_h - 35, self.font_sm, THEME_ACCENT_CYAN, "center")
 
     def _draw_wrapped_text(self, surface, text, x, y, max_w, font, color, align="center"):
         words = text.split()
