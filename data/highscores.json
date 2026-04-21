@@ -61,6 +61,12 @@
     },
     {
         "name": "You",
+        "profit": 0,
+        "items": 0,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -13,
         "items": 3,
         "date": ""
@@ -91,6 +97,18 @@
     },
     {
         "name": "You",
+        "profit": -45,
+        "items": 1,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": -86,
+        "items": 3,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -89,
         "items": 2,
         "date": ""
@@ -103,8 +121,8 @@
     },
     {
         "name": "You",
-        "profit": -86,
-        "items": 3,
+        "profit": -372,
+        "items": 2,
         "date": ""
     }
 ]

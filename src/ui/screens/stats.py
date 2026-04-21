@@ -84,7 +84,7 @@ class StatsScreen:
         
         # Right Panel: Playstyle Frequency
         right_x = (SCREEN_WIDTH // 2) + 10
-        self._draw_panel(surface, right_x, mid_y, left_w, 300, "Playstyle Success Rate")
+        self._draw_panel(surface, right_x, mid_y, left_w, 450, "Playstyle Success Rate")
         
         h_y = mid_y + 60
         draw_text(surface, "STYLE", right_x + 20, h_y, self.font_txt, THEME_TEXT_SUB, "left")
@@ -106,7 +106,7 @@ class StatsScreen:
                                reverse=True)
         
         row_y = h_y + 35
-        for style, count in sorted_styles[:5]: # Top 5
+        for style, count in sorted_styles: # Show all recorded styles
             total_profit = profits_map.get(style, 0)
             total_spent = spent_map.get(style, 0)
             avg_profit = total_profit / count if count > 0 else 0
@@ -133,7 +133,7 @@ class StatsScreen:
             success_color = THEME_ACCENT_CYAN if success_rate > 50 else (THEME_ACCENT_GOLD if success_rate > 0 else THEME_ACCENT_RED)
             draw_text(surface, f"{success_rate:.0f}%", right_x + 480, row_y, self.font_txt, success_color, "left")
             
-            row_y += 40
+            row_y += 32 # Tighter spacing to fit more styles
 
     def _draw_stat_card(self, surface, x, y, w, h, label, value, color):
         rect = pygame.Rect(x, y, w, h)

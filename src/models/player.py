@@ -11,6 +11,8 @@ class Player:
         self.bid_logs = [] # (round, tick, amount, is_overbid)
         self.session_profit = 0
         self.session_spent = 0
+        self.session_penalties = 0
+        self.lockout_rounds = 0
         self.lifetime_profit = 0
         self.items_won = 0
         self.items_value_won = 0

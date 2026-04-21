@@ -29,6 +29,7 @@ class Auction:
         # Real-time deadline for smooth clock display (ms)
         self.patience_deadline_ms = 0  # Set on start_round
         self.TICK_INTERVAL_MS = 200    # Must match gameplay.py update interval
+        self.is_paused = False         # NEW: Support for pausing timer/AI
         
         # Initialize 5 AI Agents with randomized budgets and strategies
         self.agents = []
@@ -177,10 +178,32 @@ class Auction:
     def withdraw_bid(self, bidder):
         if not self.highest_bidder or self.highest_bidder.id != bidder.id: return False 
         
-        self.log_event(f"{bidder.id} WITHDREW bid.")
-        if hasattr(bidder, 'withdrawal_count'): bidder.withdrawal_count += 1
+        # --- Apply Penalty Logic (User Refined Design) ---
+        if self.highest_bidder and self.highest_bidder.id == bidder.id:
+            target = self.highest_bidder
+            penalty = max(10, int(self.highest_bid * 0.05))
             
-        if self.bid_stack: self.bid_stack.pop()
+            # Deduct from budget
+            if hasattr(target, 'update_budget'):
+                target.update_budget(penalty) # Positive because budget -= amount
+            if hasattr(target, 'session_penalties'):
+                target.session_penalties += penalty
+            
+            # Apply Lockout Cooldown
+            if hasattr(target, 'lockout_rounds'):
+                target.lockout_rounds = 1
+                
+            self.log_event(f"PENALTY: {target.id} paid ${penalty} and is LOCKED OUT (1rd).")
+        
+        # Original withdrawal log
+        self.log_event(f"{bidder.id} WITHDREW bid.")
+        
+        # Handle bid stack fallback
+        if bidder and hasattr(bidder, 'withdrawal_count'): 
+            bidder.withdrawal_count += 1
+            
+        if self.bid_stack and self.bid_stack[-1][0].id == bidder.id:
+            self.bid_stack.pop()
         
         if self.bid_stack:
             prev_bidder, prev_amount = self.bid_stack[-1]
@@ -212,7 +235,7 @@ class Auction:
         return True
 
     def run_tick(self):
-        if not self.is_active: return
+        if not self.is_active or self.is_paused: return
             
         # 1. Process Pending Withdrawal Queue (Bug 7)
         for wd in self.pending_withdrawals[:]:
@@ -399,6 +422,12 @@ class Auction:
              self.log_event(f"RESULT: Item goes UNSOLD | Value: ${res['item_value']}")
         else:
              self.log_event(f"RESULT: Winner {winner_id} for ${self.highest_bid} | Value: ${res['item_value']} | Profit: ${profit}")
+        # Decrement lockout rounds for all participants (User Refined Design)
+        if self.human_player:
+            self.human_player.lockout_rounds = max(0, self.human_player.lockout_rounds - 1)
+        for agent in self.agents:
+            agent.lockout_rounds = max(0, agent.lockout_rounds - 1)
+
         return res
 
     def save_session_logs(self, filename="gameplay_logs.txt"):
