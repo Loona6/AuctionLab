@@ -232,8 +232,15 @@ class GameScreen:
                     # Resolve final state -> Save -> Reset
                     session_profit = self.player.session_profit
                     style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
-                    DataManager.save_highscore(self.player.name, session_profit, self.player.items_won)
-                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name)
+                    
+                    # Calculate Net Worth and determine if this session was a win
+                    player_net_worth = self.player.budget + self.player.items_value_won
+                    all_participants = [self.player] + self.auction.agents
+                    max_net_worth = max(p.budget + p.items_value_won for p in all_participants)
+                    is_win = player_net_worth >= max_net_worth
+
+                    DataManager.save_highscore(self.player.name, session_profit, self.player.items_won, player_net_worth)
+                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name, is_win)
                     # Save final logs
                     self.auction.save_session_logs("gameplay_logs.txt")
                     self.reset()

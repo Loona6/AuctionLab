@@ -67,6 +67,8 @@ class StatsScreen:
         
         row_h = 35
         curr_y = mid_y + 60
+        self._draw_row(surface, 60, curr_y, left_w, "Total Game Wins:", str(stats.get('total_wins', 0)))
+        curr_y += row_h
         self._draw_row(surface, 60, curr_y, left_w, "Personal Best Profit:", f"$ {stats.get('max_profit', 0):,}")
         curr_y += row_h
         self._draw_row(surface, 60, curr_y, left_w, "Personal Best Collection:", f"{stats.get('max_items', 0)} Items")

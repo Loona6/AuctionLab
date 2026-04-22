@@ -49,6 +49,12 @@
     },
     {
         "name": "You",
+        "profit": 12,
+        "items": 4,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": 0,
         "items": 0,
         "date": ""
@@ -133,8 +139,9 @@
     },
     {
         "name": "You",
-        "profit": 12,
-        "items": 4,
+        "profit": -59,
+        "items": 3,
+        "net_worth": 441,
         "date": ""
     }
 ]
