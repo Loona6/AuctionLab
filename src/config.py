@@ -51,3 +51,4 @@ TACTIC_CONFIG = {
 
 # --- GLOBAL GAMEPLAY ---
 MIN_INCREMENT = 5   # Reduced from 10 to create more friction
+POWERUP_COST = 15   # Cost in Session Profit to buy Expert Advice

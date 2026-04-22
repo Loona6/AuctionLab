@@ -17,7 +17,7 @@ from src.models.auction import Auction
 from src.models.player import Player
 from src.logic.data_manager import DataManager
 from src.logic.analyzer import PlaystyleAnalyzer
-from src.config import MIN_INCREMENT
+from src.config import MIN_INCREMENT, POWERUP_COST
 
 class GameScreen:
     def __init__(self):
@@ -125,6 +125,9 @@ class GameScreen:
         self.btn_pass = NeonButton(cx_panel3 - btn_w//2, self.start_y + 470, btn_w, 40, "PASS ROUND", THEME_TEXT_SUB, "pass")
         self.btn_withdraw = NeonButton(cx_panel3 - btn_w//2, self.start_y + 520, btn_w, 40, "WITHDRAW", THEME_ACCENT_RED, "withdraw")
 
+        # D. Powerup Button
+        self.btn_powerup = NeonButton(cx_panel3 - btn_w//2, self.start_y + 580, btn_w, 45, "EXPERT ADVICE ($15)", THEME_ACCENT_GOLD, "powerup")
+
         # Confirmation Dialog Buttons
         self.btn_confirm_quit = NeonButton(SCREEN_WIDTH//2 - 110, SCREEN_HEIGHT//2 + 20, 100, 40, "YES", THEME_ACCENT_RED, "confirm_exit")
         self.btn_cancel_quit = NeonButton(SCREEN_WIDTH//2 + 10, SCREEN_HEIGHT//2 + 20, 100, 40, "NO", THEME_BORDER, "cancel_exit")
@@ -209,6 +212,17 @@ class GameScreen:
                 was_leading = (self.auction.highest_bidder and self.auction.highest_bidder.id == self.player.id)
                 self.auction.pass_player(self.player)
                 self.feedback_msg = "You are already the highest bidder." if was_leading else "Passed Round."
+
+            if self.btn_powerup.is_clicked(event):
+                if self.player.powerup_used:
+                    self.feedback_msg = "Advice already received!"
+                elif self.player.session_profit < POWERUP_COST:
+                    self.feedback_msg = "Insufficient Profit!"
+                else:
+                    self.player.spend_profit(POWERUP_COST)
+                    self.player.powerup_used = True
+                    self.audio.play("click")
+                    self.feedback_msg = "Analysis complete!"
 
         # 4. Handle Round Over -> Next Round OR Game Over
         else:
@@ -329,6 +343,7 @@ class GameScreen:
         self.btn_place_bid.update(mouse_pos)
         self.btn_pass.update(mouse_pos)
         self.btn_withdraw.update(mouse_pos)
+        self.btn_powerup.update(mouse_pos)
         
         # --- Animation Updates ---
         if self.shake_duration > 0:
@@ -582,8 +597,14 @@ class GameScreen:
         
         # Show the HINT (Wrapped to fit panel)
         # Add 15px gap after item name
-        hint = f"\"{self.auction.current_item.get_hint()}\""
-        tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, THEME_ACCENT_GOLD)
+        if self.player.powerup_used:
+            hint = self.auction.current_item.get_premium_hint()
+            hint_color = THEME_ACCENT_CYAN
+        else:
+            hint = f"\"{self.auction.current_item.get_hint()}\""
+            hint_color = THEME_ACCENT_GOLD
+            
+        tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, hint_color)
         
         # Tags? Maybe strategy hints later
         # Add 10px gap after hint
@@ -702,12 +723,16 @@ class GameScreen:
     def _draw_right_content(self, surface, x, y, w):
         cx = x + w // 2
         
-        # 1. Player Finances
-        draw_text(surface, "YOUR BUDGET", cx, y + 30, self.font_sm, THEME_TEXT_SUB, "center")
-        draw_text(surface, f"$ {self.player.budget}", cx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "center")
+        # 1. Player Finances (Side-by-side for space)
+        lx, rx = x + 60, x + w - 60
+        draw_text(surface, "BUDGET", lx, y + 30, self.font_sm, THEME_TEXT_SUB, "left")
+        draw_text(surface, f"${self.player.budget}", lx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "left")
+        
+        draw_text(surface, "PROFIT", rx, y + 30, self.font_sm, THEME_TEXT_SUB, "right")
+        draw_text(surface, f"${self.player.session_profit}", rx, y + 55, self.font_md, THEME_ACCENT_GREEN, "right")
         
         # Player Stats Row
-        stat_y = y + 95
+        stat_y = y + 90
         pygame.draw.line(surface, THEME_BORDER, (x+30, stat_y), (x+w-30, stat_y), 1)
         
         player_bid = next((bid for bidder, bid in reversed(self.auction.bid_stack) if bidder.id == self.player.id), 0)
@@ -722,15 +747,15 @@ class GameScreen:
         draw_text(surface, status_txt, x + w - 40, stat_y + 40, self.font_sm, status_color, "right")
 
         # 2. Highest Bid (Central focus)
-        mid_zone_y = y + 200 
-        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y - 30), (x+w-30, mid_zone_y - 30), 1)
-        draw_text(surface, "CURRENT HIGH BID", cx, mid_zone_y - 15, self.font_sm, THEME_TEXT_SUB, "center")
+        mid_zone_y = y + 185 
+        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y - 25), (x+w-30, mid_zone_y - 25), 1)
+        draw_text(surface, "CURRENT HIGH BID", cx, mid_zone_y - 10, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, f"$ {self.auction.highest_bid}", cx, mid_zone_y + 25, self.font_xl, THEME_TEXT_MAIN, "center")
         
-        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y + 65), (x+w-30, mid_zone_y + 65), 1)
+        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y + 60), (x+w-30, mid_zone_y + 60), 1)
         
         # 3. User Input Section
-        input_y = mid_zone_y + 80
+        input_y = mid_zone_y + 75
         min_req = self.auction.highest_bid + MIN_INCREMENT
         draw_text(surface, f"Min Required: ${min_req}", cx, input_y, self.font_sm, (100, 100, 100), "center")
         
@@ -738,12 +763,12 @@ class GameScreen:
         self.input_box.rect.y = input_y + 25
         self.input_box.draw(surface)
         
-        self.btn_minus.rect.y = input_y + 85
-        self.btn_plus.rect.y = input_y + 85
+        self.btn_minus.rect.y = input_y + 75
+        self.btn_plus.rect.y = input_y + 75
         self.btn_minus.draw(surface, self.font_md)
         self.btn_plus.draw(surface, self.font_md)
         
-        self.btn_place_bid.rect.y = input_y + 140
+        self.btn_place_bid.rect.y = input_y + 125
         is_locked = getattr(self.player, 'lockout_rounds', 0) > 0
         
         if is_locked:
@@ -756,16 +781,21 @@ class GameScreen:
         self.btn_place_bid.base_color = bid_color
         self.btn_place_bid.draw(surface, self.font_md)
         
-        self.btn_pass.rect.y = input_y + 210
+        self.btn_pass.rect.y = input_y + 190
         self.btn_pass.draw(surface, self.font_md)
         
-        self.btn_withdraw.rect.y = input_y + 260
+        self.btn_withdraw.rect.y = input_y + 235
         withdraw_color = THEME_TEXT_SUB if self.player.is_passing else THEME_ACCENT_RED
         self.btn_withdraw.base_color = withdraw_color
         self.btn_withdraw.draw(surface, self.font_md)
         
+        self.btn_powerup.rect.y = input_y + 280
+        can_buy = self.player.session_profit >= POWERUP_COST and not self.player.powerup_used
+        self.btn_powerup.base_color = THEME_ACCENT_GOLD if can_buy else THEME_TEXT_SUB
+        self.btn_powerup.draw(surface, self.font_sm)
+        
         if self.feedback_msg:
-            draw_text(surface, self.feedback_msg, cx, input_y + 310, self.font_sm, THEME_ACCENT_RED, "center")
+            draw_text(surface, self.feedback_msg, cx, input_y + 335, self.font_sm, THEME_ACCENT_RED, "center")
 
     def _draw_round_end_overlay(self, surface):
         # 1. Darker backdrop for focus

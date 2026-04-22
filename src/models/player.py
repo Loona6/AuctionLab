@@ -1,4 +1,4 @@
-from src.config import MIN_INCREMENT, HINT_CONFIG
+from src.config import MIN_INCREMENT, HINT_CONFIG, POWERUP_COST
 
 class Player:
     def __init__(self, name="Player", budget=500):
@@ -28,6 +28,9 @@ class Player:
         self.pass_count = 0
         self.total_bid_count = 0
         self.total_increments = 0
+        
+        # --- Powerups ---
+        self.powerup_used = False
     
     def place_bid(self, auction, amount):
         """
@@ -83,3 +86,7 @@ class Player:
     def update_budget(self, amount): 
         # Called by Auction when solving the round
         self.budget -= amount
+
+    def spend_profit(self, amount):
+        """Allows spending session profit on powerups."""
+        self.session_profit -= amount

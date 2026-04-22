@@ -22,6 +22,7 @@ class Item:
         
         # Compatibility attribute (if needed by other files)
         self.perceived_signal = self.true_value
+        self.premium_hint = None
 
     def _pick_weighted_hint(self):
         options = list(HINT_CONFIG.keys())
@@ -34,3 +35,18 @@ class Item:
         
     def get_hint(self):
         return self.hint_text
+
+    def get_premium_hint(self):
+        """Returns a narrower, non-deterministic range around the true value."""
+        if self.premium_hint:
+            return self.premium_hint
+            
+        # Use a width of 20 units
+        width = 20
+        # Randomly offset so true value isn't always at the center
+        # True value could be anywhere from 5 to 15 units from the lower bound
+        offset = random.randint(5, 15)
+        lower = self.true_value - offset
+        upper = lower + width
+        self.premium_hint = f"Expert Opinion: Value is between ${lower} and ${upper}"
+        return self.premium_hint
