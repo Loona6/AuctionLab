@@ -49,6 +49,18 @@
     },
     {
         "name": "You",
+        "profit": 12,
+        "items": 4,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": 0,
+        "items": 0,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": 0,
         "items": 0,
         "date": ""
@@ -63,6 +75,14 @@
         "name": "You",
         "profit": 0,
         "items": 0,
+        "net_worth": 500,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
         "date": ""
     },
     {
@@ -91,6 +111,12 @@
     },
     {
         "name": "You",
+        "profit": -37,
+        "items": 2,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -40,
         "items": 1,
         "date": ""
@@ -99,6 +125,13 @@
         "name": "You",
         "profit": -45,
         "items": 1,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": -59,
+        "items": 3,
+        "net_worth": 441,
         "date": ""
     },
     {
@@ -123,6 +156,13 @@
         "name": "You",
         "profit": -372,
         "items": 2,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
         "date": ""
     }
 ]

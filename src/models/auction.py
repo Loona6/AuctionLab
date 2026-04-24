@@ -84,6 +84,7 @@ class Auction:
         if self.human_player:
             self.human_player.is_passing = False
             self.human_player.has_withdrawn = False
+            self.human_player.powerup_used = False
         
         # Refresh Beliefs
         # random.shuffle(self.agents) # Removed: Master list should not be shuffled.

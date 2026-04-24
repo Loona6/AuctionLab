@@ -53,10 +53,7 @@ class HighScoreScreen:
         # Determine Top values
         top_profit = scores[0]['profit']
         most_items = max([s['items'] for s in scores])
-        
-        # Load unified session count from stats
-        stats = DataManager.load_stats()
-        total_sessions = stats.get("total_sessions", 0)
+        best_net_worth = max([s.get('net_worth', 0) for s in scores])
         
         # Center cards
         start_x = (SCREEN_WIDTH - (card_w * 3 + gap * 2)) // 2
@@ -72,9 +69,9 @@ class HighScoreScreen:
         self._draw_trophy_card(surface, start_x + card_w + gap, start_y, card_w, card_h, 
                              "MOST ITEMS", f"{most_items} / 5", "Best Collection", THEME_ACCENT_BLUE)
                              
-        # 3. Sessions Card
+        # 3. Best Net Worth Card
         self._draw_trophy_card(surface, start_x + (card_w + gap)*2, start_y, card_w, card_h, 
-                             "SESSIONS", f"{total_sessions}", "Total Played", THEME_ACCENT_GOLD)
+                             "BEST NET WORTH", f"$ {best_net_worth:,}", "Wealth Peak", THEME_ACCENT_GOLD)
 
     def _draw_trophy_card(self, surface, x, y, w, h, title, value, subtext, accent_color):
         rect = pygame.Rect(x, y, w, h)

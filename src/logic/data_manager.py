@@ -24,13 +24,14 @@ class DataManager:
             return []
 
     @classmethod
-    def save_highscore(cls, player_name, profit, items_won):
+    def save_highscore(cls, player_name, profit, items_won, net_worth):
         cls.ensure_data_dir()
         scores = cls.load_highscores()
         scores.append({
             "name": player_name,
             "profit": profit,
             "items": items_won,
+            "net_worth": net_worth,
             "date": "" # Placeholder for timestamp
         })
         # Note: We now keep the full history in the file
@@ -46,6 +47,7 @@ class DataManager:
                 "total_items": 0,
                 "max_profit": 0,
                 "max_items": 0,
+                "total_wins": 0,
                 "playstyle_counts": {}
             }
         try:
@@ -55,12 +57,15 @@ class DataManager:
             return {}
 
     @classmethod
-    def update_stats(cls, session_profit, session_items, session_spent, playstyle):
+    def update_stats(cls, session_profit, session_items, session_spent, playstyle, is_win=False):
         cls.ensure_data_dir()
         stats = cls.load_stats()
         stats["total_sessions"] = stats.get("total_sessions", 0) + 1
         stats["lifetime_profit"] = stats.get("lifetime_profit", 0) + session_profit
         stats["total_items"] = stats.get("total_items", 0) + session_items
+        
+        if is_win:
+            stats["total_wins"] = stats.get("total_wins", 0) + 1
         
         # New Peak Metrics
         stats["max_profit"] = max(stats.get("max_profit", 0), session_profit)

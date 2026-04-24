@@ -1,4 +1,5 @@
 import pygame
+import os
 from src.constants import *
 from src.ui.components import NeonButton, NeonInputBox, draw_text
 
@@ -17,7 +18,7 @@ from src.models.auction import Auction
 from src.models.player import Player
 from src.logic.data_manager import DataManager
 from src.logic.analyzer import PlaystyleAnalyzer
-from src.config import MIN_INCREMENT
+from src.config import MIN_INCREMENT, POWERUP_COST
 
 class GameScreen:
     def __init__(self):
@@ -78,6 +79,9 @@ class GameScreen:
             self.gavel_img = pygame.transform.smoothscale(self.gavel_img, (120, 120))
         except:
             self.gavel_img = None
+
+        # Item sprite cache: path -> scaled surface
+        self._item_sprite_cache = {}
             
         # --- UI Components ---
         self._init_ui()
@@ -124,6 +128,9 @@ class GameScreen:
         self.btn_place_bid = NeonButton(cx_panel3 - btn_w//2, self.start_y + 400, btn_w, 55, "CONFIRM BID", THEME_ACCENT_GREEN, "bid")
         self.btn_pass = NeonButton(cx_panel3 - btn_w//2, self.start_y + 470, btn_w, 40, "PASS ROUND", THEME_TEXT_SUB, "pass")
         self.btn_withdraw = NeonButton(cx_panel3 - btn_w//2, self.start_y + 520, btn_w, 40, "WITHDRAW", THEME_ACCENT_RED, "withdraw")
+
+        # D. Powerup Button
+        self.btn_powerup = NeonButton(cx_panel3 - btn_w//2, self.start_y + 580, btn_w, 45, "EXPERT ADVICE ($15)", THEME_ACCENT_GOLD, "powerup")
 
         # Confirmation Dialog Buttons
         self.btn_confirm_quit = NeonButton(SCREEN_WIDTH//2 - 110, SCREEN_HEIGHT//2 + 20, 100, 40, "YES", THEME_ACCENT_RED, "confirm_exit")
@@ -210,6 +217,17 @@ class GameScreen:
                 self.auction.pass_player(self.player)
                 self.feedback_msg = "You are already the highest bidder." if was_leading else "Passed Round."
 
+            if self.btn_powerup.is_clicked(event):
+                if self.player.powerup_used:
+                    self.feedback_msg = "Advice already received!"
+                elif self.player.session_profit < POWERUP_COST:
+                    self.feedback_msg = "Insufficient Profit!"
+                else:
+                    self.player.spend_profit(POWERUP_COST)
+                    self.player.powerup_used = True
+                    self.audio.play("click")
+                    self.feedback_msg = "Analysis complete!"
+
         # 4. Handle Round Over -> Next Round OR Game Over
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
@@ -218,8 +236,15 @@ class GameScreen:
                     # Resolve final state -> Save -> Reset
                     session_profit = self.player.session_profit
                     style_name, style_desc = PlaystyleAnalyzer.analyze(self.player, self.max_rounds)
-                    DataManager.save_highscore(self.player.name, session_profit, self.player.items_won)
-                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name)
+                    
+                    # Calculate Net Worth and determine if this session was a win
+                    player_net_worth = self.player.budget + self.player.items_value_won
+                    all_participants = [self.player] + self.auction.agents
+                    max_net_worth = max(p.budget + p.items_value_won for p in all_participants)
+                    is_win = player_net_worth >= max_net_worth
+
+                    DataManager.save_highscore(self.player.name, session_profit, self.player.items_won, player_net_worth)
+                    DataManager.update_stats(session_profit, self.player.items_won, self.player.session_spent, style_name, is_win)
                     # Save final logs
                     self.auction.save_session_logs("gameplay_logs.txt")
                     self.reset()
@@ -329,6 +354,7 @@ class GameScreen:
         self.btn_place_bid.update(mouse_pos)
         self.btn_pass.update(mouse_pos)
         self.btn_withdraw.update(mouse_pos)
+        self.btn_powerup.update(mouse_pos)
         
         # --- Animation Updates ---
         if self.shake_duration > 0:
@@ -569,24 +595,37 @@ class GameScreen:
         
         draw_text(surface, "ITEM INFO", cx, y + 30, self.font_md, THEME_ACCENT_CYAN, "center")
         
-        # Image Placeholder
+        # Demand-based sprite (fallback to generated placeholder if not found)
         img_rect = pygame.Rect(x + 30, y + 70, w - 60, w - 60)
         pygame.draw.rect(surface, (15, 17, 25), img_rect, border_radius=8)
         pygame.draw.rect(surface, THEME_BORDER, img_rect, 1, border_radius=8)
-        draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
+        item = self.auction.current_item
+        sprite = self._resolve_item_sprite(item, img_rect.size)
+        if sprite is not None:
+            sprite_rect = sprite.get_rect(center=img_rect.center)
+            surface.blit(sprite, sprite_rect)
+        else:
+            draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
         
         # Dynamic Text Details
-        # Show "Unknown Item" or generic name (Wrapped)
-        name_y = img_rect.bottom + 25
-        hint_y_start = self._draw_wrapped_text(surface, "Mystery Artifact", cx, name_y, w - 40, self.font_lg, THEME_TEXT_MAIN)
+        name_y = img_rect.bottom + 20
+        desc_y_start = self._draw_wrapped_text(surface, item.name, cx, name_y, w - 40, self.font_lg, THEME_TEXT_MAIN)
+        
+        # Flavor Description
+        hint_y_start = self._draw_wrapped_text(surface, item.description, cx, desc_y_start + 5, w - 50, self.font_sm, THEME_TEXT_SUB)
         
         # Show the HINT (Wrapped to fit panel)
-        # Add 15px gap after item name
-        hint = f"\"{self.auction.current_item.get_hint()}\""
-        tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, THEME_ACCENT_GOLD)
+        # Add 15px gap after description
+        if self.player.powerup_used:
+            hint = self.auction.current_item.get_premium_hint()
+            hint_color = THEME_ACCENT_CYAN
+        else:
+            hint = f"\"{self.auction.current_item.get_hint()}\""
+            hint_color = THEME_ACCENT_GOLD
+            
+        tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, hint_color)
         
-        # Tags? Maybe strategy hints later
-        # Add 10px gap after hint
+        # Value status
         draw_text(surface, "Value Hidden", cx, tags_y_start + 10, self.font_sm, THEME_TEXT_SUB, "center")
 
     def _draw_center_content(self, surface, x, y, w):
@@ -702,12 +741,16 @@ class GameScreen:
     def _draw_right_content(self, surface, x, y, w):
         cx = x + w // 2
         
-        # 1. Player Finances
-        draw_text(surface, "YOUR BUDGET", cx, y + 30, self.font_sm, THEME_TEXT_SUB, "center")
-        draw_text(surface, f"$ {self.player.budget}", cx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "center")
+        # 1. Player Finances (Side-by-side for space)
+        lx, rx = x + 60, x + w - 60
+        draw_text(surface, "BUDGET", lx, y + 30, self.font_sm, THEME_TEXT_SUB, "left")
+        draw_text(surface, f"${self.player.budget}", lx, y + 55, self.font_lg, THEME_ACCENT_GOLD, "left")
+        
+        draw_text(surface, "PROFIT", rx, y + 30, self.font_sm, THEME_TEXT_SUB, "right")
+        draw_text(surface, f"${self.player.session_profit}", rx, y + 55, self.font_md, THEME_ACCENT_GREEN, "right")
         
         # Player Stats Row
-        stat_y = y + 95
+        stat_y = y + 90
         pygame.draw.line(surface, THEME_BORDER, (x+30, stat_y), (x+w-30, stat_y), 1)
         
         player_bid = next((bid for bidder, bid in reversed(self.auction.bid_stack) if bidder.id == self.player.id), 0)
@@ -722,15 +765,15 @@ class GameScreen:
         draw_text(surface, status_txt, x + w - 40, stat_y + 40, self.font_sm, status_color, "right")
 
         # 2. Highest Bid (Central focus)
-        mid_zone_y = y + 200 
-        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y - 30), (x+w-30, mid_zone_y - 30), 1)
-        draw_text(surface, "CURRENT HIGH BID", cx, mid_zone_y - 15, self.font_sm, THEME_TEXT_SUB, "center")
+        mid_zone_y = y + 185 
+        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y - 25), (x+w-30, mid_zone_y - 25), 1)
+        draw_text(surface, "CURRENT HIGH BID", cx, mid_zone_y - 10, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, f"$ {self.auction.highest_bid}", cx, mid_zone_y + 25, self.font_xl, THEME_TEXT_MAIN, "center")
         
-        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y + 65), (x+w-30, mid_zone_y + 65), 1)
+        pygame.draw.line(surface, THEME_BORDER, (x+30, mid_zone_y + 60), (x+w-30, mid_zone_y + 60), 1)
         
         # 3. User Input Section
-        input_y = mid_zone_y + 80
+        input_y = mid_zone_y + 75
         min_req = self.auction.highest_bid + MIN_INCREMENT
         draw_text(surface, f"Min Required: ${min_req}", cx, input_y, self.font_sm, (100, 100, 100), "center")
         
@@ -738,12 +781,12 @@ class GameScreen:
         self.input_box.rect.y = input_y + 25
         self.input_box.draw(surface)
         
-        self.btn_minus.rect.y = input_y + 85
-        self.btn_plus.rect.y = input_y + 85
+        self.btn_minus.rect.y = input_y + 75
+        self.btn_plus.rect.y = input_y + 75
         self.btn_minus.draw(surface, self.font_md)
         self.btn_plus.draw(surface, self.font_md)
         
-        self.btn_place_bid.rect.y = input_y + 140
+        self.btn_place_bid.rect.y = input_y + 125
         is_locked = getattr(self.player, 'lockout_rounds', 0) > 0
         
         if is_locked:
@@ -756,16 +799,21 @@ class GameScreen:
         self.btn_place_bid.base_color = bid_color
         self.btn_place_bid.draw(surface, self.font_md)
         
-        self.btn_pass.rect.y = input_y + 210
+        self.btn_pass.rect.y = input_y + 190
         self.btn_pass.draw(surface, self.font_md)
         
-        self.btn_withdraw.rect.y = input_y + 260
+        self.btn_withdraw.rect.y = input_y + 235
         withdraw_color = THEME_TEXT_SUB if self.player.is_passing else THEME_ACCENT_RED
         self.btn_withdraw.base_color = withdraw_color
         self.btn_withdraw.draw(surface, self.font_md)
         
+        self.btn_powerup.rect.y = input_y + 280
+        can_buy = self.player.session_profit >= POWERUP_COST and not self.player.powerup_used
+        self.btn_powerup.base_color = THEME_ACCENT_GOLD if can_buy else THEME_TEXT_SUB
+        self.btn_powerup.draw(surface, self.font_sm)
+        
         if self.feedback_msg:
-            draw_text(surface, self.feedback_msg, cx, input_y + 310, self.font_sm, THEME_ACCENT_RED, "center")
+            draw_text(surface, self.feedback_msg, cx, input_y + 335, self.font_sm, THEME_ACCENT_RED, "center")
 
     def _draw_round_end_overlay(self, surface):
         # 1. Darker backdrop for focus
@@ -940,3 +988,49 @@ class GameScreen:
     def _draw_overlay_stat(self, surface, cx, y, label, value, color):
         draw_text(surface, label, cx, y, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, value, cx, y + 35, self.font_lg, color, "center")
+
+    def _resolve_item_sprite(self, item, size):
+        sprite_path = None
+        hint_text = "Unknown demand"
+        if item is not None:
+            hint_text = item.get_hint()
+            sprite_path = item.get_sprite_path()
+
+        if sprite_path:
+            cache_key = (sprite_path, size)
+            if cache_key in self._item_sprite_cache:
+                return self._item_sprite_cache[cache_key]
+
+            if os.path.exists(sprite_path):
+                try:
+                    img = pygame.image.load(sprite_path).convert_alpha()
+                    scaled = pygame.transform.smoothscale(img, size)
+                    self._item_sprite_cache[cache_key] = scaled
+                    return scaled
+                except Exception:
+                    pass
+
+        # Fallback keeps demand visualized even without file assets.
+        return self._build_demand_placeholder(hint_text, size)
+
+    def _build_demand_placeholder(self, hint_text, size):
+        demand_colors = {
+            "Low market interest": (95, 95, 105),
+            "Below average demand": (70, 110, 140),
+            "Decent demand": (80, 150, 120),
+            "Strong market interest": (190, 145, 60),
+            "Extremely valuable item": (200, 80, 75),
+        }
+        bg = demand_colors.get(hint_text, (60, 70, 90))
+
+        placeholder = pygame.Surface(size, pygame.SRCALPHA)
+        placeholder.fill((0, 0, 0, 0))
+        pygame.draw.rect(placeholder, bg, placeholder.get_rect(), border_radius=10)
+        pygame.draw.rect(placeholder, (240, 240, 240), placeholder.get_rect(), width=2, border_radius=10)
+
+        label_font = self.font_sm
+        short_label = hint_text.replace("market ", "")
+        text_surf = label_font.render(short_label, True, (245, 245, 245))
+        text_rect = text_surf.get_rect(center=(size[0] // 2, size[1] // 2))
+        placeholder.blit(text_surf, text_rect)
+        return placeholder
