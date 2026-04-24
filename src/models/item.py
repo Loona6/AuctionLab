@@ -1,5 +1,5 @@
 import random
-from src.config import HINT_CONFIG
+from src.config import HINT_CONFIG, ITEM_SPRITES, ITEM_METADATA
 
 class Item:
     def __init__(self):
@@ -23,6 +23,12 @@ class Item:
         # Compatibility attribute (if needed by other files)
         self.perceived_signal = self.true_value
         self.premium_hint = None
+        self.sprite_path = self._pick_sprite_path()
+        
+        # 3. Load Metadata based on sprite
+        metadata = ITEM_METADATA.get(self.sprite_path, {"name": "Mystery Artifact", "description": "A mysterious item of unknown origin."})
+        self.name = metadata["name"]
+        self.description = metadata["description"]
 
     def _pick_weighted_hint(self):
         options = list(HINT_CONFIG.keys())
@@ -35,6 +41,15 @@ class Item:
         
     def get_hint(self):
         return self.hint_text
+
+    def _pick_sprite_path(self):
+        candidates = ITEM_SPRITES.get(self.hint_text, [])
+        if not candidates:
+            return None
+        return random.choice(candidates)
+
+    def get_sprite_path(self):
+        return self.sprite_path
 
     def get_premium_hint(self):
         """Returns a narrower, non-deterministic range around the true value."""

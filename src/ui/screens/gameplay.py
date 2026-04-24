@@ -1,4 +1,5 @@
 import pygame
+import os
 from src.constants import *
 from src.ui.components import NeonButton, NeonInputBox, draw_text
 
@@ -78,6 +79,9 @@ class GameScreen:
             self.gavel_img = pygame.transform.smoothscale(self.gavel_img, (120, 120))
         except:
             self.gavel_img = None
+
+        # Item sprite cache: path -> scaled surface
+        self._item_sprite_cache = {}
             
         # --- UI Components ---
         self._init_ui()
@@ -591,19 +595,27 @@ class GameScreen:
         
         draw_text(surface, "ITEM INFO", cx, y + 30, self.font_md, THEME_ACCENT_CYAN, "center")
         
-        # Image Placeholder
+        # Demand-based sprite (fallback to generated placeholder if not found)
         img_rect = pygame.Rect(x + 30, y + 70, w - 60, w - 60)
         pygame.draw.rect(surface, (15, 17, 25), img_rect, border_radius=8)
         pygame.draw.rect(surface, THEME_BORDER, img_rect, 1, border_radius=8)
-        draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
+        item = self.auction.current_item
+        sprite = self._resolve_item_sprite(item, img_rect.size)
+        if sprite is not None:
+            sprite_rect = sprite.get_rect(center=img_rect.center)
+            surface.blit(sprite, sprite_rect)
+        else:
+            draw_text(surface, "[ ? ]", cx, img_rect.centery, self.font_xl, THEME_TEXT_SUB, "center")
         
         # Dynamic Text Details
-        # Show "Unknown Item" or generic name (Wrapped)
-        name_y = img_rect.bottom + 25
-        hint_y_start = self._draw_wrapped_text(surface, "Mystery Artifact", cx, name_y, w - 40, self.font_lg, THEME_TEXT_MAIN)
+        name_y = img_rect.bottom + 20
+        desc_y_start = self._draw_wrapped_text(surface, item.name, cx, name_y, w - 40, self.font_lg, THEME_TEXT_MAIN)
+        
+        # Flavor Description
+        hint_y_start = self._draw_wrapped_text(surface, item.description, cx, desc_y_start + 5, w - 50, self.font_sm, THEME_TEXT_SUB)
         
         # Show the HINT (Wrapped to fit panel)
-        # Add 15px gap after item name
+        # Add 15px gap after description
         if self.player.powerup_used:
             hint = self.auction.current_item.get_premium_hint()
             hint_color = THEME_ACCENT_CYAN
@@ -613,8 +625,7 @@ class GameScreen:
             
         tags_y_start = self._draw_wrapped_text(surface, hint, cx, hint_y_start + 15, w - 40, self.font_md, hint_color)
         
-        # Tags? Maybe strategy hints later
-        # Add 10px gap after hint
+        # Value status
         draw_text(surface, "Value Hidden", cx, tags_y_start + 10, self.font_sm, THEME_TEXT_SUB, "center")
 
     def _draw_center_content(self, surface, x, y, w):
@@ -977,3 +988,49 @@ class GameScreen:
     def _draw_overlay_stat(self, surface, cx, y, label, value, color):
         draw_text(surface, label, cx, y, self.font_sm, THEME_TEXT_SUB, "center")
         draw_text(surface, value, cx, y + 35, self.font_lg, color, "center")
+
+    def _resolve_item_sprite(self, item, size):
+        sprite_path = None
+        hint_text = "Unknown demand"
+        if item is not None:
+            hint_text = item.get_hint()
+            sprite_path = item.get_sprite_path()
+
+        if sprite_path:
+            cache_key = (sprite_path, size)
+            if cache_key in self._item_sprite_cache:
+                return self._item_sprite_cache[cache_key]
+
+            if os.path.exists(sprite_path):
+                try:
+                    img = pygame.image.load(sprite_path).convert_alpha()
+                    scaled = pygame.transform.smoothscale(img, size)
+                    self._item_sprite_cache[cache_key] = scaled
+                    return scaled
+                except Exception:
+                    pass
+
+        # Fallback keeps demand visualized even without file assets.
+        return self._build_demand_placeholder(hint_text, size)
+
+    def _build_demand_placeholder(self, hint_text, size):
+        demand_colors = {
+            "Low market interest": (95, 95, 105),
+            "Below average demand": (70, 110, 140),
+            "Decent demand": (80, 150, 120),
+            "Strong market interest": (190, 145, 60),
+            "Extremely valuable item": (200, 80, 75),
+        }
+        bg = demand_colors.get(hint_text, (60, 70, 90))
+
+        placeholder = pygame.Surface(size, pygame.SRCALPHA)
+        placeholder.fill((0, 0, 0, 0))
+        pygame.draw.rect(placeholder, bg, placeholder.get_rect(), border_radius=10)
+        pygame.draw.rect(placeholder, (240, 240, 240), placeholder.get_rect(), width=2, border_radius=10)
+
+        label_font = self.font_sm
+        short_label = hint_text.replace("market ", "")
+        text_surf = label_font.render(short_label, True, (245, 245, 245))
+        text_rect = text_surf.get_rect(center=(size[0] // 2, size[1] // 2))
+        placeholder.blit(text_surf, text_rect)
+        return placeholder

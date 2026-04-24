@@ -73,6 +73,20 @@
     },
     {
         "name": "You",
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
+        "date": ""
+    },
+    {
+        "name": "You",
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -13,
         "items": 3,
         "date": ""
@@ -115,6 +129,13 @@
     },
     {
         "name": "You",
+        "profit": -59,
+        "items": 3,
+        "net_worth": 441,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -86,
         "items": 3,
         "date": ""
@@ -139,9 +160,9 @@
     },
     {
         "name": "You",
-        "profit": -59,
-        "items": 3,
-        "net_worth": 441,
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
         "date": ""
     }
 ]

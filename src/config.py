@@ -15,6 +15,74 @@ HINT_CONFIG = {
     "Extremely valuable item":  {'range': (140, 250), 'base_value': 180, 'safe_cap': 200}
 }
 
+# --- ITEM SPRITES (BY DEMAND TIER) ---
+# Add 1-2 image files for each demand tier under assets/images/items/.
+ITEM_SPRITES = {
+    "Low market interest": [
+        "assets/images/items/low_demand_1.png",
+        "assets/images/items/low_demand_2.png",
+    ],
+    "Below average demand": [
+        "assets/images/items/below_average_1.png",
+        "assets/images/items/below_average_2.png",
+    ],
+    "Decent demand": [
+        "assets/images/items/decent_1.png",
+        "assets/images/items/decent_2.png",
+    ],
+    "Strong market interest": [
+        "assets/images/items/strong_1.png",
+        "assets/images/items/strong_2.png",
+    ],
+    "Extremely valuable item": [
+        "assets/images/items/extreme_1.png",
+        "assets/images/items/extreme_2.png",
+    ],
+}
+
+ITEM_METADATA = {
+    "assets/images/items/low_demand_1.png": {
+        "name": "Small Potion Bottle",
+        "description": "Recovered experimental potion from a sealed laboratory archive."
+    },
+    "assets/images/items/low_demand_2.png": {
+        "name": "Coin Pouch",
+        "description": "Leather pouch of copper coins dated 1920, light historical wear."
+    },
+    "assets/images/items/below_average_1.png": {
+        "name": "Basic Dagger",
+        "description": "Standard forged dagger from an early expedition kit, well preserved."
+    },
+    "assets/images/items/below_average_2.png": {
+        "name": "Leather Boots",
+        "description": "Vintage 1988 leather boots, durable construction with visible aging."
+    },
+    "assets/images/items/decent_1.png": {
+        "name": "Magic Scroll",
+        "description": "Ancient scroll with faded arcane script, likely functional."
+    },
+    "assets/images/items/decent_2.png": {
+        "name": "Silver Ring",
+        "description": "Sterling silver ring with a polished stone, early artisan work."
+    },
+    "assets/images/items/strong_1.png": {
+        "name": "Vintage Mirror",
+        "description": "Ornate antique mirror with aged glass and refined frame detailing."
+    },
+    "assets/images/items/strong_2.png": {
+        "name": "Jeweled Sword",
+        "description": "Elegant ceremonial sword with gem-inlaid hilt and fine engraving."
+    },
+    "assets/images/items/extreme_1.png": {
+        "name": "Crown",
+        "description": "Royal gold crown set with rare gemstones, well-preserved condition."
+    },
+    "assets/images/items/extreme_2.png": {
+        "name": "Vintage Vase",
+        "description": "Exquisite antique vase with intricate craftsmanship, high collector value."
+    }
+}
+
 # --- AI PERSONALITIES (THE "WAR MODE" REBALANCED) ---
 STRATEGY_CONFIG = {
     "Aggressive": {
@@ -51,4 +119,4 @@ TACTIC_CONFIG = {
 
 # --- GLOBAL GAMEPLAY ---
 MIN_INCREMENT = 5   # Reduced from 10 to create more friction
-POWERUP_COST = 15   # Cost in Session Profit to buy Expert Advice
+POWERUP_COST = 15   # Cost in Session Profit to buy Expert Advice
