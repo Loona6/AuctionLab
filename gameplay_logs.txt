@@ -1,24 +1,107 @@
 ========================================
- LAST SESSION: 2026-04-24 23:31:28
+ LAST SESSION: 2026-04-25 12:49:52
 ========================================
 --- Round 1 Started ---
-Item Hint: Strong market interest
-You bids $5
-AI-2 bids $39
-You bids $94
-AI-3 bids $99
-AI-5 bids $104
-Going once...
-AI-3 bids $109
-You bids $114
-AI-4 bids $119
-AI-5 bids $124
-AI-3 bids $129
-AI-4 bids $134
-AI-3 bids $139
-You bids $144
-Going once...
-SOLD!
-RESULT: Winner You for $144 | Value: $124 | Profit: $-20
---- Round 2 Started ---
 Item Hint: Below average demand
+AI-2 bids $13
+You bids $400
+PENALTY: You paid $20 and is LOCKED OUT (1rd).
+You WITHDREW bid.
+AI-4 bids $20
+SOLD!
+RESULT: Winner AI-4 for $20 | Value: $64 | Profit: $44
+--- Round 2 Started ---
+Item Hint: Decent demand
+AI-2 bids $21
+AI-1 bids $29
+AI-4 bids $34
+You bids $39
+AI-4 bids $44
+You bids $49
+AI-3 bids $54
+Going once...
+AI-4 bids $59
+You bids $64
+You bids $69
+AI-4 bids $74
+AI-3 has WITHDRAWN.
+AI-1 bids $79
+AI-4 bids $84
+You bids $89
+AI-1 bids $94
+Going once...
+AI-4 bids $99
+You bids $104
+SOLD!
+RESULT: Winner You for $104 | Value: $109 | Profit: $5
+--- Round 3 Started ---
+Item Hint: Decent demand
+AI-2 bids $20
+AI-3 bids $25
+AI-5 bids $30
+AI-2 bids $35
+You bids $40
+AI-4 bids $45
+AI-5 bids $50
+AI-4 bids $55
+Going once...
+AI-1 bids $60
+You bids $65
+You bids $70
+AI-2 has WITHDRAWN.
+AI-5 has WITHDRAWN.
+AI-1 bids $75
+AI-3 has WITHDRAWN.
+AI-4 bids $80
+AI-1 bids $85
+AI-4 bids $90
+Going once...
+You bids $95
+AI-4 bids $100
+Going once...
+You bids $105
+SOLD!
+RESULT: Winner You for $105 | Value: $96 | Profit: $-9
+--- Round 4 Started ---
+Item Hint: Decent demand
+AI-3 bids $22
+AI-5 bids $27
+AI-4 bids $32
+You bids $37
+AI-5 bids $42
+Going once...
+AI-3 bids $47
+AI-4 bids $52
+AI-1 bids $57
+AI-4 bids $62
+AI-1 bids $67
+AI-4 bids $72
+AI-5 has WITHDRAWN.
+Going once...
+AI-1 bids $77
+AI-3 has WITHDRAWN.
+AI-4 bids $82
+AI-1 bids $87
+AI-4 bids $92
+You bids $97
+Going once...
+You is winning. PASS ignored.
+Going twice...
+SOLD!
+DISQUALIFIED: You withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $104
+--- Round 5 Started ---
+Item Hint: Low market interest
+AI-2 bids $5
+AI-4 bids $10
+AI-1 bids $15
+AI-4 bids $20
+Going once...
+AI-1 bids $25
+AI-4 bids $30
+Going once...
+*** AI-4 has WITHDRAWN - YOU HOLD THE FLOOR ***
+Going twice...
+SOLD!
+DISQUALIFIED: AI-4 withdrew/passed and cannot win.
+RESULT: Item goes UNSOLD | Value: $32
