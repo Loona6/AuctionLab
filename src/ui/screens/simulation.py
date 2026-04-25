@@ -472,7 +472,7 @@ class SimScreen:
         px, py = SCREEN_WIDTH // 2 - prompt_w // 2, SCREEN_HEIGHT - 65
         pygame.draw.rect(surface, (10, 12, 20), (px, py, prompt_w, prompt_h), border_radius=20)
         pygame.draw.rect(surface, THEME_ACCENT_CYAN, (px, py, prompt_w, prompt_h), 1, border_radius=20)
-        draw_text(surface, "Experiment Concluded. Press [ESC] to exit Auction Lab.", SCREEN_WIDTH // 2, py + 20, self.font_sm, THEME_TEXT_MAIN, "center")
+        draw_text(surface, "Experiment Concluded. Press [ESC] to Exit.", SCREEN_WIDTH // 2, py + 20, self.font_sm, THEME_TEXT_MAIN, "center")
 
     def _draw_report_box(self, surface, x, y, w, h, title, accent_color):
         rect = pygame.Rect(x, y, w, h)

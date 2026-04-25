@@ -2,6 +2,7 @@ import pygame
 from src.constants import *
 from src.ui.components import NeonButton, draw_text
 from src.logic.data_manager import DataManager
+from src.config import PLAYSTYLE_DESCRIPTIONS
 
 # --- Theme Colors ---
 THEME_BG = (20, 22, 35)
@@ -22,6 +23,8 @@ class StatsScreen:
         self.font_txt = pygame.font.SysFont(FONT_NAME, 18)
         
         self.btn_back = NeonButton(40, 30, 100, 40, "BACK", THEME_BORDER, "back")
+        self.hover_areas = [] # List of (Rect, style_name)
+        self.active_tooltip = None
 
     def handle_events(self, event):
         if self.btn_back.is_clicked(event):
@@ -29,7 +32,14 @@ class StatsScreen:
         return None
 
     def update(self):
-        self.btn_back.update(pygame.mouse.get_pos())
+        mouse_pos = pygame.mouse.get_pos()
+        self.btn_back.update(mouse_pos)
+        
+        self.active_tooltip = None
+        for rect, style_name in self.hover_areas:
+            if rect.collidepoint(mouse_pos):
+                self.active_tooltip = style_name
+                break
 
     def draw(self, surface):
         surface.fill(THEME_BG)
@@ -108,6 +118,7 @@ class StatsScreen:
                                reverse=True)
         
         row_y = h_y + 35
+        self.hover_areas = []
         for style, count in sorted_styles: # Show all recorded styles
             total_profit = profits_map.get(style, 0)
             total_spent = spent_map.get(style, 0)
@@ -135,7 +146,14 @@ class StatsScreen:
             success_color = THEME_ACCENT_CYAN if success_rate > 50 else (THEME_ACCENT_GOLD if success_rate > 0 else THEME_ACCENT_RED)
             draw_text(surface, f"{success_rate:.0f}%", right_x + 480, row_y, self.font_txt, success_color, "left")
             
+            # Record hover area for the style name
+            style_rect = pygame.Rect(right_x + 20, row_y - 10, 130, 25)
+            self.hover_areas.append((style_rect, style))
+            
             row_y += 32 # Tighter spacing to fit more styles
+            
+        if self.active_tooltip:
+            self._draw_tooltip(surface, pygame.mouse.get_pos())
 
     def _draw_stat_card(self, surface, x, y, w, h, label, value, color):
         rect = pygame.Rect(x, y, w, h)
@@ -162,3 +180,80 @@ class StatsScreen:
         draw_text(surface, name, x + 20, y, self.font_txt, color)
         draw_text(surface, usage, x + 160, y, self.font_txt, THEME_TEXT_MAIN)
         draw_text(surface, success, x + 280, y, self.font_txt, THEME_TEXT_MAIN)
+
+    def _draw_tooltip(self, surface, pos):
+        if self.active_tooltip not in PLAYSTYLE_DESCRIPTIONS: return
+        
+        text = PLAYSTYLE_DESCRIPTIONS[self.active_tooltip]
+        
+        # Calculate Box Size
+        tw = 300
+        line_h = 20
+        # Preliminary wrap to get height
+        lines = self._wrap_text(text, self.font_txt, tw - 20)
+        total_h = len(lines) * line_h + 20
+        
+        # Position (Keep on screen)
+        tx, ty = pos[0] + 20, pos[1] + 20
+        if tx + tw > SCREEN_WIDTH: tx = pos[0] - tw - 10
+        if ty + total_h > SCREEN_HEIGHT: ty = pos[1] - total_h - 10
+        
+        rect = pygame.Rect(tx, ty, tw, total_h)
+        pygame.draw.rect(surface, (10, 12, 20), rect, border_radius=10)
+        pygame.draw.rect(surface, THEME_ACCENT_PURPLE, rect, 1, border_radius=10)
+        
+        self._draw_justified_text(surface, text, tx + 10, ty + 10, tw - 20, self.font_txt)
+
+    def _draw_justified_text(self, surface, text, x, y, max_w, font):
+        # 1. Parse text into segments with highlight info
+        segments = []
+        parts = text.split("[H]")
+        for i, p in enumerate(parts):
+            if "[/H]" in p:
+                sub, rest = p.split("[/H]")
+                segments.append((sub, True))
+                if rest: segments.append((rest, False))
+            else:
+                if p: segments.append((p, False))
+        
+        # 2. Break into lines based on max_w
+        words_data = []
+        for content, is_h in segments:
+            for w in content.split():
+                words_data.append({'w': w, 'h': is_h})
+        
+        lines = []
+        curr_line = []
+        curr_w = 0
+        for wd in words_data:
+            w_w = font.size(wd['w'] + " ")[0]
+            if curr_w + w_w < max_w:
+                curr_line.append(wd)
+                curr_w += w_w
+            else:
+                lines.append(curr_line)
+                curr_line = [wd]
+                curr_w = w_w
+        lines.append(curr_line)
+        
+        # 3. Draw lines
+        line_h = 20
+        for i, line in enumerate(lines):
+            # Always left align
+            curr_x = x
+            for wd in line:
+                color = THEME_ACCENT_GOLD if wd['h'] else THEME_TEXT_MAIN
+                surface.blit(font.render(wd['w'], True, color), (curr_x, y + i * line_h))
+                curr_x += font.size(wd['w'] + " ")[0]
+
+    def _wrap_text(self, text, font, max_w):
+        words = text.split()
+        lines = []
+        curr = []
+        for w in words:
+            if font.size(" ".join(curr + [w]))[0] < max_w: curr.append(w)
+            else:
+                lines.append(" ".join(curr))
+                curr = [w]
+        lines.append(" ".join(curr))
+        return lines
