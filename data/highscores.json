@@ -94,6 +94,13 @@
     },
     {
         "name": "You",
+        "profit": 0,
+        "items": 0,
+        "net_worth": 500,
+        "date": ""
+    },
+    {
+        "name": "You",
         "profit": -4,
         "items": 2,
         "net_worth": 476,
@@ -122,6 +129,13 @@
         "profit": -25,
         "items": 1,
         "date": "2026-02-19"
+    },
+    {
+        "name": "You",
+        "profit": -31,
+        "items": 1,
+        "net_worth": 459,
+        "date": ""
     },
     {
         "name": "You",
@@ -188,9 +202,9 @@
     },
     {
         "name": "You",
-        "profit": -31,
+        "profit": -15,
         "items": 1,
-        "net_worth": 459,
+        "net_worth": 485,
         "date": ""
     }
 ]
