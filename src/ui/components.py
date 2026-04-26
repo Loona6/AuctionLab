@@ -13,6 +13,10 @@ def draw_text(surface, text, x, y, font, color, align="topleft"):
         text_rect.topright = (x, y)
     elif align == "left":
         text_rect.topleft = (x, y)
+    elif align == "midright":
+        text_rect.midright = (x, y)
+    elif align == "midleft":
+        text_rect.midleft = (x, y)
         
     surface.blit(text_surface, text_rect)
     return text_rect

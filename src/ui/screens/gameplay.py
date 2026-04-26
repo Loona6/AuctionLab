@@ -558,13 +558,29 @@ class GameScreen:
             
         if not callout_text: return
         
-        # 1. Gavel Animation
+        # 1. Gavel Animation (Premium Shadow + Heavier Snap)
         if self.gavel_img:
             # Downward snap animation based on ticks_since_change
-            # First 3 ticks: -30 to 0 degrees
-            angle = max(-30, -30 + (ticks_since_change * 10))
-            if not self.auction.is_active: angle = 0 # Settled
+            # First 3 ticks: -30 to 5 degrees (overshoot for "impact")
+            if ticks_since_change < 4:
+                angle = -30 + (ticks_since_change * 12)
+            else:
+                angle = 0 # Settled
+                
+            if not self.auction.is_active: angle = 0 
             
+            # Draw Drop Shadow
+            shadow_offset = 6
+            shadow_img = pygame.transform.rotate(self.gavel_img, angle)
+            # Create a black version for shadow
+            shadow_surf = pygame.Surface(shadow_img.get_size(), pygame.SRCALPHA)
+            shadow_surf.blit(shadow_img, (0,0))
+            shadow_surf.fill((0, 0, 0, 100), special_flags=pygame.BLEND_RGBA_MULT)
+            
+            s_rect = shadow_surf.get_rect(center=(cx + shadow_offset, cy - 80 + shadow_offset))
+            surface.blit(shadow_surf, s_rect)
+            
+            # Draw Gavel
             rotated_gavel = pygame.transform.rotate(self.gavel_img, angle)
             g_rect = rotated_gavel.get_rect(center=(cx, cy - 80))
             surface.blit(rotated_gavel, g_rect)

@@ -5,6 +5,8 @@ from src.ui.screens.dashboard import MenuScreen
 from src.ui.screens.gameplay import GameScreen
 from src.ui.screens.highscores import HighScoreScreen
 from src.ui.screens.stats import StatsScreen
+from src.ui.screens.sim_setup import SimSetupScreen
+from src.ui.screens.simulation import SimScreen
 
 class AuctionGame:
     def __init__(self):
@@ -23,7 +25,9 @@ class AuctionGame:
             "menu": MenuScreen(),
             "game": GameScreen(),
             "scores": HighScoreScreen(),
-            "stats": StatsScreen()
+            "stats": StatsScreen(),
+            "sim_setup": SimSetupScreen(),
+            "sim_view": SimScreen()
         }
         
         # Start at Menu
@@ -77,6 +81,15 @@ class AuctionGame:
             
         elif action == "back":
             self.current_state = "menu"
+            
+        elif action == "start_sim":
+            self.current_state = "sim_setup"
+            
+        elif action == "launch_sim":
+            # Pass config from setup to sim view
+            setup = self.screens["sim_setup"]
+            self.screens["sim_view"].setup_simulation(setup.bot_count, setup.strategies)
+            self.current_state = "sim_view"
             
         # Game Specific Actions (Placeholder logic)
         elif action == "bid":

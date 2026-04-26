@@ -17,16 +17,17 @@ class MenuScreen:
         cy = SCREEN_HEIGHT // 2
         
         # Button Dimensions
-        btn_w, btn_h = 280, 55
-        gap = 20
-        start_y = cy + 40 
+        btn_w, btn_h = 280, 50
+        gap = 12
+        start_y = cy - 50 # Moved up further
         
         self.buttons = [
             NeonButton(cx - btn_w//2, start_y, btn_w, btn_h, "START GAME", COLOR_CYAN, "start_game"),
+            NeonButton(cx - btn_w//2, start_y + (btn_h + gap), btn_w, btn_h, "SIMULATION MODE", COLOR_CYAN, "start_sim"),
             # RENAMED BUTTON BELOW
-            NeonButton(cx - btn_w//2, start_y + (btn_h + gap), btn_w, btn_h, "HIGH SCORES", COLOR_YELLOW, "view_scores"),
-            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*2, btn_w, btn_h, "OVERALL STATS", COLOR_PURPLE, "view_stats"),
-            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*3, btn_w, btn_h, "EXIT SYSTEM", COLOR_RED, "exit"),
+            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*2, btn_w, btn_h, "HIGH SCORES", COLOR_YELLOW, "view_scores"),
+            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*3, btn_w, btn_h, "OVERALL STATS", COLOR_PURPLE, "view_stats"),
+            NeonButton(cx - btn_w//2, start_y + (btn_h + gap)*4, btn_w, btn_h, "EXIT SYSTEM", COLOR_RED, "exit"),
         ]
 
     def handle_events(self, event):
@@ -46,7 +47,7 @@ class MenuScreen:
         
         # --- Logo Section ---
         cx = SCREEN_WIDTH // 2
-        cy = 180 
+        cy = 120 
         
         # Main Text
         text_surf = self.font_logo.render("AUCTION LAB", True, THEME_TEXT_MAIN)
