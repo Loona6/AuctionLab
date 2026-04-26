@@ -275,7 +275,7 @@ python main.py
 ---
 ## 👥 Authors
 
-<table> <tr> <td align="center"> <a href="https://github.com/Loona6"> <img src="https://github.com/Loona6.png" width="100px;" alt="Maisha Sanjida"/><br/> <sub><b>Maisha Sanjida</b></sub> </a><br/> <a href="https://github.com/Loona6"> <img src="https://img.shields.io/badge/GitHub-Loona6-181717?style=flat-square&logo=github"/> </a> </td> <td align="center"> <a href="https://github.com/MaishaNajAlam"> <img src="https://github.com/MaishaNajAlam.png" width="100px;" alt="Maisha Naj Alam"/><br/> <sub><b>Maisha Naj Alam</b></sub> </a><br/> <a href="https://github.com/MaishaNajAlam"> <img src="https://img.shields.io/badge/GitHub-MaishaNajAlam-181717?style=flat-square&logo=github"/> </a> </td> </tr> </table>
+<table> <tr> <td align="center"> <a href="https://github.com/MaishaNajAlam"> <img src="https://github.com/MaishaNajAlam.png" width="100px;" alt="Maisha Naj Alam"/><br/> <sub><b>Maisha Naj Alam</b></sub> </a><br/> <a href="https://github.com/MaishaNajAlam"> <img src="https://img.shields.io/badge/GitHub-MaishaNajAlam-181717?style=flat-square&logo=github"/> </a> </td> <td align="center"> <a href="https://github.com/Loona6"> <img src="https://github.com/Loona6.png" width="100px;" alt="Maisha Sanjida"/><br/> <sub><b>Maisha Sanjida</b></sub> </a><br/> <a href="https://github.com/Loona6"> <img src="https://img.shields.io/badge/GitHub-Loona6-181717?style=flat-square&logo=github"/> </a> </td> </tr> </table>
 
 ---
 ## 📄 License  
